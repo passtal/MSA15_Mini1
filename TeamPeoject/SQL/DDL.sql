@@ -2,7 +2,24 @@
 CREATE DATABASE IF NOT EXISTS JSJ;
 USE JSJ;
 
-drop table all;
+-- 전체 테이블 드랍
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS
+    main_banner,
+    menu_image,
+    menu,
+    board_image,
+    place_food,
+    food_category,
+    review_comment,
+    board,
+    board_group,
+    place,
+    user_auth,
+    user;
+
+SET FOREIGN_KEY_CHECKS = 1;
 
 -- =========================
 -- USER
