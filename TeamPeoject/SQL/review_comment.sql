@@ -15,7 +15,7 @@ CREATE TABLE `review_comment` (
 
 ALTER TABLE `review_comment`
 ADD CONSTRAINT fk_review_comment_user
-FOREIGN KEY (`user_no`) REFERENCES `user`(`no`);
+FOREIGN KEY (`user_no`) REFERENCES `users`(`no`);
 
 ALTER TABLE `review_comment`
 ADD CONSTRAINT fk_review_comment_board

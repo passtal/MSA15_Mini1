@@ -2,7 +2,6 @@
 CREATE DATABASE IF NOT EXISTS JSJ;
 USE JSJ;
 
--- 전체 테이블 드랍
 SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS
@@ -17,17 +16,19 @@ DROP TABLE IF EXISTS
     board_group,
     place,
     user_auth,
-    user;
+    users,
+    persistence_logins;
 
 SET FOREIGN_KEY_CHECKS = 1;
 
+
 -- =========================
--- USER
+-- USERS
 -- =========================
-CREATE TABLE `user` (
+CREATE TABLE `users` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
     `id` VARCHAR(64) NOT NULL COMMENT 'UK',
-    `profile_img` VARCHAR(300) NOT NULL COMMENT '프로필 이미지',
+    `profile_img` VARCHAR(300) NULL DEFAULT '/static/img/default-profile.png' COMMENT '프로필 이미지',
     `user_id` VARCHAR(100) NOT NULL COMMENT '회원 아이디(이메일)',
     `password` VARCHAR(100) NOT NULL COMMENT '비밀번호',
     `username` VARCHAR(100) NOT NULL COMMENT '닉네임',
@@ -193,19 +194,32 @@ CREATE TABLE `main_banner` (
 );
 
 -- =========================
+-- PERSISTENCE_LOGINS
+-- =========================
+CREATE TABLE `persistence_logins` (
+	`no`			INT	NOT NULL AUTO_INCREMENT  PRIMARY KEY	COMMENT '번호',
+	`id`			VARCHAR(255)	NOT NULL	COMMENT 'ID (UUID)',
+	`user_id`		VARCHAR(100)	NOT NULL	COMMENT '회원 아이디',
+	`token`			VARCHAR(255)	NOT NULL	COMMENT '인증 토큰',
+	`expiry_date`	TIMESTAMP		NOT NULL	COMMENT '만료시간',
+	`created_at`		TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP	COMMENT '등록일자',
+	`updated_at`		TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP	COMMENT '수정일자'
+);
+
+-- =========================
 -- FOREIGN KEYS
 -- =========================
 ALTER TABLE `user_auth`
 ADD CONSTRAINT fk_user_auth_user
-FOREIGN KEY (`user_no`) REFERENCES `user`(`no`);
+FOREIGN KEY (`user_no`) REFERENCES `users`(`no`);
 
 ALTER TABLE `place`
 ADD CONSTRAINT fk_place_user
-FOREIGN KEY (`user_no`) REFERENCES `user`(`no`);
+FOREIGN KEY (`user_no`) REFERENCES `users`(`no`);
 
 ALTER TABLE `board`
 ADD CONSTRAINT fk_board_user
-FOREIGN KEY (`user_no`) REFERENCES `user`(`no`);
+FOREIGN KEY (`user_no`) REFERENCES `users`(`no`);
 
 ALTER TABLE `board`
 ADD CONSTRAINT fk_board_group
@@ -217,7 +231,7 @@ FOREIGN KEY (`place_no`) REFERENCES `place`(`no`);
 
 ALTER TABLE `review_comment`
 ADD CONSTRAINT fk_review_comment_user
-FOREIGN KEY (`user_no`) REFERENCES `user`(`no`);
+FOREIGN KEY (`user_no`) REFERENCES `users`(`no`);
 
 ALTER TABLE `review_comment`
 ADD CONSTRAINT fk_review_comment_board

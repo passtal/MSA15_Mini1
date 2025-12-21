@@ -9,16 +9,16 @@
 	    <button >
 	    	<span>버튼</span>
 	    </button>
-	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="${ root }/board/list">맛집소개</a>
+	    <div>
+			<ul>
+				<li>
+					<a href="${ root }/board/list">맛집소개</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="${ root }/board/list">리뷰</a>
+				<li>
+					<a href="${ root }/board/list">리뷰</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="${ root }/board/list">공지사항</a>
+				<li>
+					<a href="${ root }/board/list">공지사항</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav d-flex align-items-center px-3">
@@ -26,19 +26,19 @@
 				<c:choose>
 					<c:when test="${ empty loginId }">
 						<!-- 비로그인 시 -->
-						<li class="nav-item">
-							<a class="nav-link" aria-current="page" href="${ root }/login">로그인</a>
+						<li>
+							<a href="${ root }/login">로그인</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" aria-current="TeamProject" href="${ root }/signup">회원가입</a>
+						<li >
+							<a href="${ root }/signup">회원가입</a>
 					</c:when>
 						
 					<c:otherwise>
 						<!-- 로그인 시 -->
-						<li class="nav-item">
-							<div class="dropdown">
-								<a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-									<img src="${ root }/static/img/avatar1.png" alt="" width="32" height="32" class="rounded-circle me-2">
+						<li>
+							<div>
+								<a>
+									<img src="${ pageContext.request.contextPath }${ loginUser.profileImg }" alt="profileImg" width="32" height="32">
 									<strong>${ loginId }</strong>
 								</a>
 								<ul>
