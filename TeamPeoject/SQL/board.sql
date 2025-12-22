@@ -17,7 +17,7 @@ CREATE TABLE `board` (
 
 ALTER TABLE `board`
 ADD CONSTRAINT fk_board_user
-FOREIGN KEY (`user_no`) REFERENCES `user`(`no`);
+FOREIGN KEY (`user_no`) REFERENCES `users`(`no`);
 
 ALTER TABLE `board`
 ADD CONSTRAINT fk_board_group

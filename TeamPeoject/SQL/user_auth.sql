@@ -13,4 +13,4 @@ CREATE TABLE `user_auth` (
 
 ALTER TABLE `user_auth`
 ADD CONSTRAINT fk_user_auth_user
-FOREIGN KEY (`user_no`) REFERENCES `user`(`no`);
+FOREIGN KEY (`user_no`) REFERENCES `users`(`no`);

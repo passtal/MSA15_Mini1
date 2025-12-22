@@ -17,4 +17,4 @@ CREATE TABLE `place` (
 
 ALTER TABLE `place`
 ADD CONSTRAINT fk_place_user
-FOREIGN KEY (`user_no`) REFERENCES `user`(`no`);
+FOREIGN KEY (`user_no`) REFERENCES `users`(`no`);
