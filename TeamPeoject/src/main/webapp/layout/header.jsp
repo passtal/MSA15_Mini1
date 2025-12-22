@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@ include file="/layout/jstl.jsp" %>
 <%@ include file="/layout/common.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <nav>
 	<div class="container">
@@ -12,13 +12,13 @@
 	    <div>
 			<ul>
 				<li>
-					<a href="${ root }/board/list">맛집소개</a>
+					<a href="${ root }/board">맛집소개</a>
 				</li>
 				<li>
-					<a href="${ root }/board/list">리뷰</a>
+					<a href="${ root }/board">리뷰</a>
 				</li>
 				<li>
-					<a href="${ root }/board/list">공지사항</a>
+					<a href="${ root }/board">공지사항</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav d-flex align-items-center px-3">
@@ -38,7 +38,7 @@
 						<li>
 							<div>
 								<a>
-									<img src="${ pageContext.request.contextPath }${ loginUser.profileImg }" alt="profileImg" width="32" height="32">
+									<img src="${ root }${ loginUser.profileImg }" alt="profileImg" width="32" height="32">
 									<strong>${ loginId }</strong>
 								</a>
 								<ul>

@@ -26,11 +26,24 @@ public class SignUpServlet extends HttpServlet {
 	private UserService userService = new UserServiceImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String root = request.getContextPath();
+		String type = request.getParameter("type");
 		
-		// 회원가입 화면
-		String url = "/page/signup.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+		if( type == null || type.isBlank() ) {
+			response.sendRedirect(root + "/signup/type");
+			return;
+		}
+		
+		type = type.trim().toUpperCase();
+		
+		switch (type) {
+			case "ROLE_USER":
+			case "ROLE_OWNER": request.setAttribute("type", type);
+						  request.getRequestDispatcher("/page/signup.jsp").forward(request, response);
+						  return;
+			default : response.sendRedirect(root + "/signup/type");
+					  return;
+		}
 		
 	}
 
@@ -39,64 +52,75 @@ public class SignUpServlet extends HttpServlet {
 		String root = request.getContextPath();
 		String ct = request.getContentType();
 		String profilePath = "/static/img/default-profile.png";
+		String userauth = request.getParameter("type");
 		
-		// 프로필 이미지 업로드를 하지 않아도 가입이 가능하도록 설정
-		Part profileImgPart = null;
-		
-		if (ct != null && ct.toLowerCase().startsWith("multipart/")) {
-			profileImgPart = request.getPart("profileImg");
-			
-			if(profileImgPart != null && profileImgPart.getSize() > 0 ) {
-				
-				String uploadPath = getServletContext().getRealPath("/upload/profile");
-				File uploadDir = new File(uploadPath);
-				
-				if( !uploadDir.exists() ) {
-					uploadDir.mkdirs();
-				}
-				
-				String submitted = profileImgPart.getSubmittedFileName();
-				
-				if( submitted == null || submitted.isBlank() ) {
-					
-				}
-				else {
-					
-					String ext = "";
-					int dot = submitted.lastIndexOf('.');
-					
-					if( dot != -1 && dot < submitted.length() - 1 ) {
-						ext = submitted.substring(dot).toLowerCase();
-					}
-					
-					if (!(ext.equals(".png") || ext.equals(".jpg") || ext.equals(".jpeg") || ext.equals(".webp"))) {
-						
-					}
-					else {
-						String uploadedName = UUID.randomUUID().toString() + ext;
-						
-						profileImgPart.write(uploadPath + File.separator + uploadedName);
-						
-						profilePath = "/upload/profile/" + uploadedName;
-						
-					}
-					
-					
-				}
-				
-				
-			}
-			
+		if( userauth == null || userauth.isBlank() ) {
+			response.sendRedirect(root + "/signup/type");
+			return;
 		}
 		
-		// 회원가입
-		System.out.println("회원가입 요청 처리...");
-		String userId = request.getParameter("user_id");
-		String password = request.getParameter("password");
-		String username = request.getParameter("username");
-		String age = request.getParameter("age");
-		String sex = request.getParameter("sex");
-		User user = User.builder()
+		userauth = userauth.trim().toUpperCase();
+		
+		switch (userauth) {
+			case "ROLE_USER":
+			case "ROLE_OWNER":
+				// 프로필 이미지 업로드를 하지 않아도 가입이 가능하도록 설정
+				Part profileImgPart = null;
+				
+				if (ct != null && ct.toLowerCase().startsWith("multipart/")) {
+					profileImgPart = request.getPart("profileImg");
+					
+					if(profileImgPart != null && profileImgPart.getSize() > 0 ) {
+						
+						String uploadPath = getServletContext().getRealPath("/upload/profile");
+						File uploadDir = new File(uploadPath);
+						
+						if( !uploadDir.exists() ) {
+							uploadDir.mkdirs();
+						}
+						
+						String submitted = profileImgPart.getSubmittedFileName();
+						
+						if( submitted == null || submitted.isBlank() ) {
+							
+						}
+						else {
+							
+							String ext = "";
+							int dot = submitted.lastIndexOf('.');
+							
+							if( dot != -1 && dot < submitted.length() - 1 ) {
+								ext = submitted.substring(dot).toLowerCase();
+							}
+							
+							if (!(ext.equals(".png") || ext.equals(".jpg") || ext.equals(".jpeg") || ext.equals(".webp"))) {
+								
+							}
+							else {
+								String uploadedName = UUID.randomUUID().toString() + ext;
+								
+								profileImgPart.write(uploadPath + File.separator + uploadedName);
+								
+								profilePath = "/upload/profile/" + uploadedName;
+								
+							}
+							
+							
+						}
+						
+						
+					}
+					
+				}
+				
+				// 회원가입
+				System.out.println("회원가입 요청 처리...");
+				String userId = request.getParameter("user_id");
+				String password = request.getParameter("password");
+				String username = request.getParameter("username");
+				String age = request.getParameter("age");
+				String sex = request.getParameter("sex");
+				User user = User.builder()
 						.id( UUID.randomUUID().toString() )
 						.userId(userId)
 						.password(password)
@@ -105,15 +129,20 @@ public class SignUpServlet extends HttpServlet {
 						.sex(sex)
 						.profileImg(profilePath)
 						.build();
-		int result = userService.signup(user);
-		// 회원가입 성공
-		if( result > 0 ) {
-			response.sendRedirect(root + "/");
-			return;
-		} 
-		// 회원가입 실패
-		else {
-			response.sendRedirect(root + "/signup?error=true");
+				int result = userService.signup(user);
+				// 회원가입 성공
+				if( result > 0 ) {
+					response.sendRedirect(root + "/");
+					return;
+				} 
+				// 회원가입 실패
+				else {
+					response.sendRedirect(root + "/signup?error=true");
+					return;
+				}
+				
+			default : response.sendRedirect(root + "/signup?error=true");
+					  return;
 		}
 		
 	}

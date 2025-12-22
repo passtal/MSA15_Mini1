@@ -104,4 +104,15 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	@Override
+	public User signupWithAuth(User user, String role) {
+		
+		if( user == null || role == null || role.isBlank() ) {
+			
+		}
+		
+		int inserted = userDAO.
+		
+	}
+
 }

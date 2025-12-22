@@ -17,5 +17,8 @@ public interface UserService {
 	
 	// 아이디로 회원 조회
 	public User selectByUserId(String userId);
+	
+	// 권한 부여
+	public User signupWithAuth(User user, String role);
 
 }

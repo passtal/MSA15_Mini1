@@ -1,7 +1,7 @@
-<%@ include file="/layout/jstl.jsp" %>
-<%@ include file="/layout/common.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/layout/jstl.jsp" %>
+<%@ include file="/layout/common.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +13,9 @@
 	<main>
 		<h1>회원 가입</h1>
 		<form action="${root}/signup" name="signupForm" method="post" enctype="multipart/form-data">
+		    <div>
+		    	<input type="hidden" name="type" value="${ type }">
+		    </div>
 		    <!-- TODO: 이메일(user_id) -->
 		    <div>
 		    	<label>이메일</label>
