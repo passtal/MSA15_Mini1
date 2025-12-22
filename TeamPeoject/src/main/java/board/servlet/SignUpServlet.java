@@ -1,6 +1,5 @@
 package board.servlet;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -92,10 +91,10 @@ public class SignUpServlet extends HttpServlet {
 							if( dot != -1 && dot < submitted.length() - 1 ) {
 								ext = submitted.substring(dot).toLowerCase();
 							}
-							
 							if (!(ext.equals(".png") || ext.equals(".jpg") || ext.equals(".jpeg") || ext.equals(".webp"))) {
 								
 							}
+							
 							else {
 								String uploadedName = UUID.randomUUID().toString() + ext;
 								
@@ -129,19 +128,19 @@ public class SignUpServlet extends HttpServlet {
 						.sex(sex)
 						.profileImg(profilePath)
 						.build();
-				int result = userService.signup(user);
+				User saved = userService.signupWithAuth(user, userauth);
 				// 회원가입 성공
-				if( result > 0 ) {
+				if( saved != null ) {
 					response.sendRedirect(root + "/");
 					return;
 				} 
 				// 회원가입 실패
 				else {
-					response.sendRedirect(root + "/signup?error=true");
+					response.sendRedirect(root + "/signup/type?error=true");
 					return;
 				}
 				
-			default : response.sendRedirect(root + "/signup?error=true");
+			default : response.sendRedirect(root + "/signup/type?error=true");
 					  return;
 		}
 		

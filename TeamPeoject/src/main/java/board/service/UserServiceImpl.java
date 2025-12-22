@@ -2,15 +2,19 @@ package board.service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import board.DAO.UserAuthDAO;
 import board.DAO.UserDAO;
 import board.DTO.User;
+import board.DTO.UserAuth;
 
 public class UserServiceImpl implements UserService {
 	
 	private UserDAO userDAO = new UserDAO();
+	private UserAuthDAO userAuthDAO = new UserAuthDAO();
 
 	@Override
 	public int signup(User user) {
@@ -108,10 +112,74 @@ public class UserServiceImpl implements UserService {
 	public User signupWithAuth(User user, String role) {
 		
 		if( user == null || role == null || role.isBlank() ) {
-			
+			return null;
 		}
 		
-		int inserted = userDAO.
+		role = role.trim().toUpperCase();
+		
+		String auth = null;
+		switch (role) {
+		case "ROLE_USER" : auth = role; break;
+		case "ROLE_OWNER" : auth = role; break;
+		case "USER": auth = "ROLE_USER"; break;
+		case "OWNER": auth = "ROLE_OWNER"; break;
+		default: return null;
+		}
+		
+		try {
+			
+			// 비밀번호 암호화
+			String password = user.getPassword();
+			String encodedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+			user.setPassword(encodedPassword);
+			
+			int inserted = userDAO.insert(user);
+			
+			if( inserted <= 0 ) {
+				return null;
+			}
+			
+			Map<String, Object> map = new HashMap<>();
+			map.put("user_id", user.getUserId());
+
+			User signup = (User) userDAO.selectBy(map);
+
+			if (signup == null) {
+			    System.out.println("[signupWithAuth] selectBy(user_id) returned null: " + user.getUserId());
+			    return null;
+			}
+
+			int userNo = signup.getNo();
+			if (userNo <= 0) {
+			    System.out.println("[signupWithAuth] invalid userNo after select: " + userNo);
+			    return null;
+			}
+
+			
+			UserAuth ua = new UserAuth();
+			ua.setId(UUID.randomUUID().toString());
+			ua.setUserNo(userNo);
+			ua.setAuth(auth);
+			
+			int authInserted = userAuthDAO.insert(ua);
+			System.out.println("[signupWithAuth] inserted(users) = " + inserted);
+			System.out.println("[signupWithAuth] userNo = " + userNo);
+			System.out.println("[signupWithAuth] auth = " + auth);
+			System.out.println("[signupWithAuth] authInserted(user_auth) = " + authInserted);
+
+			if( authInserted <= 0 ) {
+				System.out.println(userNo);
+				System.out.println(auth);
+				return null;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("[signupWithAuth] exception on user_auth insert");
+			e.printStackTrace();
+			return null;
+		}
+		
+		return user;
 		
 	}
 

@@ -28,7 +28,6 @@ public class User {
 	private String passwordConfirm;
 	private String username;
 	private int age;
-	private String user_auth;
 	private String sex;
 	private String profileImg;
 	private Date createdAt;

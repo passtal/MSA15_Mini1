@@ -12,13 +12,13 @@
 	    <div>
 			<ul>
 				<li>
-					<a href="${ root }/board">맛집소개</a>
+					<a href="${ root }/board/list">맛집소개</a>
 				</li>
 				<li>
-					<a href="${ root }/board">리뷰</a>
+					<a href="${ root }/board/list">리뷰</a>
 				</li>
 				<li>
-					<a href="${ root }/board">공지사항</a>
+					<a href="${ root }/board/list">공지사항</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav d-flex align-items-center px-3">

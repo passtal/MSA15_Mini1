@@ -19,7 +19,7 @@ public class UserAuth {
 	@Pk
 	private int no;
 	private String id;
-	private int user_no;
+	private int userNo;
 	@Column
 	private String auth;
 	
