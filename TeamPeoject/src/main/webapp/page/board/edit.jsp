@@ -9,7 +9,7 @@
     <div class="edit-container">
         <h2>게시글 수정하기</h2>
 
-        <form action="${pageContext.request.contextPath}/board" method="post" class="edit-form">
+        <form action="${pageContext.request.contextPath}/board/edit" method="post" class="edit-form">
             <input type="hidden" name="action" value="update">
             <input type="hidden" name="no" value="${board.no}">
 
