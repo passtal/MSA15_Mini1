@@ -10,7 +10,7 @@ pageEncoding="UTF-8"%>
     <div class="form-container">
         <h2>맛집 리뷰 남기기</h2>
 
-        <form action="${pageContext.request.contextPath}/board" method="post" class="review-form">
+        <form action="${pageContext.request.contextPath}/board/write" method="post" class="review-form">
 
         	<input type="hidden" name="action" value="insert">
 
