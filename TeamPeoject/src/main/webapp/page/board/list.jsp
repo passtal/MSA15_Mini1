@@ -39,6 +39,9 @@
                     <div class="review-content">
                         ${board.content}
                     </div>
+                    <div class="form-actions">
+                		<button type="button" class="btn-back" onclick="history.back()">뒤로가기</button>
+                	</div>
                 </div>
             </c:forEach>
         </div>

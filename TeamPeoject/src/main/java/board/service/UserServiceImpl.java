@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public boolean login(User user) {
-		String userId = user.getUserId();
+		String userId = user.getId();
 		String password = user.getPassword();
 		
 		Map<String, Object> map = new HashMap<>();

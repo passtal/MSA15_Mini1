@@ -4,19 +4,23 @@ import java.io.IOException;
 import java.util.UUID;
 
 import board.DAO.BoardDAO;
+import board.DAO.BoardImageDAO;
 import board.DTO.BoardDTO;
 import board.DTO.User;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+@MultipartConfig
 @WebServlet("/board/write")
 public class BoardWriteServlet extends HttpServlet {
 	
 	private BoardDAO boardDAO = new BoardDAO();
+	private BoardImageDAO imageDAO = new BoardImageDAO();
 	
     protected void doGet(
     		HttpServletRequest request, 
@@ -38,6 +42,8 @@ public class BoardWriteServlet extends HttpServlet {
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));
         board.setRating(Double.parseDouble(request.getParameter("rating")));
+        
+        board.setGroup_no(1);
         
         HttpSession session = request.getSession();
         User loginUser = (User) session.getAttribute("loginUser");
