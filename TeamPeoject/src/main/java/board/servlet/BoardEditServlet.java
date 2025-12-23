@@ -10,8 +10,11 @@ import java.io.IOException;
 import board.DAO.BoardDAO;
 import board.DTO.BoardDTO;
 
+
 @WebServlet("/board/edit")
 public class BoardEditServlet extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private BoardDAO boardDAO = new BoardDAO();
 	
@@ -37,12 +40,21 @@ public class BoardEditServlet extends HttpServlet {
 			HttpServletResponse response
 			) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		BoardDTO board = null;
-		board.setNo(Integer.parseInt(request.getParameter("no")));
-		board.setContent(request.getParameter("content"));
-		board.setRating(Double.parseDouble(request.getParameter("rating")));
+		BoardDTO board = new BoardDTO();
 		
 		try {
+			int no = Integer.parseInt(request.getParameter("no"));
+			int userNo = Integer.parseInt(request.getParameter("user_no"));
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			double rating = Double.parseDouble(request.getParameter("rating"));
+			
+			board.setNo(no);
+			board.setUser_no(userNo);
+			board.setTitle(title);
+			board.setContent(content);
+			board.setRating(rating);
+			
 			boardDAO.update(board);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,5 +1,7 @@
 package board.DTO;
 
+import java.util.List;
+
 import com.alohaclass.jdbc.annotation.Column;
 import com.alohaclass.jdbc.annotation.Pk;
 import com.alohaclass.jdbc.annotation.Table;
@@ -32,6 +34,12 @@ public class BoardDTO extends Entity {
 
     @Column
     private String content;
+    
+    @Column(exist = false)
+    private String username;
+    
+    @Column(exist = false)
+    private List<BoardImage> imageList;
 
 	public int getNo() {
 		return no;
