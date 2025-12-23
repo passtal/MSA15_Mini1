@@ -3,7 +3,9 @@ package board.servlet;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.List;
 
+import board.DAO.UserAuthDAO;
 import board.DTO.PersistenceLogins;
 import board.DTO.User;
 import board.service.PersistenceLoginsService;
@@ -117,6 +119,20 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("loginId", user.getUserId());
 		session.setAttribute("loginUser", loginUser);
+		
+		if ( loginUser != null ) {
+			try {
+				UserAuthDAO userAuthDAO = new UserAuthDAO();
+				
+				List<String> authList = userAuthDAO.selectAuthListByUserNo(loginUser.getNo());
+				session.setAttribute("authList", authList);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				response.sendRedirect(root + "/login?error=auth");
+				return;
+			}
+		}
 
 		// 자동 로그인 ---------------------------------------------------
 		String rememberMe = request.getParameter("rememberMe");

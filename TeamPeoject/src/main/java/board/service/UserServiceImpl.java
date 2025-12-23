@@ -183,4 +183,19 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public User selectByNo(int userNo) {
+		return null;
+	}
+
+	@Override
+	public boolean updateMyPage(User user) {
+		return false;
+	}
+
+	@Override
+	public boolean changePassword(int userNo, String oldPassword, String newPassword) {
+		return false;
+	}
+
 }

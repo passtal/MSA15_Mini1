@@ -42,7 +42,7 @@
 									<strong>${ loginId }</strong>
 								</a>
 								<ul>
-									<li><a href="${ root }/users/my">마이 페이지</a></li>
+									<li><a href="${ root }/user/mypage">마이 페이지</a></li>
 									<li><a href="${ root }/users/update">회원정보 수정</a></li>
 									<li><a href="${ root }/logout">로그아웃</a></li>
 								</ul>

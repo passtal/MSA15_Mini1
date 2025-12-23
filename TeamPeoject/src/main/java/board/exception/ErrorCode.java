@@ -1,0 +1,8 @@
+package board.exception;
+
+public enum ErrorCode {
+	AUTH_REQUIRED_FIELDS,
+	AUTH_INVALID_CREDENTIALS,
+	AUTH_LOAD_AUTHORITIES_FAILED,
+	COMMON_INTERNAL_ERROR;
+}

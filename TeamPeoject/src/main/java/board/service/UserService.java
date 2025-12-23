@@ -20,5 +20,14 @@ public interface UserService {
 	
 	// 권한 부여
 	public User signupWithAuth(User user, String role);
-
+	
+	// 유저 넘버로 회원 조회
+	public User selectByNo(int userNo);
+	
+	// 마이페이지에서 정보 수정
+	public boolean updateMyPage(User user);
+	
+	// 현재 비밀번호 검증 및 수정
+	public boolean changePassword(int userNo, String oldPassword, String newPassword);
+	
 }

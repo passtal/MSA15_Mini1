@@ -8,17 +8,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table("user_auth")
+@Table("place")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserAuth {
+public class Place {
 
 	@Pk
 	private int no;
 	private String id;
-	private int userNo;
-	private String auth;
+	private int user_no;
+	private String placename;
+	private String address;
+	private String phone;
+	private String thumbnail_img;
+	private String content;
+	private String amenities;
+	private String region;
 	
 }
