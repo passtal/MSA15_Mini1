@@ -16,10 +16,10 @@ public class BoardDTO extends Entity {
     private String id;
 
     @Column
-    private int user_no; 
+    private Integer user_no; 
 
     @Column
-    private int group_no;
+    private Integer group_no;
 
     @Column
     private Integer place_no;

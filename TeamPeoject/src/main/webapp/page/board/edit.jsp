@@ -11,6 +11,7 @@
 
         <form action="${pageContext.request.contextPath}/board/edit" method="post" class="edit-form">
             <input type="hidden" name="action" value="update">
+            <input type="hidden" name="user_no" value="${board.user_no}">
             <input type="hidden" name="no" value="${board.no}">
 
             <div class="form-group">

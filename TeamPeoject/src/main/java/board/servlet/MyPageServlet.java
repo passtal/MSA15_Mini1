@@ -14,7 +14,7 @@ import org.apache.jasper.compiler.Node.ForwardAction;
 
 import board.DTO.User;
 
-@WebServlet("/user/mypage")
+@WebServlet("/user/my")
 public class MyPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

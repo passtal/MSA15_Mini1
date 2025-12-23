@@ -1,6 +1,6 @@
-<%@ include file="/layout/jstl.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/layout/jstl.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +39,9 @@
                     <div class="review-content">
                         ${board.content}
                     </div>
+                    <div class="form-actions">
+                		<button type="button" class="btn-back" onclick="history.back()">뒤로가기</button>
+                	</div>
                 </div>
             </c:forEach>
         </div>

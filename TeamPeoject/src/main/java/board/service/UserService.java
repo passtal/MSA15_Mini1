@@ -30,4 +30,6 @@ public interface UserService {
 	// 현재 비밀번호 검증 및 수정
 	public boolean changePassword(int userNo, String oldPassword, String newPassword);
 	
+	// throw
+	
 }
