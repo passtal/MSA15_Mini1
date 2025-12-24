@@ -1,7 +1,9 @@
 package board.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -165,17 +167,149 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User selectByNo(int userNo) {
-		return null;
+		
+		if( userNo <= 0 ) {
+			throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+		}
+		
+		try {
+			User user = userDAO.select(userNo);
+			return user;
+			
+		} catch (Exception e) {
+			throw new AppException(ErrorCode.COMMON_INTERNAL_ERROR, e);
+		}
+		
 	}
 
 	@Override
-	public boolean updateMyPage(User user) {
-		return false;
+	public User updateMyPage(User user) {
+		
+		if( user == null || user.getNo() <= 0 ) {
+			throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+		}
+		
+		List<String> updateList = new ArrayList<>();
+		
+		String username = user.getUsername();
+		int age = user.getAge();
+		String sex = user.getSex();
+		String profileImg = user.getProfileImg();
+		
+		try {
+	        if (username != null && !username.isBlank()) {
+	            if (username.length() > 20) {
+	                throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+	            }
+	            
+				Map<String, Object> map = new LinkedHashMap<>();
+				map.put("username", username);
+				
+				User updateUser = userDAO.selectBy(map);
+				
+				// 닉네임 중복X
+				if( updateUser != null && updateUser.getNo() != user.getNo() ) {
+					throw new AppException(ErrorCode.USER_USERNAME_DUPLICATE);
+				}
+				updateList.add("username");
+	        }
+			
+			if( age > 0 ) {
+				
+				if( age >= 120 ) {
+					throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+				}
+				
+				
+				updateList.add("age");
+			} 
+			
+			if( sex != null && !sex.isBlank() ) {
+				
+				if( !sex.equals("male")  && !sex.equals("female") && !sex.equals("undisclosed")) {
+					throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+				}
+				
+				updateList.add("sex");
+				
+			} 
+			
+			if( profileImg != null && !profileImg.isBlank() ) {
+				
+				updateList.add("profileImg");
+				
+			}
+			
+			if (updateList.isEmpty()) {
+	            return user;
+	        }
+			
+			String[] update = updateList.toArray(new String[0]);
+			userDAO.update(user, update);
+			
+			return user;
+			
+		} catch(AppException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new AppException(ErrorCode.COMMON_INTERNAL_ERROR, e);
+		}
+		
 	}
 
 	@Override
 	public boolean changePassword(int userNo, String oldPassword, String newPassword) {
-		return false;
+		
+		boolean passwordCheck = oldPassword == null || oldPassword.isBlank() || newPassword == null || newPassword.isBlank();
+		
+		if( userNo <= 0 || passwordCheck ) {
+			throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+		}
+		
+		Map<String, Object> map = new LinkedHashMap<>();
+		map.put("no", userNo);
+		
+		User updateUser = null;
+		
+		try {
+			updateUser = userDAO.selectBy(map);
+			
+			if(updateUser == null) {
+				throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+			}
+			
+		} catch ( AppException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new AppException(ErrorCode.COMMON_INTERNAL_ERROR, e);
+		}
+		
+		String password = updateUser.getPassword();
+		if ( BCrypt.checkpw(oldPassword, password) == false ) {
+			throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+		}
+		
+		// 비밀번호 유효성 검사
+		boolean check = newPassword.matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$");
+		if (!check) {
+			throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+		}
+
+	    String hashed = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+	    updateUser.setPassword(hashed);
+		
+	    try {
+	        int updated = userDAO.update(updateUser, "password");
+	        if (updated <= 0) {
+	            throw new AppException(ErrorCode.COMMON_INTERNAL_ERROR);
+	        }
+	    } catch (AppException e) {
+	        throw e;
+	    } catch (Exception e) {
+	        throw new AppException(ErrorCode.COMMON_INTERNAL_ERROR, e);
+	    }
+
+	    return true;
 	}
 
 	@Override
@@ -212,6 +346,22 @@ public class UserServiceImpl implements UserService {
 		signupUser.setPassword(null);
 		
 		return signupUser;
+		
+	}
+
+	@Override
+	public List<String> loadAuthListOrThrow(int userNo) {
+		
+		if( userNo <= 0 ) {
+			throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+		}
+		
+		try {
+			List<String> authList = userAuthDAO.selectAuthListByUserNo(userNo);
+			return authList;
+		} catch (Exception e) {
+			throw new AppException(ErrorCode.AUTH_LOAD_AUTHORITIES_FAILED, e);
+		}
 		
 	}
 

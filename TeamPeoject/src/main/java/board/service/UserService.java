@@ -1,5 +1,7 @@
 package board.service;
 
+import java.util.List;
+
 import board.DTO.User;
 
 public interface UserService {
@@ -22,12 +24,15 @@ public interface UserService {
 	public User selectByNo(int userNo);
 	
 	// 마이페이지에서 정보 수정
-	public boolean updateMyPage(User user);
+	public User updateMyPage(User user);
 	
 	// 현재 비밀번호 검증 및 수정
 	public boolean changePassword(int userNo, String oldPassword, String newPassword);
 	
 	// throw 기반 로그인
 	public User loginOrThrow(String userId, String password);
+	
+	// 권한 불러오기
+	public List<String> loadAuthListOrThrow(int userNo);
 	
 }

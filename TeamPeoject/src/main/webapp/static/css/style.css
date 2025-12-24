@@ -1,0 +1,123 @@
+@charset "UTF-8";
+.box0{ width:var(--fullWidth); margin:0 auto;}
+.box1{ width: min(var(--baseWidth), var(--fullWidth)); margin:0 auto;}
+
+.fullH{ height:calc(100vh);}
+.fullMH{ min-height:calc(100vh - 8.75em) !important;}
+
+.filW{ filter:var(--crWhitefil);}  /*화이트*/
+.filB{ filter:var(--crBlackfil);}  /*블랙*/
+.filRE{ filter:var(--crfilRE);}    /*색상반전*/
+
+
+/* header */
+#header { }
+html:not(.main) #header { border-bottom: 1px solid #f1f1f1;}
+#header .util_wrap { background: var(--siteBg1); color:#fff;}
+#header .util_wrap .menu { justify-content:flex-end; gap:1.875em;}
+#header .util_wrap .menu > li { }
+#header .util_wrap .menu > li .in { height: 3.125em;}
+#header .util_wrap .menu > li .tt { font-size: .813em;}
+#header .util_wrap .menu > li .in:hover { text-decoration: underline;}
+
+#header .gnb_wrap { background: #fff;}
+#header .gnb_wrap .inner { gap: 0 3em; height: 5.625em;}
+#header .gnb_wrap .logo .in{ display: block;}
+#header .nav_wrap { flex:1;}
+#header .nav_wrap .gnb > li.m_mypage,
+#header .nav_wrap .gnb > li .dp1{ display: none;}
+#header .nav_wrap .gnb .dp2 {}
+#header .nav_wrap .gnb .dp2 > li {}
+#header .nav_wrap .gnb .dp2 > li > a { position: relative; padding: 1.25em 2em;}
+#header .nav_wrap .gnb .dp2 > li > a:after { content: ""; display: block; position: absolute; bottom: 0; left: 50%; 
+transform: translateX(-50%); width:0; height: 4px; border-radius: 1em; background: var(--siteC); opacity: 0; transition:.2s;}
+#header .nav_wrap .gnb .dp2 > li > a .tt { font-size: 1.125em; font-weight: 700;}
+#header .nav_wrap .gnb .dp2 > li.on > a { color: var(--siteC);}
+#header .nav_wrap .gnb .dp2 > li:hover > a:after { width: 90%; opacity: 1;}
+
+#header .search_wrap {}
+#header .search_wrap .search { width: 18.75em; height: 2.875em; background: #f2f2f2; border-radius: 10em;}
+#header .search_wrap .search .input_st { background: none; border: none;}
+#header .search_wrap .search .int_txt { flex:1; font-size: .938em;}
+#header .search_wrap .search .int_btn .mti { font-size: 2em;}
+
+#header .side_wrap .dropdown .list { display: none;}
+#header .side_wrap .menu { gap: 0 1.5em;}
+#header .side_wrap .menu > li { }
+#header .side_wrap .menu > li .in { display: block;}
+#header .side_wrap .menu > li .mti { font-size: 2em;}
+
+/* footer */
+#footer { padding: 4.5em 0; background: var(--siteBg1); color: #fff;}
+#footer .inner { gap: 1em 4em;}
+#footer .logo .in { display: block;}
+#footer .info_wrap { flex:1; gap: 2.5em 0;}
+#footer .info_wrap .menu {}
+#footer .info_wrap .menu > li { position: relative; padding-right: 1.5em; margin-right: 1.5em;}
+#footer .info_wrap .menu > li:not(:last-child):after { content: ""; position: absolute; top:50%; right:0; transform: translateY(-50%); width: 1px; height: .75em; background: rgba(255,255,255,.3);}
+#footer .info_wrap .menu .tt { display: block;}
+#footer .info_wrap .menu .point { font-weight: 700;}
+#footer .info_wrap .menu a:hover { text-decoration: underline;}
+
+#footer .info_wrap .info { gap:0 2.5em;}
+#footer .info_wrap .info .br { flex:1 0 100%;}
+#footer .info_wrap .info > li:not(.br) { padding: .5em 0;}
+#footer .info_wrap .info .tt { font-size: .875em;}
+#footer .info_wrap .copy { font-size: .75em; text-transform:uppercase; opacity:.6;}
+
+#footer .goTop{ position:fixed; z-index:999; right:1em; bottom:1em; width:3.5em; height:3.5em; background:#fff; border:3px solid #ddd; border-radius:50%; color:#333; opacity:0; visibility:hidden; transition:.2s;}
+.scroll #footer .goTop{ opacity:1; visibility:visible;}
+#footer .goTop .mti{ font-size:1.750em;}
+#footer .goTop:hover{ background:var(--siteC); border-color:var(--siteC); color:#fff;}
+
+
+/* contents */
+#contents .doc{ padding:3em 0 10em 0;}
+
+
+/*******/
+.tab_st{ padding-bottom:2em}
+.tab_st > li{ flex:1;}
+.tab_st > li > a{ display:flex; justify-content:center; align-items:center; height:3.5em; border:2px solid transparent; background:#f5f5f5; position:relative; font-size:1.125em; font-weight:700; color:#888; transition:.2s;}
+.tab_st > li:not(.on):hover > a{ border-color:#111; color:#111; background:#fff; z-index:1; box-shadow:0 0 1em rgba(0,0,0,.2); z-index:1}
+.tab_st > li.on > a{ border-color: var(--siteC); background: var(--siteC); color: #fff; z-index:1;}
+.tab_st > li > a:before{ content:""; position:absolute; left:-3px; top:50%; height:50%; width:1px; background:#ddd; transform:translateY(-50%)}
+.tab_st > li:first-child > a:before,
+.tab_st > li:hover > a:before,
+.tab_st > li.on > a:before{ display:none}
+
+
+/* 회원서비스 */
+.member_wrap {}
+.member_wrap .mem_inner { width: min(38em, var(--fullWidth)); margin: 0 auto;}
+
+.member_wrap .mem_tit:not(:last-child) { margin-bottom: .75em;}
+.member_wrap .mem_tit > .tt{ font-size: 1.063em;}
+.member_wrap .mem_tit > .tt.s1{ font-size: 1.250em; font-weight: 700;}
+
+.member_wrap .btn_wrap{ display: flex; flex-wrap: wrap; gap:.5em; margin-top:2.5em !important;}
+.member_wrap .btn_wrap .input_st { flex:1;}
+.member_wrap .btn_wrap .input_st.s1 { font-weight: 700;}
+
+.form_st:not(:first-child) { margin-top: 2.25em;}
+.form_st > li:not(:first-child) { margin-top: 1.5em;}
+.form_st > li .in { display:flex; flex-wrap:wrap; align-items:center; gap:.5em;}
+.form_st > li .in .fit { flex:1;}
+.form_st > li .agree{ border: 1px solid #ddd;}
+.form_st > li .agree > li { padding: .875em 1.5em;}
+.form_st > li .agree > li.all { border-bottom: 1px solid #ddd;}
+.form_st > li .agree > li.all + li { padding-top: 1.875em;}
+.form_st > li .agree > li:last-child { padding-bottom: 1.875em;}
+.form_st > li .agree > li .more{ border:1px solid #aaa; padding:.25em 1em; font-size:.813em; color:#777;}
+.form_st > li .agree > li .more:before{ content:"보기"}
+.form_st > li .agree > li .agree_box{ display:none}
+.form_st > li .agree > li .on .more{ background: var(--siteC); border-color: var(--siteC); color: #fff;}
+.form_st > li .agree > li .on .more:before{ content:"접기"}
+.form_st > li .agree > li .on .agree_box{ display:block}
+
+.agree_box{ background:#f9f9f9; border:1px solid #ddd; padding:1em 1.5em}
+.agree_box .con{ font-size:.938em; color:#666; line-height:1.625em}
+.agree_box .con.h1{ height:10.8em; overflow-y:auto}
+.agree_box .con b,
+.agree_box .con strong{ color: #333;}
+.agree_box .con p { padding: .375em 0;}

@@ -120,14 +120,14 @@ public class SignUpServlet extends HttpServlet {
 				String age = request.getParameter("age");
 				String sex = request.getParameter("sex");
 				User user = User.builder()
-						.id( UUID.randomUUID().toString() )
-						.userId(userId)
-						.password(password)
-						.username(username)
-						.age(Integer.valueOf(age))
-						.sex(sex)
-						.profileImg(profilePath)
-						.build();
+								.id( UUID.randomUUID().toString() )
+								.userId(userId)
+								.password(password)
+								.username(username)
+								.age(Integer.valueOf(age))
+								.sex(sex)
+								.profileImg(profilePath)
+								.build();
 				User saved = userService.signupWithAuth(user, userauth);
 				// 회원가입 성공
 				if( saved != null ) {

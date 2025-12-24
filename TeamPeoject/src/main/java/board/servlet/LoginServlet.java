@@ -5,11 +5,9 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.List;
 
-import board.DAO.UserAuthDAO;
 import board.DTO.PersistenceLogins;
 import board.DTO.User;
 import board.exception.AppException;
-import board.exception.ErrorCode;
 import board.service.PersistenceLoginsService;
 import board.service.PersistenceLoginsServiceImpl;
 import board.service.UserService;
@@ -109,15 +107,8 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("loginUser", user);
 			session.setAttribute("loginId", user.getUserId());
 			
-			try {
-				UserAuthDAO userAuthDAO = new UserAuthDAO();
-				
-				List<String> authList = userAuthDAO.selectAuthListByUserNo(user.getNo());
-				session.setAttribute("authList", authList);
-				
-			} catch (Exception e) {
-				throw new AppException(ErrorCode.AUTH_LOAD_AUTHORITIES_FAILED, e);
-			}
+			List<String> authList = userService.loadAuthListOrThrow(user.getNo());
+			session.setAttribute("authList", authList);
 		
 			// 자동 로그인 ---------------------------------------------------
 			String rememberMe = request.getParameter("rememberMe");

@@ -1,114 +1,214 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/layout/jstl.jsp" %>
-<%@ include file="/layout/common.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>SignUp</title>
-</head>
-<body>
-	<jsp:include page="/layout/header.jsp" />
-	<main>
-		<h1>회원 가입</h1>
-		<form action="${root}/signup" name="signupForm" method="post" enctype="multipart/form-data">
-		    <div>
-		    	<input type="hidden" name="type" value="${ type }">
-		    </div>
-		    <!-- TODO: 이메일(user_id) -->
-		    <div>
-		    	<label>이메일</label>
-			    <input type="text" name="user_id" id="user_id">
-			    <button type="button" onclick="clickIdCheck()">중복확인</button>
-		    </div>
-		    <!-- TODO: 비밀번호 -->
-		    <div>
-		    	<label>비밀번호</label>
-			    <input type="password" name="password" id="password">
-		    </div>
-		    <div>
-		    	<label>비밀번호 확인</label>
-			    <input type="password" name="password_confirm" id="password_confirm">
-		    </div>
-		    <!-- TODO: 닉네임(username) -->
-		    <div>
-		    	<label>닉네임</label>
-			    <input type="text" name="username" id="username">
-			    <button type="button" onclick="clickUserNameCheck()">중복확인</button>
-		    </div>
-		    <!-- TODO: 나이 -->
-		    <div>
-		    	<label>나이</label>
-			    <input type="number" name="age" id="age">
-		    </div>
-		    <!-- TODO: 성별 -->
-		    <div>
-		    	<label>성별</label>
-		    	<div>
-		    		<label>남</label>
-				    <input type="radio" name="sex" value="male">
-		    		<label>여</label>
-				    <input type="radio" name="sex" value="female">
-		    		<label>공개안함</label>
-				    <input type="radio" name="sex" value="undisclosed">
-		    	</div>
-		    </div>
-		    <!-- TODO: 프로필 이미지 -->
-		    <div>
-		    	<input type="file" name="profileImg">
-		    </div>
-			<div>
-				<input type="button" value="회원가입" onclick="checkUser()" />
-				<a href="javascript: history.back()" class="btn btn-lg btn-secondary">취소</a>
-			</div>	
-		</form>
-	</main>
-		    
+<%@ include file="/layout/common.jsp" %>  
+<%
+request.setAttribute("dp1", "member");
+request.setAttribute("dp2", "signup");
+%>
+<jsp:include page="/layout/header.jsp" />
 
-
-    <!-- TODO: 에러 메시지 출력 -->
-    <jsp:include page="/layout/footer.jsp"/>
-    <jsp:include page="/layout/script.jsp"/>
-	<script>
-		async function clickIdCheck() {
-
-			// 아이디(이메일) 유효성 검사
-			let userId = document.getElementById("user_id").value
-			let userIdCheck = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
-			if(!userIdCheck.test(userId)) {
-				alert('이메일 형식이 올바르지 않습니다.')
-				return;
-			}
+<!-- 본문 -->
+<main class="doc">
+	<div class="member_wrap">
+		<div class="mem_inner">
+			<ul class="tabIdx tab_st flex">
+				<li class="idx on" data-wrap="wrap" data-idx="wrap1"><a href="javascript:void(0)">개인회원</a></li>
+				<li class="idx" data-wrap="wrap" data-idx="wrap2"><a href="javascript:void(0)">기업회원</a></li>				
+			</ul>
 			
-			let check = await idCheck()
+			<!-- 개인회원 -->
+			<div class="conIdx on" data-wrap="wrap" data-idx="wrap1">
+				<div class="wrap_in">
+					<form action="${root}/signup" name="signupForm" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="type" value="${type}">
+						<ul class="form_st">
+							<li>
+								<div class="mem_tit"><span class="tt s1">이용약관 동의</span></div>
+								<ul class="agree">
+									<li class="all">
+										<label class="label_st"> 
+											<input class="all_check" type="checkbox" onclick="AllChkNew($(this))" /><span class="tt">전체 동의</span>
+										</label>
+									</li>									
+									<li>
+										<div class="flex wrap vc toggleWrap">
+											<label class="label_st"> 
+												<input type="checkbox" class="ag_check agree1" name="agree1" value="" /><span class="tt">이용약관에 동의</span> <span class="c_red">(필수)</span>
+											</label> 
+											<a href="javascript:void(0)" class="more mgL" onclick="toggleClass(this)"></a>
+											<div class="agree_box ps05 fill">
+												<div class="con h1">
+													<p><strong>이용약관 제목</strong></p>
+													<p>이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 </p>
+													<p>이용약관 내용이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 </p>													
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="flex wrap vc toggleWrap">
+											<label class="label_st"> 
+												<input type="checkbox" class="ag_check agree2" name="agree2" value="" /><span class="tt">개인정보처리방침에 동의</span> <span class="c_red">(필수)</span>
+											</label> 
+											<a href="javascript:void(0)" class="more mgL" onclick="toggleClass(this)"></a>
+											<div class="agree_box ps05 fill">
+												<div class="con h1">개인정보처리방침 내용</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<label class="label_st"> 
+											<input type="checkbox" class="ag_check smsing" name="contact" value="" /><span class="tt">이벤트, 프로모션 알림 메일 및 SMS 수신</span> <span class="c_gray">(선택)</span>
+										</label>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						
+						<ul class="form_st">
+							<li>								
+								<div class="mem_tit in">
+									<span class="tt s1 fit">회원정보 입력</span>
+									<div class="ess_tt"><span class="ess"></span><span class="tt">필수 입력정보</span></div>
+								</div>								
+							</li>
+							<li>
+								<div class="mem_tit"><span class="tt">이메일</span><span class="ess"></span></div>
+								<div class="in">
+									<input type="text" class="input_st fit" name="user_id" id="user_id">
+		    						<button type="button" class="input_st c4 re" onclick="clickIdCheck()">중복확인</button>	
+								</div>
+							</li>
+							<li>
+								<div class="mem_tit"><span class="tt">비밀번호</span><span class="ess"></span></div>
+								<div class="in">
+									<input type="password" class="input_st fit" name="password" id="password">
+								</div>
+								<div class="input_tt">영문자, 숫자, 특수문자를 포함하여 8자 이상으로 입력해주세요.</div>
+							</li>
+							<li>
+								<div class="mem_tit"><span class="tt">비밀번호 확인</span><span class="ess"></span></div>
+								<div class="in">
+									<input type="password" class="input_st fit" name="password_confirm" id="password_confirm">
+								</div>
+							</li>
+							<li>
+								<div class="mem_tit"><span class="tt">닉네임</span><span class="ess"></span></div>
+								<div class="in">
+									<input type="text" class="input_st fit" name="username" id="username">
+		    						<button type="button" class="input_st c4 re" onclick="clickUserNameCheck()">중복확인</button>
+								</div>
+								<div class="input_tt">한글 또는 영문 20자 이내로 입력해주세요.</div>
+							</li>
+							<li>
+								<div class="mem_tit"><span class="tt">나이</span><span class="ess"></span></div>
+								<div class="in">
+									<input type="number" class="input_st fit" name="age" id="age" required>
+								</div>
+							</li>
+							<li>
+								<div class="mem_tit"><span class="tt">성별</span><span class="ess"></span></div>
+								<div class="label_wrap">
+									<label class="label_st"> 
+										<input type="radio" name="sex" value="male" /><span class="tt">남</span>
+									</label>
+									<label class="label_st"> 
+										<input type="radio" name="sex" value="female" /><span class="tt">여</span>
+									</label> 
+									<label class="label_st"> 
+										<input type="radio" name="sex" value="undisclosed" /><span class="tt">공개안함</span>
+									</label> 
+								</div>
+							</li>
+							<li>
+								<div class="mem_tit"><span class="tt">프로필 이미지</span><span class="ess"></span></div>
+								<div class="in">
+									<input type="file" class="input_st fit" name="profileImg">
+								</div>
+							</li>
+							<li class="btn_wrap">								
+								<button type="button" class="input_st s1 c1" onclick="checkUser()">회원가입</button>
+								<button type="button" class="input_st s1 c1 re btn btn-lg btn-secondary" onclick="history.back()">취소</button>
+							</li>
+						</ul>
+					</form>
+				</div>			
+			</div>
 			
-			if( check ) {
-				alert('중복된 이메일 입니다.')
-			} else {
-				alert('사용 가능한 이메일 입니다.')
-			}
+			<!-- 기업회원 -->
+			<div class="conIdx" data-wrap="wrap" data-idx="wrap2">
+				<div class="wrap_in">
+					<form action="${root}/signup" name="" method="post" enctype="multipart/form-data">
+						bbb
+					</form>
+				</div>	
+			</div>
+		</div>
+	</div>
+</main>	
+<!-- 본문 end -->	    
+
+
+<!-- TODO: 에러 메시지 출력 -->
+<jsp:include page="/layout/script.jsp" />	
+<script>
+	async function clickIdCheck() {
+
+		// 아이디(이메일) 유효성 검사
+		let userId = document.getElementById("user_id").value
+		let userIdCheck = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
+		if(!userIdCheck.test(userId)) {
+			alert('이메일 형식이 올바르지 않습니다.')
+			return;
 		}
 		
-		async function clickUserNameCheck() {
-
-			// 아이디(이메일) 유효성 검사
-			let username = document.getElementById("username").value
-			let nameCheck = /^(?=.*\S)[^\r\n]{1,20}$/
-			if(!nameCheck.test(username)) {
-				alert('닉네임은 20자 이내로 입력해주세요.')
-				return;
-			}
-			
-			let check = await usernameCheck()
-			
-			if( check ) {
-				alert('중복된 닉네임 입니다.')
-			} else {
-				alert('사용 가능한 닉네임 입니다.')
-			}
+		let check = await idCheck()
+		
+		if( check ) {
+			alert('중복된 이메일 입니다.')
+		} else {
+			alert('사용 가능한 이메일 입니다.')
 		}
-	</script>
+	}
 	
-</body>
-</html>
+	async function clickUserNameCheck() {
+
+		// 아이디(이메일) 유효성 검사
+		let username = document.getElementById("username").value
+		let nameCheck = /^(?=.*\S)[^\r\n]{1,20}$/
+		if(!nameCheck.test(username)) {
+			alert('닉네임은 20자 이내로 입력해주세요.')
+			return;
+		}
+		
+		let check = await usernameCheck()
+		
+		if( check ) {
+			alert('중복된 닉네임 입니다.')
+		} else {
+			alert('사용 가능한 닉네임 입니다.')
+		}
+	}
+	
+	// 약관 전체 동의 체크박스
+	function AllChkNew(obj) {
+		if($(obj).parents("form").find(".all_check").prop("checked") == true) {
+			$(obj).parents("form").find(".ag_check").prop("checked", true);
+		}else {
+			$(obj).parents("form").find(".ag_check").prop("checked", false);
+		}
+	}
+	
+	$(".ag_check").change(function(){
+		var agr1 = $(this).parents("form").find(".agree1").prop("checked");
+		var agr2 = $(this).parents("form").find(".agree2").prop("checked");		
+		var agr3 = $(this).parents("form").find(".smsing").prop("checked");
+		if(agr1==true && agr2==true && agr3==true){
+			$(this).parents("form").find(".all_check").prop("checked",true);
+		}else{
+			$(this).parents("form").find(".all_check").prop("checked",false);
+		}
+	});
+</script>
+<jsp:include page="/layout/footer.jsp" />
