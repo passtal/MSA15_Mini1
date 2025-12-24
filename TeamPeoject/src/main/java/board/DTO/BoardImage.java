@@ -2,7 +2,6 @@ package board.DTO;
 
 import com.alohaclass.jdbc.annotation.Pk;
 import com.alohaclass.jdbc.annotation.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,3 +21,5 @@ public class BoardImage {
 	private int seq;
 	
 }
+
+
