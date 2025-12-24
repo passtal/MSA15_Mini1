@@ -2,24 +2,23 @@ package board.DTO;
 
 import com.alohaclass.jdbc.annotation.Pk;
 import com.alohaclass.jdbc.annotation.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table("board_image")
+@Table("user_auth")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BoardImage {
-	
+public class UserAuth {
+
 	@Pk
 	private int no;
-	private int board_no;
-	private String img_path;
-	private int seq;
+	private String id;
+	private int userNo;
+	private String auth;
 	
 }
-
-
