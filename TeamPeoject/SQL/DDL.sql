@@ -1,6 +1,6 @@
 -- DB 생성
-CREATE DATABASE IF NOT EXISTS JSJ;
-USE JSJ;
+CREATE DATABASE IF NOT EXISTS aloha;
+USE aloha;
 
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -81,7 +81,7 @@ CREATE TABLE `place` (
     `address` VARCHAR(100) NOT NULL,
     `phone` VARCHAR(100) NOT NULL,
     `thumbnail_img` VARCHAR(300) NOT NULL,
-    `content` VARCHAR(100) NOT NULL,
+    `content` VARCHAR(4000) NOT NULL,
     `amenities` VARCHAR(100) NOT NULL,
     `region` VARCHAR(50) NOT NULL,
     PRIMARY KEY (`no`),
@@ -233,7 +233,7 @@ ALTER TABLE `review_comment`
 ADD CONSTRAINT fk_review_comment_user
 FOREIGN KEY (`user_no`) REFERENCES `users`(`no`);
 
-ALTER TABLE `review_comment`
+ALTER TABLE `review_comment` 
 ADD CONSTRAINT fk_review_comment_board
 FOREIGN KEY (`board_no`) REFERENCES `board`(`no`);
 

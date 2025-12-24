@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/layout/jstl.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>맛집 리뷰 목록</title>
-</head>
-<body>
+<%@ include file="/layout/common.jsp" %>
+<%
+request.setAttribute("dp1", "shop");
+request.setAttribute("dp2", "list");
+%>
+<jsp:include page="/layout/header.jsp" />
+
     <div class="container">
         <h2>지역 맛집 리뷰 게시판</h2>
 
@@ -46,5 +46,6 @@
             </c:forEach>
         </div>
     </div>
-</body>
-</html>
+    
+<jsp:include page="/layout/script.jsp" />	
+<jsp:include page="/layout/footer.jsp" />

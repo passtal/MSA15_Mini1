@@ -17,7 +17,7 @@
 					
 				<c:otherwise>
 					<!-- 로그인 시 -->
-					<li><a href="${ root }/page/mypage.jsp" class="in flex ac"><span class="tt">${ nav.mypage }</span></a></li>
+					<li><a href="${ root }/user/mypage" class="in flex ac"><span class="tt">${ nav.mypage }</span></a></li>
 					<li><a href="${ root }/logout" class="in flex ac"><span class="tt">${ nav.member_logout }</span></a></li>					
 				</c:otherwise>
 			</c:choose>					
@@ -47,20 +47,26 @@
 						</c:when>
 						<c:otherwise>
 							<!-- 로그인 시 -->
-							<li class="dropdown">								
-								<a href="javascript:void(0);" class="userInfo flex vc">
-									<p class="img"><img src="${ pageContext.request.contextPath }${ loginUser.profileImg }" alt="profileImg"></p>
-									<p class="name"><strong class="tt">${ loginId }</strong></p>
+							<li class="dropdown toggleWrap jsClick">								
+								<a href="javascript:void(0);" class="userInfo" onclick="toggleClass(this)">
+									<p class="img imgfix"><img src="${ pageContext.request.contextPath }${ loginUser.profileImg }" alt="profileImg"></p>									
 								</a>
 								<ul class="list">
-									<li><a href="${ root }/page/mypage.jsp" class="in"><span class="tt">${ nav.mypage }</span></a></li>
-									<li><a href="${ root }/page/update.jsp" class="in"><span class="tt">${ nav.mypage_modify }</span></a></li>
+									<li class="userWrap">
+										<div class="userInfo flex vc">
+											<p class="img imgfix"><img src="${ pageContext.request.contextPath }${ loginUser.profileImg }" alt="profileImg"></p>
+											<p class="name"><strong class="tt wb2">${loginUser.username}</strong></p>
+										</div>
+										<div class="userId"><span class="tt wb2">${loginId}</span></div>
+									</li>									
+									<li><a href="${ root }/user/mypage" class="in"><span class="tt">${ nav.mypage }</span></a></li>
+									<li><a href="${ root }/user/update" class="in"><span class="tt">${ nav.mypage_modify }</span></a></li>
 									<li><a href="${ root }/logout" class="in"><span class="tt">${ nav.member_logout }</span></a></li>
 								</ul>								
 							</li>
 						</c:otherwise>
 					</c:choose>					
-					<li><a href="" class="in"><span class="mti material-icons-outlined">menu</span></a></li>					
+					<li><a href="javascript:void(0)" class="in"><span class="mti material-icons-outlined">menu</span></a></li>					
 				</ul>
 			</div>
 		</div>
@@ -106,8 +112,8 @@
 									<strong>${ loginId }</strong>
 								</a>
 								<ul>
-									<li><a href="${ root }/page/mypage.jsp">마이 페이지</a></li>
-									<li><a href="${ root }/page/update.jsp">회원정보 수정</a></li>
+									<li><a href="${ root }/page/user/mypage.jsp">마이 페이지</a></li>
+									<li><a href="${ root }/page/user/update.jsp">회원정보 수정</a></li>
 									<li><a href="${ root }/logout">로그아웃</a></li>
 								</ul>
 							</div>
@@ -121,4 +127,3 @@
 
 <!-- 컨텐츠 start -->
 <div id="contents" class="fullMH">
-

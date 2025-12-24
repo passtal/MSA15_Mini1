@@ -23,76 +23,43 @@ request.setAttribute("dp2", "login");
 					<li>
 						<div class="mem_tit"><span class="tt">이메일</span></div>
 						<div class="in">
-							<input type="text" class="input_st fit" name="user_id" id="user_id" placeholder="아이디" value="${ user_id }">							
+							<input type="text" class="input_st s1 fit" name="user_id" id="user_id" placeholder="아이디" value="${ user_id }">							
 						</div>
 					</li>
 					<li>
 						<div class="mem_tit"><span class="tt">비밀번호</span></div>
 						<div class="in">							
-							<input type="password" class="input_st fit" name="password" id="password" placeholder="비밀번호">							
+							<input type="password" class="input_st s1 fit" name="password" id="password" placeholder="비밀번호">							
 						</div>
 					</li>
 					<li>
-						<label class="label_st"> 						
-							<c:if test="${ rememberId == null || rememberId == '' }">
-					   			<input type="checkbox" name="rememberId" id="remember-id">
-					   		</c:if>
-							<c:if test="${ rememberId != null && rememberId == 'on' }">
-					       		<input type="checkbox" name="rememberId" id="remember-id" checked>
-					  		</c:if>
-						</label>
-				      	<span class="form-check-label" for="remember-id">아이디 저장</span>
+						<div class="label_wrap gap1">
+							<label class="label_st"> 						
+								<c:if test="${ rememberId == null || rememberId == '' }">
+						   			<input type="checkbox" name="rememberId">
+						   		</c:if>
+								<c:if test="${ rememberId != null && rememberId == 'on' }">
+						       		<input type="checkbox" name="rememberId" checked>
+						  		</c:if>
+						  		<span class="tt">아이디 저장</span>
+							</label>
+							
+							<label class="label_st"> 
+								<input type="checkbox" name="rememberMe">
+			      				<span class="tt">자동 로그인</span>
+							</label>
+						</div>
 					</li>
 					<li class="btn_wrap">								
-						<button type="submit" class="input_st s1 c1">로그인</button>
+						<button type="submit" class="input_st s1 c1 w1">로그인</button>
+						<a href="${ root }/signup" class="input_st s1 c1 re w1">회원가입</a>
 					</li>
 				</ul>
 			</form>							
 		</div>
 	</div>
-
-
-
-
-
-	<h1>
-		<c:set var="navKey" value="${dp1}_${dp2}" />
-		${nav[navKey]}
-	</h1>
-	<form action="${ root }/login" name="loginForm" method="post">
-		
-	    <!-- TODO: 이메일(user_id) -->
-	    <div>
-	    	<label>이메일</label>
-		    <input type="text" name="user_id" id="user_id" placeholder="아이디" value="${ user_id }">
-	    </div>
-	    <!-- TODO: 비밀번호 -->
-	    <div>
-	    	<label>비밀번호</label>
-		    <input type="password" name="password" id="password" placeholder="비밀번호">
-	    </div>
-		<div>
-			<div>
-				<c:if test="${ rememberId == null || rememberId == '' }">
-		   			<input type="checkbox" name="rememberId" id="remember-id">
-		   		</c:if>
-				<c:if test="${ rememberId != null && rememberId == 'on' }">
-		       		<input type="checkbox" name="rememberId" id="remember-id" checked>
-		  		</c:if>
-		      	<label class="form-check-label" for="remember-id">아이디 저장</label>
-		  	</div>
-		  	<div>
-		      	<input type="checkbox" name="rememberMe" id="remember-me">
-		      	<label for="remember-me">자동 로그인</label>
-		  	</div>
-		</div>
-           <div>
-               <button type="submit">로그인</button>
-               <a href="${ root }/signup">회원가입</a>
-           </div>
-	</form>
 </main> 
-<!-- 본문 end -->	   
+<!-- 본문 end -->	 
 
 <jsp:include page="/layout/script.jsp" />	
 <jsp:include page="/layout/footer.jsp" />

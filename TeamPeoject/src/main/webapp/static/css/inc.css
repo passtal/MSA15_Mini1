@@ -238,6 +238,7 @@
 .label_st input:checked ~ .tt{ color:var(--siteC);}
 
 .label_wrap{ display:flex; flex-wrap:wrap; align-items:flex-start; gap:1em 3em}
+.label_wrap.gap1{ gap:1em 1em;}
 
 .input_st{ display:inline-block; vertical-align:middle; border:1px solid #ddd; max-width:100%; height:3em; padding:.5em 1em;}
 a.input_st,
@@ -288,8 +289,6 @@ button.input_st:disabled,
 .input_tt { padding:.75em 0; font-size: .875em; color: #666;}
 .input_tt:first-child { padding-top: 0;}
 .input_tt:last-child { padding-bottom: 0;}
-
-
 
 
 

@@ -26,25 +26,24 @@ public class SignUpServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String root = request.getContextPath();
-//		String type = request.getParameter("type");
-//		
-//		if( type == null || type.isBlank() ) {
-//			response.sendRedirect(root + "/signup/type");
-//			return;
-//		}
-//		
-//		type = type.trim().toUpperCase();
-//		
-//		switch (type) {
-//			case "ROLE_USER":
-//			case "ROLE_OWNER": request.setAttribute("type", type);
-//						  request.getRequestDispatcher("/page/signup.jsp").forward(request, response);
-//						  return;
-//			default : response.sendRedirect(root + "/signup/type");
-//					  return;
-//		}
-		request.getRequestDispatcher("/page/signup.jsp").forward(request, response);
-		return;
+		String type = request.getParameter("type");
+		
+		if( type == null || type.isBlank() ) {
+			response.sendRedirect(root + "/signup?type=ROLE_USER");
+			return;
+		}
+		
+		type = type.trim().toUpperCase();
+		
+		switch (type) {
+			case "ROLE_USER":
+			case "ROLE_OWNER": request.setAttribute("type", type);
+						  request.getRequestDispatcher("/page/signup.jsp").forward(request, response);
+						  return;
+			default : response.sendRedirect(root + "/signup?type=ROLE_USER");
+					  return;
+		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,7 +54,7 @@ public class SignUpServlet extends HttpServlet {
 		String userauth = request.getParameter("type");
 		
 		if( userauth == null || userauth.isBlank() ) {
-			response.sendRedirect(root + "/signup/type");
+			response.sendRedirect(root + "/signup?type=ROLE_USER");
 			return;
 		}
 		

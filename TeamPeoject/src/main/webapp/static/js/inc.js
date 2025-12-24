@@ -80,3 +80,18 @@ function scrollLoad(evt){
 		
 	}
 }
+
+// 바탕 클릭 이벤트
+function documentClick(obj){	
+	$(document).mouseup(function (e){	
+		if(!Class){
+			var Class = "on";
+		};	
+		$(obj).each(function () {	
+			if($(this).has(e.target).length === 0){
+				$(this).removeClass(Class);			
+			}
+		});	
+	});
+}
+

@@ -11,9 +11,9 @@
 		</ul>
 	</li>	
 	<li class="m_mypage ${dp1 eq 'mypage' ? 'on' : ''}">
-		<a href="${ root }/page/mypage.jsp" class="dp1 flex ac"><span class="tt">${ nav.mypage }</span></a>
+		<a href="${ root }/page/user/mypage.jsp" class="dp1 flex ac"><span class="tt">${ nav.mypage }</span></a>
 		<ul class="dp2 flex">
-			<li class="sm_modify ${dp1 eq 'mypage' and dp2 eq 'modify' ? 'on' : ''}"><a href="${ root }/page/update.jsp" class="flex ac"><span class="tt">${ nav.mypage_modify }</span></a></li>			
+			<li class="sm_modify ${dp1 eq 'mypage' and dp2 eq 'modify' ? 'on' : ''}"><a href="${ root }/page/user/update.jsp" class="flex ac"><span class="tt">${ nav.mypage_modify }</span></a></li>			
 		</ul>
 	</li>		
 </ul>

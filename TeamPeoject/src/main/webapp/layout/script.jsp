@@ -8,4 +8,6 @@
 <script src="${ root }/static/js/script.js"></script>
 <script>
   const root = "${root}";
+  
+  documentClick(".jsClick");
 </script>

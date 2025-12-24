@@ -60,4 +60,3 @@ html.hidden{ overflow-y:hidden;}
 	--crGrad1: linear-gradient(to right,var(--gradC1),var(--gradC2));
 	--crGrad2: linear-gradient(to bottom,var(--gradC1),var(--gradC2)); 
 }
-
