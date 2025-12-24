@@ -51,7 +51,6 @@ public class BoardEditServlet extends HttpServlet {
 			
 			board.setNo(no);
 			board.setUser_no(userNo);
-			board.setGroup_no(1);
 			board.setTitle(title);
 			board.setContent(content);
 			board.setRating(rating);
