@@ -17,7 +17,7 @@
 					
 				<c:otherwise>
 					<!-- 로그인 시 -->
-					<li><a href="${ root }/page/mypage.jsp" class="in flex ac"><span class="tt">${ nav.mypage }</span></a></li>
+					<li><a href="${ root }/page/user/mypage.jsp" class="in flex ac"><span class="tt">${ nav.mypage }</span></a></li>
 					<li><a href="${ root }/logout" class="in flex ac"><span class="tt">${ nav.member_logout }</span></a></li>					
 				</c:otherwise>
 			</c:choose>					
@@ -106,8 +106,8 @@
 									<strong>${ loginId }</strong>
 								</a>
 								<ul>
-									<li><a href="${ root }/page/mypage.jsp">마이 페이지</a></li>
-									<li><a href="${ root }/page/update.jsp">회원정보 수정</a></li>
+									<li><a href="${ root }/page/user/mypage.jsp">마이 페이지</a></li>
+									<li><a href="${ root }/page/user/update.jsp">회원정보 수정</a></li>
 									<li><a href="${ root }/logout">로그아웃</a></li>
 								</ul>
 							</div>
