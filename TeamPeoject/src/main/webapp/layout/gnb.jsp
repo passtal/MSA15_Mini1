@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/layout/common.jsp" %> 
 <ul class="gnb flex">
 	<li class="m_shop ${dp1 eq 'shop' ? 'on' : ''}">
 		<a href="/" class="dp1 flex ac"><span class="tt">${ nav.shop }</span></a>
