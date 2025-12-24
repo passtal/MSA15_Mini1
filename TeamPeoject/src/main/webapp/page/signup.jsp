@@ -128,7 +128,7 @@ request.setAttribute("dp2", "signup");
 							</li>
 							<li class="btn_wrap">								
 								<button type="button" class="input_st s1 c1" onclick="checkUser()">회원가입</button>
-								<button type="button" class="input_st s1 c1 re btn btn-lg btn-secondary" onclick="history.back()">취소</button>
+								<button type="button" class="input_st s1 c1 re" onclick="history.back()">취소</button>
 							</li>
 						</ul>
 					</form>

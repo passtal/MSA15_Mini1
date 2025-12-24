@@ -90,10 +90,12 @@ transform: translateX(-50%); width:0; height: 4px; border-radius: 1em; backgroun
 /* 회원서비스 */
 .member_wrap {}
 .member_wrap .mem_inner { width: min(38em, var(--fullWidth)); margin: 0 auto;}
+.member_wrap .mem_inner.w1 { width: min(30em, var(--fullWidth));}
 
 .member_wrap .mem_tit:not(:last-child) { margin-bottom: .75em;}
 .member_wrap .mem_tit > .tt{ font-size: 1.063em;}
 .member_wrap .mem_tit > .tt.s1{ font-size: 1.250em; font-weight: 700;}
+.member_wrap .mem_tit > .tt.s2{ font-size: 2.000em; font-weight: 800;}
 
 .member_wrap .btn_wrap{ display: flex; flex-wrap: wrap; gap:.5em; margin-top:2.5em !important;}
 .member_wrap .btn_wrap .input_st { flex:1;}

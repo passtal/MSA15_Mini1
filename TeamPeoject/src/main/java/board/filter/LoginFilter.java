@@ -2,7 +2,9 @@ package board.filter;
 
 import java.io.IOException;
 import java.net.URLDecoder;
+import java.util.List;
 
+import board.DAO.UserAuthDAO;
 import board.DTO.PersistenceLogins;
 import board.DTO.User;
 import board.service.PersistenceLoginsService;
@@ -19,6 +21,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @WebFilter(description = "자동 로그인 등, 인증 처리 필터", urlPatterns = { "/*" })
@@ -43,8 +46,13 @@ public class LoginFilter extends HttpFilter implements Filter {
 		// 1. 자동 로그인 여부
 		// 2. 인증 토큰
 		
+		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		Cookie[] cookies = httpRequest.getCookies();
+		
+		String uri = httpRequest.getRequestURI();
+		String root = httpRequest.getContextPath();
 		
 		String rememberMe = null;		// 자동 로그인 여부
 		String token = null;			// 인증 토큰
@@ -68,16 +76,8 @@ public class LoginFilter extends HttpFilter implements Filter {
 		String loginId = (String) session.getAttribute("loginId");
 		User loginUser = (User) session.getAttribute("loginUser");
 		
-		// 이미 로그인 됨
-		if( loginId != null && loginUser != null ) {
-			chain.doFilter(request, response);
-			System.out.println("로그인된 사용자 : " + loginId);
-			return;
-		}	
-		
-		
 		// 자동 로그인 & 토큰 ok
-		if( "on".equals(rememberMe) && token != null && !token.isBlank() ) {
+		if( "on".equals(rememberMe) && token != null && !token.isBlank() && loginUser == null ) {
 			System.out.println("rememberMe : " + rememberMe);
 			System.out.println("token : " + token);
 			PersistenceLogins persistenceLogins = persistenceLoginsService.selectByToken(token);
@@ -95,6 +95,43 @@ public class LoginFilter extends HttpFilter implements Filter {
 				System.out.println("자동 로그인 성공 : " + loginUser);
 			}
 		}
+		
+		if ( loginUser != null && session.getAttribute("authList") == null ) {
+			try {
+				UserAuthDAO userAuthDAO = new UserAuthDAO();
+				
+				List<String> authList = userAuthDAO.selectAuthListByUserNo(loginUser.getNo());
+				session.setAttribute("authList", authList);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				httpResponse.sendRedirect(root + "/");
+				return;
+			}
+		}
+		
+		boolean owner = uri.startsWith(root + "/owner/");
+		
+		if(owner) {
+			@SuppressWarnings("unchecked")
+			List<String> authList = (List<String>) session.getAttribute("authList");
+			
+			boolean isOwner = authList != null && authList.contains("ROLE_OWNER");
+			
+			if(!isOwner) {
+				if(loginUser == null ) {
+					httpResponse.sendRedirect(root + "/login");
+					return;
+				}
+				else {
+					httpResponse.sendRedirect(root + "/");
+					return;
+				}
+			}
+			
+		}
+		
+		
 		chain.doFilter(request, response);
 	}
 

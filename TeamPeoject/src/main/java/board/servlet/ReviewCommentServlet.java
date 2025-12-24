@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 import board.DAO.ReviewCommentDAO;
-import board.DTO.ReviewCommentDTO;
+import board.DTO.ReviewComment;
 import board.DTO.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -35,7 +35,7 @@ public class ReviewCommentServlet extends HttpServlet {
 		HttpSession session = request.getSession();
         User loginUser = (User) session.getAttribute("loginUser");
         
-        ReviewCommentDTO comment = new ReviewCommentDTO();
+        ReviewComment comment = new ReviewComment();
         int board_no = 1;
         
         comment.setId(UUID.randomUUID().toString());
