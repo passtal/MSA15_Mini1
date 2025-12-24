@@ -29,7 +29,7 @@ public class SignUpServlet extends HttpServlet {
 		String type = request.getParameter("type");
 		
 		if( type == null || type.isBlank() ) {
-			response.sendRedirect(root + "/signup/type");
+			response.sendRedirect(root + "/signup?type=ROLE_USER");
 			return;
 		}
 		
@@ -40,7 +40,7 @@ public class SignUpServlet extends HttpServlet {
 			case "ROLE_OWNER": request.setAttribute("type", type);
 						  request.getRequestDispatcher("/page/signup.jsp").forward(request, response);
 						  return;
-			default : response.sendRedirect(root + "/signup/type");
+			default : response.sendRedirect(root + "/signup?type=ROLE_USER");
 					  return;
 		}
 		
@@ -54,7 +54,7 @@ public class SignUpServlet extends HttpServlet {
 		String userauth = request.getParameter("type");
 		
 		if( userauth == null || userauth.isBlank() ) {
-			response.sendRedirect(root + "/signup/type");
+			response.sendRedirect(root + "/signup?type=ROLE_USER");
 			return;
 		}
 		
