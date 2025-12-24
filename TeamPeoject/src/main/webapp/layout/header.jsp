@@ -28,7 +28,7 @@
 		<div class="box1 inner flex wrap vc">			
 			<h1 class="logo"><a href="${ root }/" class="in"><img src="https://placehold.co/140x50" alt="logo"></a></h1>
 			<nav class="nav_wrap">
-				<jsp:include page="/layout/gnb.jsp" />
+				<%@ include file="/layout/gnb.jsp" %> 
 			</nav>
 			<div class="search_wrap mgL">
 				<form action="">
@@ -48,9 +48,9 @@
 						<c:otherwise>
 							<!-- 로그인 시 -->
 							<li class="dropdown">								
-								<a href="javascript:void(0)" class="userInfo flex vc">
-									<div class="img"><img src="${ pageContext.request.contextPath }${ loginUser.profileImg }" alt="profileImg"></div>
-									<div class="name"><strong class="tt">${ loginId }</strong></div>
+								<a href="javascript:void(0);" class="userInfo flex vc">
+									<p class="img"><img src="${ pageContext.request.contextPath }${ loginUser.profileImg }" alt="profileImg"></p>
+									<p class="name"><strong class="tt">${ loginId }</strong></p>
 								</a>
 								<ul class="list">
 									<li><a href="${ root }/page/mypage.jsp" class="in"><span class="tt">${ nav.mypage }</span></a></li>
