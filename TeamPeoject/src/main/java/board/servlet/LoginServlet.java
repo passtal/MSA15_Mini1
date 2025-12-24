@@ -99,7 +99,7 @@ public class LoginServlet extends HttpServlet {
 		
 		// 로그인 처리
 		User user = User.builder()
-						  .userId(userId)
+						  .id(userId)
 						  .password(password)
 						  .build();
 		boolean result = userService.login(user);
@@ -115,7 +115,7 @@ public class LoginServlet extends HttpServlet {
 		loginUser.setPassword(null);
 		// 세션에 사용자 정보 등록
 		HttpSession session = request.getSession();
-		session.setAttribute("loginId", user.getUserId());
+		session.setAttribute("loginId", user.getId());
 		session.setAttribute("loginUser", loginUser);
 
 		// 자동 로그인 ---------------------------------------------------

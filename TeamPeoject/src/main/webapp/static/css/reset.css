@@ -1,0 +1,63 @@
+@charset "UTF-8";
+/*reset*/
+* {margin: 0; padding: 0; box-sizing: border-box; }
+html{ -moz-text-size-adjust:100%; -webkit-text-size-adjust:100%; text-size-adjust:100%; overflow-x:hidden; overflow-y:scroll;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{ margin:0; padding:0;  font-size:inherit; font-weight:inherit; color:inherit;}
+ul,ol,li{ list-style:none;}
+img { border:none; max-width:100%;}
+em,i{ font-style:normal;}
+strong,th{ font-weight:700;}
+b{ font-weight:800;}
+table{ table-layout:fixed; border-collapse:collapse; border-spacing:0;}
+input, button, textarea, select{ display:inline-block; vertical-align:middle; font-family:inherit;}
+input[type=button], input[type=submit], button, input[type=checkbox], input[type=radio]{ cursor:pointer;}
+select{ max-width:100%; background:url(../static/img/arrow_down.svg) right .75em center no-repeat #fff; background-size:.85em auto;}
+select::-ms-expand{ display:none;}
+*:focus{ outline:none;}
+a, input, button, textarea, select, li{ -webkit-tap-highlight-color:transparent;}
+
+
+::selection     { background:var(--selectionBg); color:var(--crWhite) !important;}
+::-moz-selection{ background:var(--selectionBg); color:var(--crWhite) !important;}
+
+a,
+a:visited,
+a:active,
+a:hover{ text-decoration:none;}
+
+body{ font-family:var(--fontBase); font-size:16px; font-weight:400; -webkit-font-smoothing:antialiased;}
+html.hidden{ overflow-y:hidden;}
+
+
+:root {
+	--fontBase: 'NanumSquareNeo','Noto Sans KR',sans-serif;
+	
+	--baseWidth: 1400px;	
+	--fullWidth: 96%;
+    
+    --siteC: #ff3d00;
+	--siteC2: ;
+	--siteC3: ;
+	--siteBg1: #292929;
+	--gradC1: #54adff;
+	--gradC2: #ff64e6;
+	--selectionBg: var(--siteC);
+	
+	--siteCfil: invert(43%) sepia(95%) saturate(5102%) hue-rotate(359deg) brightness(100%) contrast(107%);;
+	--siteCfil2: ;
+	--siteCfil3: ;
+	
+	--crWhite: #fff;
+	--crBlack: #000;
+	--crGray: #f2f7fd;
+	--crGray2: #e6ebf1;
+	--crGray3: #f8f8f8;
+	--crRed: #e40f18;
+	--crWhitefil: brightness(0) invert(1);
+	--crBlackfil: brightness(0) invert(0);
+	--crfilRE: invert(1);
+	
+	--crGrad1: linear-gradient(to right,var(--gradC1),var(--gradC2));
+	--crGrad2: linear-gradient(to bottom,var(--gradC1),var(--gradC2)); 
+}
+
