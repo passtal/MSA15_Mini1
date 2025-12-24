@@ -12,9 +12,6 @@ public interface UserService {
 	// 닉네임 중복 체크
 	public boolean userNameCheck(String userName);
 	
-	// 로그인
-	public boolean login(User user);
-	
 	// 아이디로 회원 조회
 	public User selectByUserId(String userId);
 	
@@ -30,6 +27,7 @@ public interface UserService {
 	// 현재 비밀번호 검증 및 수정
 	public boolean changePassword(int userNo, String oldPassword, String newPassword);
 	
-	// throw
+	// throw 기반 로그인
+	public User loginOrThrow(String userId, String password);
 	
 }

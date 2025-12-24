@@ -31,7 +31,7 @@ public class UserUpdateServlet extends HttpServlet {
             return;
         }
 
-        request.getRequestDispatcher("/page/update.jsp").forward(request, response);
+        request.getRequestDispatcher("/page/user/update.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

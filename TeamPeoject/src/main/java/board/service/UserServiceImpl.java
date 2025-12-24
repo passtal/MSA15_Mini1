@@ -1,6 +1,7 @@
 package board.service;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -10,6 +11,8 @@ import board.DAO.UserAuthDAO;
 import board.DAO.UserDAO;
 import board.DTO.User;
 import board.DTO.UserAuth;
+import board.exception.AppException;
+import board.exception.ErrorCode;
 
 public class UserServiceImpl implements UserService {
 	
@@ -72,29 +75,6 @@ public class UserServiceImpl implements UserService {
 		return true;
 	}
 	
-	@Override
-	public boolean login(User user) {
-		String userId = user.getUserId();
-		String password = user.getPassword();
-		
-		Map<String, Object> map = new HashMap<>();
-		map.put("user_id", userId);
-		
-		User joinedUser = null;
-		try {
-			joinedUser = userDAO.selectBy(map);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		// 아이디가 존재 하지 않는 경우
-		if( joinedUser == null ) 
-			return false;
-		// 비밀번호 일치 여부 확인
-		String joinedPasswword = joinedUser.getPassword();
-		boolean result = BCrypt.checkpw(password, joinedPasswword);
-		return result;
-	}
-
 	@Override
 	public User selectByUserId(String userId) {
 		Map<String, Object> map = new HashMap<>();
@@ -196,6 +176,43 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean changePassword(int userNo, String oldPassword, String newPassword) {
 		return false;
+	}
+
+	@Override
+	public User loginOrThrow(String userId, String password) {
+		
+		if( userId == null || userId.isBlank() || password == null || password.isBlank() ) {
+			throw new AppException(ErrorCode.AUTH_REQUIRED_FIELDS);
+		}
+		
+		Map<String, Object> map = new LinkedHashMap<>();
+		map.put("user_id", userId);
+		
+		User signupUser = null;
+		
+		try {
+			signupUser = (User) userDAO.selectBy(map);
+		} catch (Exception e) {
+			throw new AppException(ErrorCode.COMMON_INTERNAL_ERROR, e);
+		}
+		
+		// 아이디 존재 여부 확인
+		if( signupUser == null ) {
+			throw new AppException(ErrorCode.AUTH_INVALID_CREDENTIALS);
+		}
+		
+		// 비밀번호 일치 여부 확인
+		String signupPassword = signupUser.getPassword();
+		boolean result = BCrypt.checkpw(password, signupPassword);
+		
+		if( result == false) {
+			throw new AppException(ErrorCode.AUTH_INVALID_CREDENTIALS);
+		}
+		
+		signupUser.setPassword(null);
+		
+		return signupUser;
+		
 	}
 
 }

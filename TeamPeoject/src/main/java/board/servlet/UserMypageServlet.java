@@ -32,7 +32,7 @@ public class UserMypageServlet extends HttpServlet {
         try {
 			User user = userDAO.select(loginUser.getNo());
 			request.setAttribute("user", user);
-			request.getRequestDispatcher("/page/mypage.jsp").forward(request, response);
+			request.getRequestDispatcher("/page/user/mypage.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
