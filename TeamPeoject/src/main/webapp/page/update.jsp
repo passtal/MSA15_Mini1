@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/layout/jstl.jsp" %>
+<%@ include file="/layout/common.jsp" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +18,7 @@
 				<label>프로필 이미지</label><br>
 				<div>
 					<c:if test="${loginUser.profileImg == null}">
-						<img src="${root}/static/img/default-profile.png" id="preview" class="profile-preview">
+						<img src="${root}/static/img/default-profile.png" id="preview" class="profile-preview" width="100px" height="100px">
 					</c:if>
 					<c:if test="${loginUser.profileImg != null}">
 						<img src="${root}${loginUser.profileImg}" id="preview" class="profile-preview" width="100px" height="100px">
@@ -71,6 +73,7 @@
     <jsp:include page="/layout/script.jsp"/>
     
     <script>
+    /* 유효성 검사 추가 */
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -82,15 +85,46 @@
         }
         function checkUpdate() {
             let form = document.updateForm;
+            let userId = document.getElementById("user_id").value
+            let userIdCheck = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
+           	
+            if(!userIdCheck.test(userId)) {
+   				alert('이메일 형식이 올바르지 않습니다.')
+   				return;
+   			}
+
+			let check = await idCheck() {
+				if( check ) {
+					alert('중복된 이메일 입니다.')
+				} else {
+					alert('사용 가능한 이메일 입니다.')
+				}
+			}
+						            
             let pw = document.getElementById("password").value;
             let pwConfirm = document.getElementById("password_confirm").value;
             let username = document.getElementById("username").value;
+            let nameCheck = /^(?=.*\S)[^\r\n]{1,20}$/
+            
+   			if(!nameCheck.test(username)) {
+   				alert('닉네임은 20자 이내로 입력해주세요.')
+   				return;
+   			}
 
             if(!username) {
                 alert("닉네임을 입력해주세요.");
                 return;
             }
-
+            
+			let check = await usernameCheck() {
+				if( check ) {
+					alert('중복된 닉네임 입니다.')
+				} else {
+					alert('사용 가능한 닉네임 입니다.')
+				}
+			}
+			
+            
             if(pw.length > 0) {
                 if(pw != pwConfirm) {
                     alert("비밀번호가 일치하지 않습니다.");
