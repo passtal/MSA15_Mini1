@@ -8,6 +8,8 @@ request.setAttribute("dp2", "list");
 %>
 <jsp:include page="/layout/header.jsp" />
 
+<!-- 본문 -->
+<main class="doc">
     <div class="container">
         <h2>지역 맛집 리뷰 게시판</h2>
 
@@ -46,6 +48,8 @@ request.setAttribute("dp2", "list");
             </c:forEach>
         </div>
     </div>
-    
+ 
+</main>
+<!-- 본문 end -->	 
 <jsp:include page="/layout/script.jsp" />	
 <jsp:include page="/layout/footer.jsp" />

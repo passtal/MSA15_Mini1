@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<body>
+<%@ include file="/layout/jstl.jsp" %>
+<%@ include file="/layout/common.jsp" %>
+<%
+request.setAttribute("dp1", "shop");
+request.setAttribute("dp2", "comm");
+%>
+<jsp:include page="/layout/header.jsp" />
+
+<!-- 본문 -->
+<main class="doc">
 	<h2>${board.title}</h2>
 	<p>작성자 : ${board.username} | 평점 : ${board.rating}</p>
 	<hr>
@@ -34,5 +41,7 @@
 	</form>
 	
 	<a href="${pageContext.request.contextPath}/board/list">목록으로</a>
-</body>
-</html>
+</main>
+<!-- 본문 end -->	
+<jsp:include page="/layout/script.jsp" />	
+<jsp:include page="/layout/footer.jsp" />

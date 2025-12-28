@@ -55,7 +55,7 @@
 				<div class="mem_tit"><span class="tt">이메일</span><span class="ess"></span></div>
 				<div class="in">
 					<input type="text" class="input_st fit" name="user_id" id="user_id">
-  						<button type="button" class="input_st c4 re" onclick="clickIdCheck()">중복확인</button>	
+					<button type="button" class="input_st c4 re" onclick="clickIdCheck()">중복확인</button>	
 				</div>
 			</li>
 			<li>
@@ -75,7 +75,7 @@
 				<div class="mem_tit"><span class="tt">닉네임</span><span class="ess"></span></div>
 				<div class="in">
 					<input type="text" class="input_st fit" name="username" id="username">
-  						<button type="button" class="input_st c4 re" onclick="clickUserNameCheck()">중복확인</button>
+					<button type="button" class="input_st c4 re" onclick="clickUserNameCheck()">중복확인</button>
 				</div>
 				<div class="input_tt">한글 또는 영문 20자 이내로 입력해주세요.</div>
 			</li>

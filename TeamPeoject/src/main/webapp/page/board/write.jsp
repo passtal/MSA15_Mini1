@@ -1,12 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
-pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>리뷰 작성하기</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="/layout/jstl.jsp" %>
+<%@ include file="/layout/common.jsp" %>
+<%
+request.setAttribute("dp1", "shop");
+request.setAttribute("dp2", "write");
+%>
+<jsp:include page="/layout/header.jsp" />
+
+<!-- 본문 -->
+<main class="doc">
     <div class="form-container">
         <h2>맛집 리뷰 남기기</h2>
 
@@ -36,5 +39,7 @@ pageEncoding="UTF-8"%>
 
         </form>
     </div>
-</body>
-</html>
+</main>
+<!-- 본문 end -->	
+<jsp:include page="/layout/script.jsp" />	
+<jsp:include page="/layout/footer.jsp" />

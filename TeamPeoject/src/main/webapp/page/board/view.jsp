@@ -1,12 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ include file="/layout/jstl.jsp" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>${board.title}</title>
-</head>
-<body>
+<%@ include file="/layout/common.jsp" %>
+<%
+request.setAttribute("dp1", "shop");
+request.setAttribute("dp2", "view");
+%>
+<jsp:include page="/layout/header.jsp" />
+
+<!-- 본문 -->
+<main class="doc">
     <div class="view-container">
 
         <div class="post-header">
@@ -60,5 +63,7 @@
             </form>
         </div>
     </div>
-</body>
-</html>
+</main>
+<!-- 본문 end -->	
+<jsp:include page="/layout/script.jsp" />	
+<jsp:include page="/layout/footer.jsp" />

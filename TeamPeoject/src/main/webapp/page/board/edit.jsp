@@ -1,11 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>게시글 수정</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="/layout/jstl.jsp" %>
+<%@ include file="/layout/common.jsp" %>
+<%
+request.setAttribute("dp1", "shop");
+request.setAttribute("dp2", "edit");
+%>
+<jsp:include page="/layout/header.jsp" />
+
+<!-- 본문 -->
+<main class="doc">
     <div class="edit-container">
         <h2>게시글 수정하기</h2>
 
@@ -35,5 +39,7 @@
             </div>
         </form>
     </div>
-</body>
-</html>
+</main>
+<!-- 본문 end -->	
+<jsp:include page="/layout/script.jsp" />	
+<jsp:include page="/layout/footer.jsp" />
