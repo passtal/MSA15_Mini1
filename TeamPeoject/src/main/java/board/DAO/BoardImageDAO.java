@@ -1,5 +1,9 @@
 package board.DAO;
 
-public class BoardImageDAO {
+import com.alohaclass.jdbc.dao.BaseDAOImpl;
+
+import board.DTO.BoardImage;
+
+public class BoardImageDAO extends BaseDAOImpl<BoardImage> {
 
 }

@@ -2,6 +2,8 @@
 pageEncoding="UTF-8"%>
 <%@ include file="/layout/jstl.jsp" %>
 <%@ include file="/layout/common.jsp" %>
+<jsp:include page="/layout/header.jsp" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,6 @@ pageEncoding="UTF-8"%>
         <form action="${pageContext.request.contextPath}/board/edit" method="post" class="edit-form">
             <input type="hidden" name="action" value="update">
             <input type="hidden" name="user_no" value="${board.user_no}">
-    		<input type="text" name="title" value="${board.title}">
             <input type="hidden" name="no" value="${board.no}">
 
             <div class="form-group">
@@ -41,3 +42,5 @@ pageEncoding="UTF-8"%>
     </div>
 </body>
 </html>
+
+<jsp:include page="/layout/footer.jsp" />
