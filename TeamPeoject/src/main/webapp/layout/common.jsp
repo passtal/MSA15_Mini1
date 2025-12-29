@@ -32,8 +32,8 @@
 	nav.put("shop_map", "맛집지도");
 	nav.put("shop_hot", "인기맛집");	
 	
-	nav.put("board", "커뮤니티");
-	nav.put("board_list", "공지사항");
+	nav.put("notice", "커뮤니티");
+	nav.put("notice_list", "공지사항");
 	
 	nav.put("member", "회원서비스");
 	nav.put("member_login", "로그인");

@@ -3,15 +3,15 @@
 <%@ include file="/layout/jstl.jsp" %>
 <%@ include file="/layout/common.jsp" %>  
 <%
-request.setAttribute("dp1", "member");
-request.setAttribute("dp2", "login");
+request.setAttribute("dp1", "notice");
+request.setAttribute("dp2", "list");
 %>
 <jsp:include page="/layout/header.jsp" />
 
 <!-- 본문 -->
 <main class="doc">
 	<div class="box1">
-	게시판
+		게시판
 	</div>
 </main> 
 <!-- 본문 end -->	 
