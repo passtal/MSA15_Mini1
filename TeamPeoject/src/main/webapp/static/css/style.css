@@ -152,5 +152,78 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 .agree_box .con strong{ color: #333;}
 .agree_box .con p { padding: .375em 0;}
 
+/* main */
+.main_visual { position: relative; width: var(--fullWidth); margin: 0 auto; overflow: hidden;}
+.main_visual .img { position: relative;}
+.main_visual .img:before { content: "";  position: absolute; left: 0; bottom:0; width: 100%; height: 100%; background: linear-gradient(0deg,rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, 0) 100%);}
+.main_visual .visual_con { position: absolute; left: 0; right:0; bottom:0; padding: 2.5em 1.875em; gap: 1.25em; color: #fff;}
+.main_visual .visual_con .cate {}
+.main_visual .visual_con .tt { word-break: keep-all;}
+.main_visual .visual_con .t1 { font-size: .938em; font-weight: 700; display: inline-block; padding: .5em 1em; background: #000; border-radius: 2em;}
+.main_visual .visual_con .t2 { font-size: 1.625em; font-weight: 800;}
+.main_visual .visual_con .t3 { line-height: 1.5;}
+
+.main_visual .btn { position: absolute; z-index: 2; top:50%; transform: translateY(calc(-50% - 2.5em)); width: 2.5em; height: 3em; background: #333; color: #fff; cursor: pointer; transition:.2s;}
+.main_visual .btn.prev { left: 0;}
+.main_visual .btn.next { right: 0;}
+.main_visual .btn:hover { background: var(--siteC);}
+.main_visual .paging { position: relative; margin: 2em 0; height: .375em !important; background: #f2f2f2; border-radius: 1em; overflow: hidden;}
+.main_visual .paging .swiper-pagination-progressbar-fill { background: var(--siteC);}
+
+
+.main_wrap {}
+.main_wrap .inner { padding: 3.75em 0;}
+.main_banner .inner { padding: 2.5em 0;}
+.main_review .inner { padding-bottom: 6.25em;}
+.main_new { background: #f8f8f8;}
+.main_tit { margin-bottom: 1.875em;}
+.main_tit .tit_wrap { gap: .625em;}
+.main_tit .tit_wrap .mti { font-size: 3.5em;}
+.main_tit .tit_wrap .tit { font-size: 2.5em; font-weight: 300;}
+.main_tit .tit_wrap .point { color: var(--siteC);}
+
+.main_more {}
+.main_more .more { gap: .625em;}
+.main_more .more .tt { font-size: .875em;}
+.main_more .more .mti { font-size: 1.25em;}
+.main_more .more:hover { color: var(--siteC);}
+
+.main_banner .banner { border-radius: 1.25em; overflow: hidden;}
+
+.shop_list_wrap {}
+.shop_list {}
+.shop_list .wrap_in { display: flex;}
+.shop_list .wrap_in .in { flex:1; background: #fff; transition: .2s;}
+.shop_list .wrap_in .in:not(.flex) { display: block;}
+.shop_list .wrap_in .wrap_img .img { border-radius: 1.25em;}
+.shop_list .wrap_in .wrap_con { gap: .75em; padding: 1.25em .625em;}
+.shop_list .wrap_in .wrap_con .shop_tt {}
+.shop_list .wrap_in .wrap_con .shop_tt.t1 { font-size: 1.125em; font-weight: 800;}
+.shop_list .wrap_in .wrap_con .shop_tt.t2 { font-size: .875em; color: #555; line-height: 1.4;}
+.shop_list .wrap_in .wrap_con .shop_tt.t3 { font-size: .813em; color: #555; font-weight: 700;}
+.shop_list .wrap_in .info_wrap {}
+.shop_list .wrap_in .info_wrap .star {}
+.shop_list .wrap_in .info_wrap .star .mti { font-size: 1.375em; color: #ff8800;}
+.shop_list .wrap_in .info_wrap .star .tt { font-size: .813em; font-weight: 900;}
+.shop_list .wrap_in .info_wrap .cate {}
+.shop_list .wrap_in .info_wrap .user { flex:1; gap: .625em;}
+.shop_list .wrap_in .info_wrap .user .img { width: 1.875em; height: 1.875em; border-radius: 50%; border: 1px solid #ccc;}
+.shop_list .wrap_in .info_wrap .user .name { flex:1; font-size: .813em; color: #555; font-weight: 700;}
+
+.shop_list.st2 {}
+.shop_list.st2 .wrap_in .in { gap: 1.25em;}
+.shop_list.st2 .wrap_in .wrap_img { width: 10.625em;} 
+.shop_list.st2 .wrap_in .wrap_con { flex:1; gap: 1.25em;}
+
+.shop_list.st1 { gap: 1.875em; grid-template-columns: repeat(5, minmax(0, 1fr));}
+.shop_list.st2 { gap: 1.25em; grid-template-columns: repeat(3, minmax(0, 1fr));}
+.shop_list.st3 { gap: 1.25em; grid-template-columns: repeat(5, minmax(0, 1fr));}
+.shop_list.round {}
+.shop_list.round .wrap_in .in { padding: 1em; border-radius: 1.25em; box-shadow: 0 4px 10px rgba(0,0,0,.15);}
+
+.shop_list > li:hover .in { transform: translateY(-.5em);}
+.shop_list > li:hover .wrap_con .shop_tt.t1 { color: var(--siteC);}
+
+
 
 

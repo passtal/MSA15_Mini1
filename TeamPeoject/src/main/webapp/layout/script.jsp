@@ -4,6 +4,7 @@
 <%-- 라이브러리 --%>
 <%-- jQuery FILE --%>
 <script src="${ root }/static/js/jquery-3.7.1.min.js"/></script>
+<script src="${ root }/static/js/swiper-bundle.min.js"></script>
 <script src="${ root }/static/js/inc.js"></script>
 <script src="${ root }/static/js/script.js"></script>
 <script>

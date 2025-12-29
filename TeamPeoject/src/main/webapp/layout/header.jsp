@@ -34,7 +34,7 @@
 				<form action="">
 					<div class="search flex vc">
 						<input type="text" class="input_st int_txt" placeholder="검색어를 입력해 주세요.">
-						<button type="submit" class="input_st int_btn"><span class="mti material-icons-outlined">search</span></button>
+						<button type="submit" class="input_st int_btn"><span class="mti material-symbols-outlined">search</span></button>
 					</div>
 				</form>
 			</div>
@@ -43,7 +43,7 @@
 					<c:choose>
 						<c:when test="${ empty loginId }">
 							<!-- 비로그인 시 -->							
-							<li><a href="${ root }/login" class="in"><span class="mti material-icons-outlined">person</span></a></li>
+							<li><a href="${ root }/login" class="in"><span class="mti material-symbols-outlined">person</span></a></li>
 						</c:when>
 						<c:otherwise>
 							<!-- 로그인 시 -->
@@ -66,7 +66,7 @@
 							</li>
 						</c:otherwise>
 					</c:choose>					
-					<li><a href="javascript:void(0)" class="in"><span class="mti material-icons-outlined">menu</span></a></li>					
+					<li><a href="javascript:void(0)" class="in"><span class="mti material-symbols-outlined">menu</span></a></li>					
 				</ul>
 			</div>
 		</div>
