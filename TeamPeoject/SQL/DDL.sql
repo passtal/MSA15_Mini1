@@ -27,13 +27,13 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- =========================
 CREATE TABLE `users` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
-    `id` VARCHAR(64) NOT NULL COMMENT 'UK',
-    `profile_img` VARCHAR(300) NULL DEFAULT '/static/img/default-profile.png' COMMENT '프로필 이미지',
-    `user_id` VARCHAR(100) NOT NULL COMMENT '회원 아이디(이메일)',
+    `id` VARCHAR(64) NOT NULL COMMENT 'UK (UUID)', 
+    `profile_img` VARCHAR(300) NULL DEFAULT '/static/img/default-profile.png',
+    `user_id` VARCHAR(100) NOT NULL COMMENT '아이디(이메일)',
     `password` VARCHAR(100) NOT NULL COMMENT '비밀번호',
     `username` VARCHAR(100) NOT NULL COMMENT '닉네임',
-    `age` INT NOT NULL COMMENT '나이',
-    `sex` VARCHAR(20) NOT NULL COMMENT '남,여,공개안함',
+    `age` INT DEFAULT 0 COMMENT '나이',
+    `sex` VARCHAR(20) DEFAULT '공개안함',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`no`),
@@ -47,13 +47,11 @@ CREATE TABLE `users` (
 -- =========================
 CREATE TABLE `user_auth` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
-    `id` VARCHAR(64) NOT NULL COMMENT 'UK',
     `user_no` INT NOT NULL COMMENT 'FK',
     `auth` VARCHAR(50) NOT NULL COMMENT 'ROLE_USER, ROLE_ADMIN, ROLE_OWNER',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`no`),
-    UNIQUE KEY uk_user_auth_id (`id`)
 );
 
 -- =========================
@@ -61,13 +59,11 @@ CREATE TABLE `user_auth` (
 -- =========================
 CREATE TABLE `board_group` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
-    `id` VARCHAR(64) NOT NULL COMMENT 'UK',
     `name` VARCHAR(100) NOT NULL COMMENT '게시판 명',
     `seq` INT NOT NULL COMMENT '순서',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`no`),
-    UNIQUE KEY uk_board_group_id (`id`)
 );
 
 -- =========================
@@ -75,7 +71,6 @@ CREATE TABLE `board_group` (
 -- =========================
 CREATE TABLE `place` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
-    `id` VARCHAR(64) NOT NULL COMMENT 'UK',
     `user_no` INT NOT NULL COMMENT '사장 회원 번호',
     `placename` VARCHAR(100) NOT NULL,
     `address` VARCHAR(100) NOT NULL,
@@ -85,7 +80,6 @@ CREATE TABLE `place` (
     `amenities` VARCHAR(100) NOT NULL,
     `region` VARCHAR(50) NOT NULL,
     PRIMARY KEY (`no`),
-    UNIQUE KEY uk_place_id (`id`)
 );
 
 -- =========================
@@ -93,17 +87,15 @@ CREATE TABLE `place` (
 -- =========================
 CREATE TABLE `board` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
-    `id` VARCHAR(64) NOT NULL COMMENT 'UK',
     `user_no` INT NOT NULL COMMENT 'FK',
-    `group_no` INT NOT NULL COMMENT 'FK',
-    `place_no` INT NULL COMMENT 'FK',
-    `rating` DECIMAL(2,1) NULL,
-    `title` VARCHAR(100) NOT NULL,
-    `content` VARCHAR(4000) NOT NULL,
+    `group_no` INT DEFAULT 1 COMMENT 'FK',
+    `place_no` INT DEFAULT NULL COMMENT 'FK',
+    `rating` DOUBLE DEFAULT 0.0 COMMENT '평점',
+    `title` VARCHAR(200) NOT NULL COMMENT '제목',
+    `content` TEXT COMMENT '내용',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`no`),
-    UNIQUE KEY uk_board_id (`id`)
 );
 
 -- =========================
@@ -111,15 +103,12 @@ CREATE TABLE `board` (
 -- =========================
 CREATE TABLE `review_comment` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
-    `id` VARCHAR(64) NOT NULL COMMENT 'UK',
-    `user_no` INT NOT NULL,
-    `board_no` INT NOT NULL,
-    `rating` DECIMAL(2,1) NULL,
-    `content` VARCHAR(300) NOT NULL,
+    `board_no` INT NOT NULL COMMENT 'FK: 게시글 번호',
+    `user_no` INT NOT NULL COMMENT 'FK: 작성자 번호',
+    `content` TEXT NOT NULL COMMENT '댓글 내용',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`no`),
-    UNIQUE KEY uk_review_comment_id (`id`)
 );
 
 -- =========================
@@ -127,10 +116,8 @@ CREATE TABLE `review_comment` (
 -- =========================
 CREATE TABLE `food_category` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
-    `id` VARCHAR(64) NOT NULL COMMENT 'UK',
     `foodname` VARCHAR(100) NOT NULL,
     PRIMARY KEY (`no`),
-    UNIQUE KEY uk_food_category_id (`id`)
 );
 
 -- =========================
@@ -138,11 +125,9 @@ CREATE TABLE `food_category` (
 -- =========================
 CREATE TABLE `place_food` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
-    `id` VARCHAR(64) NOT NULL COMMENT 'UK',
     `food_no` INT NOT NULL,
     `place_no` INT NOT NULL,
     PRIMARY KEY (`no`),
-    UNIQUE KEY uk_place_food_id (`id`)
 );
 
 -- =========================
@@ -150,12 +135,10 @@ CREATE TABLE `place_food` (
 -- =========================
 CREATE TABLE `menu` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
-    `id` VARCHAR(64) NOT NULL COMMENT 'UK',
     `place_no` INT NOT NULL,
     `menuname` VARCHAR(100) NOT NULL,
     `price` INT NOT NULL,
     PRIMARY KEY (`no`),
-    UNIQUE KEY uk_menu_id (`id`)
 );
 
 -- =========================
@@ -184,13 +167,11 @@ CREATE TABLE `board_image` (
 -- =========================
 CREATE TABLE `main_banner` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
-    `id` VARCHAR(64) NOT NULL COMMENT 'UK',
     `food_no` INT NOT NULL,
     `img_path` VARCHAR(300) NOT NULL,
     `seq` INT NOT NULL,
     `is_active` CHAR(1) NOT NULL,
     PRIMARY KEY (`no`),
-    UNIQUE KEY uk_main_banner_id (`id`)
 );
 
 -- =========================
