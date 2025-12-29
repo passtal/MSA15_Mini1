@@ -33,7 +33,7 @@ request.setAttribute("dp2", "list");
 								<div class="el swiper-slide">
 									<div class="resize">									
 										<div class="img imgfix re"><img src="https://placehold.co/800x800"></div>												
-									</div>
+									</div> 
 								</div>
 								</c:forEach>
 							</div>
