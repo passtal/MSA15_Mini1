@@ -1,8 +1,6 @@
 package board.servlet;
 
 import java.io.IOException;
-import java.util.UUID;
-
 import board.DAO.ReviewCommentDAO;
 import board.DTO.ReviewComment;
 import board.DTO.User;
@@ -15,40 +13,40 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/board/comment")
 public class ReviewCommentServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
-	private ReviewCommentDAO commentDAO = new ReviewCommentDAO();
+    private static final long serialVersionUID = 1L;
+    
+    private ReviewCommentDAO commentDAO = new ReviewCommentDAO();
 
-	@Override
-	protected void doGet(
-			HttpServletRequest request, 
-			HttpServletResponse response
-			) throws ServletException, IOException {
-	}
-
-	@Override
-	protected void doPost(
-			HttpServletRequest request, 
-			HttpServletResponse response
-			) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
+    @Override
+    protected void doPost(
+    		HttpServletRequest request, 
+    		HttpServletResponse response
+    		) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        
+        HttpSession session = request.getSession();
         User loginUser = (User) session.getAttribute("loginUser");
         
-        ReviewComment comment = new ReviewComment();
-        int board_no = 1;
-        
-        comment.setId(UUID.randomUUID().toString());
-		comment.setBoard_no(board_no);
-        comment.setContent(request.getParameter("content"));
-        comment.setUser_no(loginUser.getNo());
+        if (loginUser == null) {
+            response.sendRedirect(request.getContextPath() + "/page/login.jsp");
+            return;
+        }
         
         try {
-			commentDAO.insert(comment);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        response.sendRedirect(request.getContextPath() + "/board/view?no=" + board_no);
-	}
-	
+            int boardNo = Integer.parseInt(request.getParameter("board_no"));
+            String content = request.getParameter("content");
+
+            ReviewComment comment = new ReviewComment();
+            comment.setBoard_no(boardNo);
+            comment.setContent(content);
+            comment.setUser_no(loginUser.getNo());
+            
+            commentDAO.insert(comment);
+            
+            response.sendRedirect(request.getContextPath() + "/board/view?no=" + boardNo);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

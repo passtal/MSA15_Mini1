@@ -33,7 +33,7 @@ request.setAttribute("dp1", "mypage");
                     </div>
                 </li>
                 <li>
-                    <div class="mem_tit"><span class="tt">닉네임</span></div>
+                    <div class="mem_tit"><span class="tt">이름(닉네임)</span></div>
                     <div class="in">												
                         <div class="mem_txt"><strong class="tt">${loginUser.username}</strong></div>
                     </div>                   		

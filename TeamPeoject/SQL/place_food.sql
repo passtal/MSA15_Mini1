@@ -2,11 +2,9 @@ DROP TABLE IF EXISTS `place_food`;
 
 CREATE TABLE `place_food` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
-    `id` VARCHAR(64) NOT NULL COMMENT 'UK',
     `food_no` INT NOT NULL,
     `place_no` INT NOT NULL,
     PRIMARY KEY (`no`),
-    UNIQUE KEY uk_place_food_id (`id`)
 );
 
 ALTER TABLE `place_food`
