@@ -53,6 +53,7 @@ html.hidden{ overflow-y:hidden;}
 	--crGray2: #e6ebf1;
 	--crGray3: #f8f8f8;
 	--crRed: #e40f18;
+	--crStar: #ff8800;
 	--crWhitefil: brightness(0) invert(1);
 	--crBlackfil: brightness(0) invert(0);
 	--crfilRE: invert(1);
