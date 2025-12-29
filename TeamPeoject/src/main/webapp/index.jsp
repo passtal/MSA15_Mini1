@@ -22,15 +22,6 @@ request.setAttribute("dp0", "main");
 			</div>
 		</div>
 		</c:forEach>
-<!-- 		<div class="el swiper-slide"> -->
-<!-- 			<div class="img"><div class="img resize imgfix"><img src="https://placehold.co/400x800" class="re"></div></div> -->
-<!-- 		</div> -->
-<!-- 		<div class="el swiper-slide"> -->
-<!-- 			<div class="img"><div class="img resize imgfix"><img src="https://placehold.co/400x800" class="re"></div></div> -->
-<!-- 		</div> -->
-<!-- 		<div class="el swiper-slide"> -->
-<!-- 			<div class="img"><div class="img resize imgfix"><img src="https://placehold.co/400x800" class="re"></div></div> -->
-<!-- 		</div> -->
 	</div>
 	<div class="btn prev flex ac"><span class="mti material-symbols-outlined">arrow_back_ios</span></div>
 	<div class="paging"></div>
@@ -55,7 +46,7 @@ request.setAttribute("dp0", "main");
 				<!-- 리스트 최대 10개 까지 -->
 				<c:forEach var="i" begin="1" end="10">
 				<li class="wrap_in">
-					<a href="" class="in">
+					<a href="${ root }/page/shop/shop_view.jsp" class="in">
 						<div class="wrap_img">
 							<div class="img resize imgfix"><img src="https://placehold.co/300x500" class="re"></div>
 						</div>
@@ -99,7 +90,7 @@ request.setAttribute("dp0", "main");
 				<!-- 리스트 최대 6개 까지 -->
 				<c:forEach var="i" begin="1" end="6">
 				<li class="wrap_in">
-					<a href="" class="in flex wrap vt">
+					<a href="${ root }/page/shop/shop_view.jsp" class="in flex wrap vt">
 						<div class="wrap_img">
 							<div class="img resize imgfix"><img src="https://placehold.co/300x500" class="re"></div>
 						</div>
@@ -143,7 +134,7 @@ request.setAttribute("dp0", "main");
 				<!-- 리스트 최대 5개 까지 -->
 				<c:forEach var="i" begin="1" end="5">
 				<li class="wrap_in">
-					<a href="" class="in">
+					<a href="${ root }/page/shop/shop_view.jsp" class="in">
 						<div class="wrap_img">
 							<div class="img resize imgfix"><img src="https://placehold.co/300x500" class="re"></div>
 						</div>
@@ -183,12 +174,10 @@ var mainVisual = new Swiper('.main_visual', {
        el: ".main_visual .paging",
        type: "progressbar",
      },	
-//      autoplay: {
-//         delay: 2500,
-//         disableOnInteraction: false,
-//      },	
+     autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+     },	
 });	
-
-
 </script>	
 <jsp:include page="/layout/footer.jsp" />

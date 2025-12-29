@@ -295,5 +295,5 @@ button.input_st:disabled,
 .input_tt:first-child { padding-top: 0;}
 .input_tt:last-child { padding-bottom: 0;}
 
-
+.no_con { height: 15em; background: #f5f5f5; color: #555;}
 
