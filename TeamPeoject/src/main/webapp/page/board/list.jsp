@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/layout/jstl.jsp" %>
+<%@ include file="/layout/common.jsp" %>
 <jsp:include page="/layout/header.jsp" />
 <!DOCTYPE html>
 <html>
@@ -26,17 +27,21 @@
             <c:forEach var="board" items="${boardList}">
                 <div class="review-card">
                     <h3 class="review-title">
-                    	<a href="${pageContext.request.contextPath}/board/edit?no=${board.no}">
-        					${board.title}
-    					</a>
+                        <a href="${pageContext.request.contextPath}/board/view?no=${board.no}">
+                            ${board.title}
+                        </a>
                     </h3>
+                    
                     <c:if test="${not empty sessionScope.loginUser and sessionScope.loginUser.no == board.user_no}">
-    					<a href="${pageContext.request.contextPath}/board/edit?no=${board.no}">[수정]</a>
-					</c:if>
+                        <a href="${pageContext.request.contextPath}/board/edit?no=${board.no}">[수정]</a>
+                    </c:if>
+
                     <div class="review-info">
                         <span class="rating">평점: ${board.rating} / 5.0</span>
-                        <span class="author">작성자 번호: ${board.user_no}</span>
+                        
+                        <span class="author">작성자: ${board.username}</span>
                     </div>
+                    
                     <div class="review-content">
                         ${board.content}
                     </div>
@@ -46,8 +51,8 @@
     </div>
 </body>
 <footer>
-	<div class="form-actions">
-       	<button type="button" class="btn-back" onclick="history.back()">홈으로 이동</button>
+    <div class="form-actions">
+        <button type="button" class="btn-home" onclick="location.href='${pageContext.request.contextPath}/'">홈으로 이동</button>
     </div>
 </footer>
 </html>

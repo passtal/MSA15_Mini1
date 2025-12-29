@@ -2,6 +2,7 @@
 pageEncoding="UTF-8"%>
 <%@ include file="/layout/jstl.jsp" %>
 <%@ include file="/layout/common.jsp" %>
+<jsp:include page="/layout/header.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,3 +41,5 @@ pageEncoding="UTF-8"%>
     </div>
 </body>
 </html>
+
+<jsp:include page="/layout/footer.jsp" />
