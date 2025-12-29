@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/layout/jstl.jsp" %>
+<jsp:include page="/layout/header.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,12 +40,16 @@
                     <div class="review-content">
                         ${board.content}
                     </div>
-                    <div class="form-actions">
-                		<button type="button" class="btn-back" onclick="history.back()">뒤로가기</button>
-                	</div>
                 </div>
             </c:forEach>
         </div>
     </div>
 </body>
+<footer>
+	<div class="form-actions">
+       	<button type="button" class="btn-back" onclick="history.back()">홈으로 이동</button>
+    </div>
+</footer>
 </html>
+
+<jsp:include page="/layout/footer.jsp" />
