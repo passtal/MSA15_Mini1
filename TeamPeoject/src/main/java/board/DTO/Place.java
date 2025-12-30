@@ -26,5 +26,7 @@ public class Place {
 	private String content;
 	private String amenities;
 	private String region;
+	private double lat;
+    private double lng;
 	
 }

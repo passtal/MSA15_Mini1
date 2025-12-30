@@ -79,7 +79,9 @@ CREATE TABLE `place` (
     `content` VARCHAR(4000) NOT NULL,
     `amenities` VARCHAR(100) NOT NULL,
     `region` VARCHAR(50) NOT NULL,
-    PRIMARY KEY (`no`),
+    `lat` DOUBLE DEFAULT 0.0 COMMENT '위도 (Lat)',
+    `lng` DOUBLE DEFAULT 0.0 COMMENT '경도 (Lng)',
+    PRIMARY KEY (`no`)
 );
 
 -- =========================

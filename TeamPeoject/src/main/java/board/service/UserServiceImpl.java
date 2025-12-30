@@ -139,7 +139,6 @@ public class UserServiceImpl implements UserService {
 
 			
 			UserAuth ua = new UserAuth();
-			ua.setId(UUID.randomUUID().toString());
 			ua.setUserNo(userNo);
 			ua.setAuth(auth);
 			
