@@ -226,7 +226,20 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 .review_list_box .review_list .conPhoto .list { gap: 1em; grid-template-columns: repeat(5, minmax(0, 1fr));}
 .review_list_box .review_list .conPhoto .list > li .in { border-radius: 1.25em;}
 
+/* 지도 */
+.shop_map_wrap {}
+.shop_map_layout { gap: 2em 4em;}
+.shop_map_layout .map_wrap { flex:1;}
+.shop_map_layout .shop_upload { width: 28em;}
 
+.map-container { width: 100%; height: calc(100vh - 18em); min-height: 30em; border: 1px solid #ccc; border-radius: 1.25em; overflow: hidden;}
+
+.map_overlay_box { gap:.75em; width: 18em; background: #fff; padding: 1em; border: 1px solid #ccc; border-radius: 1em; box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: normal;}
+.map_overlay_box .tt { min-height: 0;}
+.map_overlay_box .tt.t1 { font-weight: 800;}
+.map_overlay_box .tt.t2 { font-size: .813em; color: #555;}
+.map_overlay_box .tt.t3 { font-size: .875em;}
+.map_overlay_box .tt.t4 { font-size: .875em; font-weight: 800;}
 
 /*******/
 .tab_st{ padding-bottom:2em}
@@ -272,7 +285,7 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 .form_st > li .agree > li .on .more:before{ content:"접기"}
 .form_st > li .agree > li .on .agree_box{ display:block}
 
-.form_st > li .profile { gap: 1em 2em; padding-bottom: 1.5em; border-bottom: 1px solid #bbb;}
+.form_st > li .profile { gap: 1em 2em; padding: 1.5em 0; border: dashed #bbb; border-width: 1px 0;}
 .form_st > li .profile .img { width: 8em; height: 8em; border: 1px solid #ccc; border-radius:50%; overflow: hidden;}
 
 

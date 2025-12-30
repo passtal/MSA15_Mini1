@@ -52,6 +52,9 @@ request.setAttribute("dp1", "mypage");
                 </li>
                 <li class="btn_wrap">
                     <button type="button" class="input_st s1 c1" onclick="location.href='${root}/user/update'">회원정보 수정</button>
+                    <c:if test="${role == 'ROLE_OWNER' or role == 'ROLE_ADMIN'}">
+                    <a href="${ root }/page/map" class="input_st s1 c1 re w1">가게 정보입력</a>
+                    </c:if>
                 </li>
             </ul>
         </div>
