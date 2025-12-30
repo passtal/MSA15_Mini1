@@ -29,8 +29,54 @@ request.setAttribute("dp2", "map");
 					<div id="map" class="map-container"></div>
 				</div>
 				<c:if test="${role == 'ROLE_OWNER' or role == 'ROLE_ADMIN'}">
-				<div class="">
-				
+				<div class="shop_upload member_wrap">
+					<ul class="form_st">
+						<li>								
+							<div class="mem_tit">
+								<span class="tt s1 fit">식당정보 입력</span>
+								<div class="input_tt">지도에서 위치를 클릭하면 좌표가 자동 입력됩니다.</div>
+							</div>								
+						</li>
+						<li>
+							<div class="mem_tit"><span class="tt">식당이름</span><span class="ess"></span></div>
+							<div class="in">
+								<input type="text" class="input_st fit" name="placename" required placeholder="ex)북경짜장">									
+							</div>
+						</li>
+						<li>
+							<div class="mem_tit"><span class="tt">주소</span><span class="ess"></span></div>
+							<div class="in">
+								<input type="text" class="input_st fit" name="address" required placeholder="ex)인천광역시 부평구...">									
+							</div>
+						</li>
+						<li>
+							<div class="mem_tit"><span class="tt">전화번호</span><span class="ess"></span></div>
+							<div class="in">								
+								<input type="text" class="input_st fit" name="phone" required placeholder="ex)032-515-9103">									
+							</div>
+						</li>
+						<li>
+							<div class="mem_tit"><span class="tt">식당소개</span><span class="ess"></span></div>
+							<div class="in">								
+								<textarea name="content" class="input_st fit" placeholder="간단한 설명"></textarea>									
+							</div>
+						</li>
+						<li>
+							<div class="mem_tit"><span class="tt">위도(Lat)</span><span class="ess"></span></div>
+							<div class="in">								
+								<input type="text" class="input_st fit" name="lat" id="lat" disabled placeholder="지도 클릭 시 입력">								
+							</div>
+						</li>
+						<li>
+							<div class="mem_tit"><span class="tt">경도(Lng)</span><span class="ess"></span></div>
+							<div class="in">								
+								<input type="text" class="input_st fit" name="lng" id="lng" disabled placeholder="지도 클릭 시 입력">								
+							</div>
+						</li>
+						<li class="btn_wrap">							
+							<button type="submit" class="input_st s1 c1">저장하기</button>
+						</li>
+					</ul>
 				</div>
 				</c:if>
 			</div>			
@@ -38,49 +84,49 @@ request.setAttribute("dp2", "map");
 	</div>
 
 <!-- 카카오 api 제공 기본 css 스타일 코드 -->
-<div class="container">
-    <h2>맛집 지도</h2>
-    <c:if test="${role == 'ROLE_OWNER' or role == 'ROLE_ADMIN'}">
-        <div class="form-section" style="padding: 20px; background: #f9f9f9; border: 1px solid #eee;">
-            <h3>새 맛집 등록</h3>
-            <p>지도에서 위치를 클릭하면 좌표가 자동 입력됩니다.</p>
+<!-- <div class="container"> -->
+<!--     <h2>맛집 지도</h2> -->
+<%--     <c:if test="${role == 'ROLE_OWNER' or role == 'ROLE_ADMIN'}"> --%>
+<!--         <div class="form-section" style="padding: 20px; background: #f9f9f9; border: 1px solid #eee;"> -->
+<!--             <h3>새 맛집 등록</h3> -->
+<!--             <p>지도에서 위치를 클릭하면 좌표가 자동 입력됩니다.</p> -->
             
-            <form action="${pageContext.request.contextPath}/page/map" method="post">
-                <div class="input-group">
-                    <label>식당이름</label>
-                    <input type="text" name="placename" required placeholder="ex)부평역">
-                </div>
-                <div class="input-group">
-                    <label>주소</label>
-                    <input type="text" name="address" required placeholder="ex)인천광역시 부평구...">
-                </div>
-                <div class="input-group">
-                    <label>전화번호</label>
-                    <input type="text" name="phone" required placeholder="ex)032-515-9103">
-                </div>
-                <div class="input-group">
-                    <label>설명</label>
-                    <textarea name="content" rows="3" placeholder="간단한 설명"></textarea>
-                </div>
+<%--             <form action="${pageContext.request.contextPath}/page/map" method="post"> --%>
+<!--                 <div class="input-group"> -->
+<!--                     <label>식당이름</label> -->
+<!--                     <input type="text" name="placename" required placeholder="ex)부평역"> -->
+<!--                 </div> -->
+<!--                 <div class="input-group"> -->
+<!--                     <label>주소</label> -->
+<!--                     <input type="text" name="address" required placeholder="ex)인천광역시 부평구..."> -->
+<!--                 </div> -->
+<!--                 <div class="input-group"> -->
+<!--                     <label>전화번호</label> -->
+<!--                     <input type="text" name="phone" required placeholder="ex)032-515-9103"> -->
+<!--                 </div> -->
+<!--                 <div class="input-group"> -->
+<!--                     <label>설명</label> -->
+<!--                     <textarea name="content" rows="3" placeholder="간단한 설명"></textarea> -->
+<!--                 </div> -->
                 
-                <div class="input-group">
-                    <label>위도(Lat)</label>
-                    <input type="text" name="lat" id="lat" readonly placeholder="지도 클릭 시 입력" style="background:#eee;">
-                </div>
-                <div class="input-group">
-                    <label>경도(Lng)</label>
-                    <input type="text" name="lng" id="lng" readonly placeholder="지도 클릭 시 입력" style="background:#eee;">
-                </div>
+<!--                 <div class="input-group"> -->
+<!--                     <label>위도(Lat)</label> -->
+<!--                     <input type="text" name="lat" id="lat" readonly placeholder="지도 클릭 시 입력" style="background:#eee;"> -->
+<!--                 </div> -->
+<!--                 <div class="input-group"> -->
+<!--                     <label>경도(Lng)</label> -->
+<!--                     <input type="text" name="lng" id="lng" readonly placeholder="지도 클릭 시 입력" style="background:#eee;"> -->
+<!--                 </div> -->
 
-                <button type="submit" class="btn-save" style="margin-top:10px;">저장하기</button>
-            </form>
-        </div>
-    </c:if>
+<!--                 <button type="submit" class="btn-save" style="margin-top:10px;">저장하기</button> -->
+<!--             </form> -->
+<!--         </div> -->
+<%--     </c:if> --%>
 
-    <c:if test="${role == 'ROLE_USER' or empty loginUser}">
-        <p style="color: gray; text-align: center;">* 파트너(사장님) 계정으로 로그인하면 맛집을 등록할 수 있습니다.</p>
-    </c:if>
-</div>
+<%--     <c:if test="${role == 'ROLE_USER' or empty loginUser}"> --%>
+<!--         <p style="color: gray; text-align: center;">* 파트너(사장님) 계정으로 로그인하면 맛집을 등록할 수 있습니다.</p> -->
+<%--     </c:if> --%>
+<!-- </div> -->
 
 </main>
 <!-- 본문 end -->	 

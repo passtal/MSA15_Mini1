@@ -228,7 +228,12 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 
 /* 지도 */
 .shop_map_wrap {}
+.shop_map_layout { gap: 2em 4em;}
+.shop_map_layout .map_wrap { flex:1;}
+.shop_map_layout .shop_upload { width: 28em;}
+
 .map-container { width: 100%; height: calc(100vh - 22em); min-height: 30em; border: 1px solid #ccc; border-radius: 1.25em; overflow: hidden;}
+
 
 
 /*******/
