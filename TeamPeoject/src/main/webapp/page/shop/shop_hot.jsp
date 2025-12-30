@@ -31,7 +31,7 @@ request.setAttribute("dp2", "hot");
 				<!-- 리스트 최대 20개 까지 -->
 				<c:forEach var="i" begin="1" end="20">
 				<li class="wrap_in">
-					<a href="${ root }/page/shop/shop_view.jsp" class="in">
+					<a href="${root}/place/view?no=${place.no}" class="in">
 						<div class="wrap_img">
 							<div class="img resize imgfix"><img src="https://placehold.co/300x500" class="re"></div>
 						</div>

@@ -43,6 +43,12 @@ public class PlaceDAO extends BaseDAOImpl<Place> {
                 Place p = new Place();
                 p.setNo(rs.getInt("no"));
                 p.setPlacename(rs.getString("placename"));
+                p.setAddress(rs.getString("address"));
+                p.setPhone(rs.getString("phone"));
+                p.setContent(rs.getString("content"));
+                p.setRegion(rs.getString("region"));
+                p.setThumbnail_img(rs.getString("thumbnail_img"));
+                p.setAmenities(rs.getString("amenities"));
                 p.setLat(rs.getDouble("lat"));
                 p.setLng(rs.getDouble("lng"));
                 list.add(p);

@@ -28,7 +28,7 @@ public class User {
 	@Column(exist = false)
 	private String passwordConfirm;
 	private String username;
-	private int age;
+	private Integer age;
 	private String sex;
 	private String profileImg;
 	private Date createdAt;

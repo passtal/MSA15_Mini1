@@ -40,15 +40,20 @@ public class BoardWriteServlet extends HttpServlet {
             String title = request.getParameter("title");
             String content = request.getParameter("content");
             String ratingStr = request.getParameter("rating");
+            String placeNoStr = request.getParameter("place_no");
+            
             
             BoardDTO board = new BoardDTO();
             board.setTitle(title);
             board.setContent(content);
-            
             board.setUser_no(loginUser.getNo()); 
             
+            if (placeNoStr != null && !placeNoStr.isEmpty()) {
+            	board.setPlace_no(Integer.parseInt(placeNoStr));
+            }
+            
             if(ratingStr != null && !ratingStr.isEmpty()) {
-                board.setRating(Double.parseDouble(ratingStr));
+                board.setRating((int) Double.parseDouble(ratingStr));
             } else {
                 board.setRating(0.0);
             }
@@ -57,7 +62,14 @@ public class BoardWriteServlet extends HttpServlet {
             
             if(result > 0) {
                 System.out.println("글쓰기 성공!");
-                response.sendRedirect(request.getContextPath() + "/board/list");
+                response.setContentType("text/html; charset=UTF-8");
+                response.getWriter().println(
+                    "<script>" +
+            		"alert('리뷰가 등록되었습니다');" +
+                    "parent.location.href='" + request.getContextPath() + "/place/view?no=" + placeNoStr + "';" +
+                    "</script>"
+                );
+
             } else {
                 System.out.println("글쓰기 실패 ㅠㅠ");
                 response.sendRedirect(request.getContextPath() + "/board/write?error=fail");

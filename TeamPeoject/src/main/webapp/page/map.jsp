@@ -157,7 +157,7 @@ request.setAttribute("dp2", "map");
                               '  <div class="tt t2">' + place.desc + '</div>' + 
                               '  <div class="tt t3">' + place.addr + '</div>' + 
                               '  <div class="tt t4">' + place.tel + '</div>' + 
-                              '  <div><a href="${pageContext.request.contextPath}shop/shop_view.jsp?place_no=' + place.no + '" class="input_st s3 c1">가게입장</a></div>';
+                              '  <div><a href="${pageContext.request.contextPath}/place/view?no=' + place.no + '" class="input_st s3 c1">가게입장</a></div>';
 
                 if (isAdmin == "true") {
                     content += ' <form action="${pageContext.request.contextPath}/place/delete" method="post" style="display:inline;">' +

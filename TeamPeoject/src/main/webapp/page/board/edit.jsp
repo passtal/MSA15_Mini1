@@ -15,6 +15,7 @@ request.setAttribute("dp0", "pop");
 			<input type="hidden" name="action" value="update">
 			<input type="hidden" name="user_no" value="${board.user_no}">
 			<input type="hidden" name="no" value="${board.no}">
+			<input type="hidden" name="place_no" value="${board.place_no}">
 			<div class="member_wrap">
 				<ul class="form_st">
 					<li>
