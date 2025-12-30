@@ -5,6 +5,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.List;
 
+import board.DAO.UserDAO;
 import board.DTO.PersistenceLogins;
 import board.DTO.User;
 import board.exception.AppException;
@@ -26,6 +27,7 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private UserService userService = new UserServiceImpl();
+	private UserDAO userDAO = new UserDAO();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -109,6 +111,8 @@ public class LoginServlet extends HttpServlet {
 			
 			List<String> authList = userService.loadAuthListOrThrow(user.getNo());
 			session.setAttribute("authList", authList);
+			String role = userDAO.getAuth(user.getNo());
+            session.setAttribute("role", role);
 		
 			// 자동 로그인 ---------------------------------------------------
 			String rememberMe = request.getParameter("rememberMe");
