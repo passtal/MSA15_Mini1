@@ -232,9 +232,14 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 .shop_map_layout .map_wrap { flex:1;}
 .shop_map_layout .shop_upload { width: 28em;}
 
-.map-container { width: 100%; height: calc(100vh - 22em); min-height: 30em; border: 1px solid #ccc; border-radius: 1.25em; overflow: hidden;}
+.map-container { width: 100%; height: calc(100vh - 18em); min-height: 30em; border: 1px solid #ccc; border-radius: 1.25em; overflow: hidden;}
 
-
+.map_overlay_box { gap:.75em; width: 18em; background: #fff; padding: 1em; border: 1px solid #ccc; border-radius: 1em; box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: normal;}
+.map_overlay_box .tt { min-height: 0;}
+.map_overlay_box .tt.t1 { font-weight: 800;}
+.map_overlay_box .tt.t2 { font-size: .813em; color: #555;}
+.map_overlay_box .tt.t3 { font-size: .875em;}
+.map_overlay_box .tt.t4 { font-size: .875em; font-weight: 800;}
 
 /*******/
 .tab_st{ padding-bottom:2em}

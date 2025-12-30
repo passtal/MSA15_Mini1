@@ -8,15 +8,23 @@ request.setAttribute("dp0", "main");
 <jsp:include page="/layout/header.jsp" />
 <section class="main_visual">	
 	<div class="slides swiper-wrapper">
-		<c:forEach var="i" begin="1" end="10">
+		<c:set var="imgs" value="slide1.jpg,slide2.jpg,slide3.jpg,slide4.jpg" />
+		<c:set var="cates" value="한식,중식,일식,양식" />
+		<c:set var="titles" value="한국인의 소울푸드,중식 한 접시로 기분전환,오늘은 깔끔하게 일식,특별한 파티엔 이거지" />
+		<c:set var="descs" value="
+		집밥처럼 편안하고, 언제 먹어도 마음까지 든든한 한 끼,
+		불향 가득한 맛으로 입맛도 기분도 확 살아나는 선택,
+		담백하고 정갈한 맛으로 부담 없이 즐기는 한 끼,
+		분위기까지 채워주는 맛으로 소중한 날을 더 특별하게" />
+		<c:forEach var="i" begin="0" end="3">
 		<div class="el swiper-slide">
 			<div class="resize">
 				<div class="re">
-					<div class="img imgfix"><img src="https://placehold.co/400x800"></div>
+					<div class="img imgfix"><img src="static/img/${fn:split(imgs, ',')[i]}"></div>
 					<div class="visual_con flex col">
-						<p class="cate"><span class="tt t1">한식</span></p>
-						<p><span class="tt t2">해당 카테고리에 대한 타이틀</span></p>
-						<p><span class="tt t3">카테고리에 대한 설명글이 들어갑니다.카테고리에 대한 설명글이 들어갑니다.카테고리에 대한 설명글이 들어갑니다.</span></p>
+						<p class="cate"><span class="tt t1">${fn:split(cates, ',')[i]}</span></p>
+						<p><span class="tt t2">${fn:split(titles, ',')[i]}</span></p>
+						<p><span class="tt t3">${fn:split(descs, ',')[i]}</span></p>
 					</div>
 				</div>				
 			</div>
