@@ -17,7 +17,6 @@ public class Place {
 
 	@Pk
 	private int no;
-	private String id;
 	private int user_no;
 	private String placename;
 	private String address;
@@ -26,5 +25,7 @@ public class Place {
 	private String content;
 	private String amenities;
 	private String region;
+	private double lat;
+    private double lng;
 	
 }

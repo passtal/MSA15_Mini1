@@ -1,6 +1,7 @@
 -- DB 생성
-CREATE DATABASE IF NOT EXISTS JSJ;
-USE JSJ;
+CREATE DATABASE IF NOT EXISTS ALOHA;
+USE ALOHA;
+
 
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -51,7 +52,7 @@ CREATE TABLE `user_auth` (
     `auth` VARCHAR(50) NOT NULL COMMENT 'ROLE_USER, ROLE_ADMIN, ROLE_OWNER',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`no`),
+    PRIMARY KEY (`no`)
 );
 
 -- =========================
@@ -63,7 +64,7 @@ CREATE TABLE `board_group` (
     `seq` INT NOT NULL COMMENT '순서',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`no`),
+    PRIMARY KEY (`no`)
 );
 
 -- =========================
@@ -79,7 +80,9 @@ CREATE TABLE `place` (
     `content` VARCHAR(4000) NOT NULL,
     `amenities` VARCHAR(100) NOT NULL,
     `region` VARCHAR(50) NOT NULL,
-    PRIMARY KEY (`no`),
+    `lat` DOUBLE DEFAULT 0.0 COMMENT '위도 (Lat)',
+    `lng` DOUBLE DEFAULT 0.0 COMMENT '경도 (Lng)',
+    PRIMARY KEY (`no`)
 );
 
 -- =========================
@@ -95,7 +98,7 @@ CREATE TABLE `board` (
     `content` TEXT COMMENT '내용',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`no`),
+    PRIMARY KEY (`no`)
 );
 
 -- =========================
@@ -108,7 +111,7 @@ CREATE TABLE `review_comment` (
     `content` TEXT NOT NULL COMMENT '댓글 내용',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`no`),
+    PRIMARY KEY (`no`)
 );
 
 -- =========================
@@ -117,7 +120,7 @@ CREATE TABLE `review_comment` (
 CREATE TABLE `food_category` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
     `foodname` VARCHAR(100) NOT NULL,
-    PRIMARY KEY (`no`),
+    PRIMARY KEY (`no`)
 );
 
 -- =========================
@@ -127,7 +130,7 @@ CREATE TABLE `place_food` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
     `food_no` INT NOT NULL,
     `place_no` INT NOT NULL,
-    PRIMARY KEY (`no`),
+    PRIMARY KEY (`no`)
 );
 
 -- =========================
@@ -138,7 +141,7 @@ CREATE TABLE `menu` (
     `place_no` INT NOT NULL,
     `menuname` VARCHAR(100) NOT NULL,
     `price` INT NOT NULL,
-    PRIMARY KEY (`no`),
+    PRIMARY KEY (`no`)
 );
 
 -- =========================
@@ -171,7 +174,7 @@ CREATE TABLE `main_banner` (
     `img_path` VARCHAR(300) NOT NULL,
     `seq` INT NOT NULL,
     `is_active` CHAR(1) NOT NULL,
-    PRIMARY KEY (`no`),
+    PRIMARY KEY (`no`)
 );
 
 -- =========================

@@ -226,6 +226,9 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 .review_list_box .review_list .conPhoto .list { gap: 1em; grid-template-columns: repeat(5, minmax(0, 1fr));}
 .review_list_box .review_list .conPhoto .list > li .in { border-radius: 1.25em;}
 
+/* 지도 */
+.shop_map_wrap {}
+.map-container { width: 100%; height: calc(100vh - 22em); min-height: 30em; border: 1px solid #ccc; border-radius: 1.25em; overflow: hidden;}
 
 
 /*******/
@@ -272,7 +275,7 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 .form_st > li .agree > li .on .more:before{ content:"접기"}
 .form_st > li .agree > li .on .agree_box{ display:block}
 
-.form_st > li .profile { gap: 1em 2em; padding-bottom: 1.5em; border-bottom: 1px solid #bbb;}
+.form_st > li .profile { gap: 1em 2em; padding: 1.5em 0; border: dashed #bbb; border-width: 1px 0;}
 .form_st > li .profile .img { width: 8em; height: 8em; border: 1px solid #ccc; border-radius:50%; overflow: hidden;}
 
 
