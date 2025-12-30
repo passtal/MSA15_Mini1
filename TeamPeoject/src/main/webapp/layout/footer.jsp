@@ -5,7 +5,7 @@
 <!-- 컨텐츠 end -->
 
 <footer id="footer">
-	<a href="javascript:goTop();" class="goTop flex ac"><span class="mti material-icons-outlined">keyboard_arrow_up</span></i></a>	
+	<a href="javascript:goTop();" class="goTop flex ac"><span class="mti material-symbols-outlined">keyboard_arrow_up</span></i></a>	
 	<div class="box1 inner flex wrap">
 		<div class="logo"><a href="${ root }/" class="in"><img src="https://placehold.co/160x60" alt="logo"></a></div>
 		<div class="info_wrap flex col">

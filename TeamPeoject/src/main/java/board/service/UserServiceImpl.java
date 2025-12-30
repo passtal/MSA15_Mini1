@@ -5,21 +5,27 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import board.DAO.PlaceDAO;
+import board.DAO.PlaceFoodDAO;
 import board.DAO.UserAuthDAO;
 import board.DAO.UserDAO;
+import board.DTO.Place;
+import board.DTO.PlaceFood;
 import board.DTO.User;
 import board.DTO.UserAuth;
 import board.exception.AppException;
 import board.exception.ErrorCode;
+import board.util.AddressUtils;
 
 public class UserServiceImpl implements UserService {
 	
 	private UserDAO userDAO = new UserDAO();
 	private UserAuthDAO userAuthDAO = new UserAuthDAO();
+	private PlaceDAO placeDAO = new PlaceDAO();
+	private PlaceFoodDAO placeFoodDAO = new PlaceFoodDAO();
 
 	@Override
 	public int signup(User user) {
@@ -139,7 +145,6 @@ public class UserServiceImpl implements UserService {
 
 			
 			UserAuth ua = new UserAuth();
-			ua.setId(UUID.randomUUID().toString());
 			ua.setUserNo(userNo);
 			ua.setAuth(auth);
 			
@@ -164,6 +169,74 @@ public class UserServiceImpl implements UserService {
 		return user;
 		
 	}
+	
+	@Override
+	public User signupOwnerWithAuth(User user, Place place, int foodNo) {
+	    if (user == null || place == null) {
+	    	throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+	    }
+
+	    try {
+	    	
+	        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+	        
+	        if (userDAO.insert(user) <= 0) {
+	        	throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+	        }
+
+	        Map<String, Object> map = new HashMap<>();
+	        map.put("user_id", user.getUserId());
+	        User signup = (User) userDAO.selectBy(map);
+	        
+	        if (signup == null || signup.getNo() <= 0) {
+	        	throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+	        }
+	        
+	        int userNo = signup.getNo();
+
+	        UserAuth userAuth = new UserAuth();
+	        userAuth.setUserNo(userNo);
+	        userAuth.setAuth("ROLE_OWNER");
+	        
+	        if (userAuthDAO.insert(userAuth) <= 0) {
+	        	throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+	        }
+
+	        place.setUser_no(userNo);
+	        place.setRegion(AddressUtils.extractRegion(place.getAddress()));
+	        
+	        if (placeDAO.insert(place) <= 0) {
+	        	throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+	        }
+
+	        Map<String, Object> p = new HashMap<>();
+	        p.put("user_no", userNo);
+	        p.put("placename", place.getPlacename());
+	        Place insertedPlace = (Place) placeDAO.selectBy(p);
+	        
+	        if (insertedPlace == null || insertedPlace.getNo() <= 0) {
+	        	return null;
+	        }
+	        
+	        int placeNo = insertedPlace.getNo();
+
+	        PlaceFood placeFood = new PlaceFood();
+	        placeFood.setPlace_no(placeNo);
+	        placeFood.setFood_no(foodNo);
+	        
+	        if (placeFoodDAO.insert(placeFood) <= 0) {
+	        	throw new AppException(ErrorCode.COMMON_BAD_REQUEST);
+	        }
+
+	        return signup;
+
+	    } catch (AppException e) {
+	    	throw e;
+	    } catch (Exception e) {
+	    	throw new AppException(ErrorCode.COMMON_INTERNAL_ERROR, e);
+	    }
+	}
+
 
 	@Override
 	public User selectByNo(int userNo) {

@@ -8,16 +8,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table("user_auth")
+@Table("food_category")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class UserAuth {
+public class FoodCategory {
 
 	@Pk
 	private int no;
-	private int userNo;
-	private String auth;
+	private String foodname;
 	
 }
