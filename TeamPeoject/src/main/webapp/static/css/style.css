@@ -228,8 +228,18 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 
 /* 지도 */
 .shop_map_wrap {}
-.map-container { width: 100%; height: calc(100vh - 22em); min-height: 30em; border: 1px solid #ccc; border-radius: 1.25em; overflow: hidden;}
+.shop_map_layout { gap: 2em 4em;}
+.shop_map_layout .map_wrap { flex:1;}
+.shop_map_layout .shop_upload { width: 28em;}
 
+.map-container { width: 100%; height: calc(100vh - 18em); min-height: 30em; border: 1px solid #ccc; border-radius: 1.25em; overflow: hidden;}
+
+.map_overlay_box { gap:.75em; width: 18em; background: #fff; padding: 1em; border: 1px solid #ccc; border-radius: 1em; box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: normal;}
+.map_overlay_box .tt { min-height: 0;}
+.map_overlay_box .tt.t1 { font-weight: 800;}
+.map_overlay_box .tt.t2 { font-size: .813em; color: #555;}
+.map_overlay_box .tt.t3 { font-size: .875em;}
+.map_overlay_box .tt.t4 { font-size: .875em; font-weight: 800;}
 
 /*******/
 .tab_st{ padding-bottom:2em}
@@ -253,6 +263,7 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 .member_wrap .mem_tit > .tt.s1{ font-size: 1.250em; font-weight: 700;}
 .member_wrap .mem_tit > .tt.s2{ font-size: 2.000em; font-weight: 800;}
 .member_wrap .mem_txt > .tt{ font-size: 1em;}
+.popWrap.popForm .mem_tit { margin-bottom: 6px; }
 
 .member_wrap .btn_wrap{ display: flex; flex-wrap: wrap; gap:.5em; margin-top:2.5em !important;}
 .member_wrap .btn_wrap .input_st { flex:1;}
@@ -274,6 +285,7 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 .form_st > li .agree > li .on .more{ background: var(--siteC); border-color: var(--siteC); color: #fff;}
 .form_st > li .agree > li .on .more:before{ content:"접기"}
 .form_st > li .agree > li .on .agree_box{ display:block}
+.popWrap.popForm .form_st > li { margin-bottom: 12px; }
 
 .form_st > li .profile { gap: 1em 2em; padding: 1.5em 0; border: dashed #bbb; border-width: 1px 0;}
 .form_st > li .profile .img { width: 8em; height: 8em; border: 1px solid #ccc; border-radius:50%; overflow: hidden;}

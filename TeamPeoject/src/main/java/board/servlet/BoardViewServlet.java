@@ -66,6 +66,6 @@ public class BoardViewServlet extends HttpServlet {
         request.setAttribute("board", board);
         request.setAttribute("commentList", commentList);
         
-        request.getRequestDispatcher("/page/shop/shop_view.jsp").forward(request, response);
+        request.getRequestDispatcher("/place/view").forward(request, response);
     }
 }

@@ -93,7 +93,7 @@ CREATE TABLE `board` (
     `group_no` INT DEFAULT 1 COMMENT 'FK',
     `place_no` INT DEFAULT NULL COMMENT 'FK',
     `rating` DOUBLE DEFAULT 0.0 COMMENT '평점',
-    `title` VARCHAR(200) NOT NULL COMMENT '제목',
+    `title` VARCHAR(200) NULL COMMENT '제목',
     `content` TEXT COMMENT '내용',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -139,6 +139,7 @@ CREATE TABLE `menu` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
     `place_no` INT NOT NULL,
     `menuname` VARCHAR(100) NOT NULL,
+    `content` VARCHAR(500) NULL,
     `price` INT NOT NULL,
     PRIMARY KEY (`no`)
 );

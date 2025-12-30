@@ -60,9 +60,15 @@ public class BoardEditServlet extends HttpServlet {
         
         try {
             int no = Integer.parseInt(request.getParameter("no"));
+            String placeNoStr = request.getParameter("place_no");
             String title = request.getParameter("title");
             String content = request.getParameter("content");
             double rating = Double.parseDouble(request.getParameter("rating"));
+            
+            if (placeNoStr == null || placeNoStr.isBlank()) {
+            	BoardDTO origin = boardDAO.select(no);
+            	placeNoStr = String.valueOf(origin.getPlace_no());
+            }
             
             board.setNo(no);
             board.setUser_no(loginUser.getNo());
@@ -72,8 +78,15 @@ public class BoardEditServlet extends HttpServlet {
             
             int result = boardDAO.update(board);
             
+            
             if(result > 0) {
-                response.sendRedirect(request.getContextPath() + "/board/list");
+                response.setContentType("text/html; charset=UTF-8");
+                response.getWriter().println(
+                    "<script>" +
+                    "alert('리뷰가 수정되었습니다');" +
+                    "parent.location.href='" + request.getContextPath() + "/place/view?no=" + placeNoStr + "';" +
+                    "</script>"
+                );
             } else {
                 response.sendRedirect(request.getContextPath() + "/board/edit?no=" + no + "&error=fail");
             }

@@ -18,7 +18,9 @@ public class Menu {
 
 	@Pk
 	private int no;
+	private int place_no;
 	private String menuname;
-	private String price;
+	private String content;
+	private int price;
 	
 }

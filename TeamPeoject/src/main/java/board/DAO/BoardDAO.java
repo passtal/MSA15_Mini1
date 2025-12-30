@@ -2,6 +2,7 @@ package board.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.alohaclass.jdbc.dao.BaseDAOImpl;
 import board.DTO.BoardDTO;
@@ -26,10 +27,50 @@ public class BoardDAO extends BaseDAOImpl<BoardDTO> {
                 board.setRating(rs.getDouble("rating"));
                 board.setUser_no(rs.getInt("user_no"));
                 board.setGroup_no(rs.getInt("group_no"));
+                board.setContent(rs.getString("content"));
+                board.setPlace_no(rs.getInt("place_no"));
                 board.setCreated_at(rs.getTimestamp("created_at"));
                 board.setUpdated_at(rs.getTimestamp("updated_at"));
                 
                 board.setUsername(rs.getString("username")); 
+                
+                list.add(board);
+            }
+        } catch (Exception e) {
+            System.err.println("BoardDAO : listWithUser 에러");
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
+    public List<BoardDTO> listWithUser(Map<String, Object> fields) {
+        String sql = "SELECT b.*, u.username, u.profile_img "
+                   + "FROM board b "
+                   + "JOIN users u ON b.user_no = u.no "
+                   + "WHERE b.place_no = ? "
+                   + "ORDER BY b.no DESC";
+        
+        List<BoardDTO> list = new ArrayList<>();
+        
+        try {
+            psmt = con.prepareStatement(sql);
+            psmt.setInt(1, (int) fields.get("place_no"));
+            rs = psmt.executeQuery();
+            
+            while(rs.next()) {
+                BoardDTO board = new BoardDTO();
+                board.setNo(rs.getInt("no"));
+                board.setTitle(rs.getString("title"));
+                board.setRating(rs.getDouble("rating"));
+                board.setUser_no(rs.getInt("user_no"));
+                board.setGroup_no(rs.getInt("group_no"));
+                board.setContent(rs.getString("content"));
+                board.setPlace_no(rs.getInt("place_no"));
+                board.setCreated_at(rs.getTimestamp("created_at"));
+                board.setUpdated_at(rs.getTimestamp("updated_at"));
+                
+                board.setUsername(rs.getString("username")); 
+                board.setProfile_img(rs.getString("profile_img")); 
                 
                 list.add(board);
             }
@@ -88,6 +129,7 @@ public class BoardDAO extends BaseDAOImpl<BoardDTO> {
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));
                 board.setUser_no(rs.getInt("user_no"));
+                board.setPlace_no(rs.getInt("place_no"));
             }
         } catch (Exception e) {
             System.err.println("BoardDAO : selectForEdit 에러");
