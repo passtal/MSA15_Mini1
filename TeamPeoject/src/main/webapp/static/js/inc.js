@@ -95,3 +95,43 @@ function documentClick(obj){
 	});
 }
 
+//layer popup
+function layerOpen(url){
+	var frame ='<iframe class="layer_frame" src="'+url+'" frameborder="0" scrolling="no" allowtransparency="true"></iframe>'
+	var wrap = '<div class="layer_wrap">'+frame+'</div>'
+	$("body").append(wrap);
+	$("html").addClass("hidden").addClass("popOpen");
+	$(".layer_frame").on("load", function(){
+		$(".layer_wrap").addClass("on");
+	});
+};
+
+$(document).ready(function(){
+	layerLoad();
+});
+function layerLoad(){
+	var obj = $('.pop .popWrap');
+	if(obj.hasClass("closeNo")){
+		var bg = "<div class='layer_bg'></div>";
+	}else{
+		var bg = "<div class='layer_bg' onclick='parent.layerClose()'></div>";
+	}
+	obj.append(bg);
+};
+
+function layerClose(){
+	$(".layer_wrap").remove()
+	$("html").removeClass("hidden").removeClass("popOpen");
+};
+
+function layerOpenImg(obj){
+	var src = $(obj).find("img").attr("src");
+	var bg = '<div class="layer_bg" onclick="layerClose()"></div>'
+	var frame ='<div class="layer_img">'+bg+'<div class="img"><img src="'+src+'" alt="" /><a href="javascript:layerClose();" class="popClose"><i class="mti material-symbols-outlined">close</i></a></div></div>'
+	var wrap = '<div class="layer_wrap">'+frame+'</div>'
+
+	$("body").append(wrap);
+	$("html").addClass("hidden").addClass("popOpen");
+	$(".layer_wrap").addClass("on");
+};
+

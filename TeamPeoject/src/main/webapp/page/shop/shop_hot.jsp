@@ -40,7 +40,7 @@ request.setAttribute("dp2", "hot");
 							<p class="shop_tt t2 rowCut r1">식당에 대한 간략한 설명이 들어갑니다. 식당에 대한 간략한 설명이 들어갑니다.</p>
 							<div class="info_wrap flex space vc">
 								<div class="star flex vc">
-									<span class="mti fill material-symbols-outlined">star</span>
+									<span class="mti mtifill material-symbols-outlined">star</span>
 									<span class="tt">5.0</span>
 								</div>
 								<div class="cate">

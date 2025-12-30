@@ -104,10 +104,95 @@ request.setAttribute("dp2", "list");
 				<!-- 가게소개 end -->
 				<div class="section view_review">
 					<div class="inner">
-						<div class="page_tit flex vc"><span class="mti material-symbols-outlined">hotel_class</span><strong class="page_tt s4 fx1">방문자 리뷰</strong></div>
-						<div class="review_rating_box flex wrap">
+						<div class="page_tit flex vc">
+							<span class="mti material-symbols-outlined">hotel_class</span>
+							<strong class="page_tt s4 fx1">방문자 리뷰</strong>
+							<a href="javascript:layerOpen('${pageContext.request.contextPath}/board/write')" class="btn input_st s2 c1 re mgL"><i class="tt">리뷰 올리기</i></a>
+						</div>
 						
-						</div>						
+						<!-- 리뷰 별점 임시값으로 구현 -->
+						<c:set var="star5" value="32" />
+						<c:set var="star4" value="18" />
+						<c:set var="star3" value="7" />
+						<c:set var="star2" value="2" />
+						<c:set var="star1" value="4" />
+						
+						<!-- 총 리뷰 수 -->
+						<c:set var="reviewTotal" value="${star1 + star2 + star3 + star4 + star5}" />
+						<!-- 평균 계산 -->
+						<c:set var="reviewAvgRaw" value="${(star5*5 + star4*4 + star3*3 + star2*2 + star1*1) / reviewTotal}" />
+						<!-- 평균 퍼센트 (별점 * 20) -->
+						<c:set var="reviewAvgPer" value="${reviewAvgRaw * 20}" />
+						
+						<!-- 별점별 퍼센트 계산 -->
+						<c:set var="star1Per" value="${star1 / reviewTotal * 100}" />
+						<c:set var="star2Per" value="${star2 / reviewTotal * 100}" />
+						<c:set var="star3Per" value="${star3 / reviewTotal * 100}" />
+						<c:set var="star4Per" value="${star4 / reviewTotal * 100}" />
+						<c:set var="star5Per" value="${star5 / reviewTotal * 100}" />
+						
+						<div class="review_rating_box flex wrap">
+							<div class="rate_overview flex vc">
+								<div class="wrap_in">
+									<div class="rateNum"><strong class="tt"><fmt:formatNumber value="${reviewAvgRaw}" maxFractionDigits="1" /></strong></div>
+									<div class="rateSec">
+										<div class="rateStar_total">
+											<div class="rateStar_wrap starBase flex di vc">
+												<span class="mti mtifill material-symbols-outlined star">star</span>
+												<span class="mti mtifill material-symbols-outlined star">star</span>
+												<span class="mti mtifill material-symbols-outlined star">star</span>
+												<span class="mti mtifill material-symbols-outlined star">star</span>
+												<span class="mti mtifill material-symbols-outlined star">star</span>
+											</div>
+											<div class="rateStar_wrap starFill flex di vc" style="width:calc(${reviewAvgPer}% - .125em);">
+												<span class="mti mtifill material-symbols-outlined star full">star</span>
+												<span class="mti mtifill material-symbols-outlined star full">star</span>
+												<span class="mti mtifill material-symbols-outlined star full">star</span>
+												<span class="mti mtifill material-symbols-outlined star full">star</span>
+												<span class="mti mtifill material-symbols-outlined star full">star</span>
+											</div>
+										</div>
+									</div>
+									<div class="rateTxt"><span class="tt">${reviewTotal}개 리뷰</span></div>
+								</div>
+							</div>
+							<div class="rate_distribution">
+								<ul class="wrap_list">
+									<li class="item flex vc">
+									<div class="rateScore"><span class="tt">5점</span></div>
+									<div class="rateBar"><div class="barFill" style="width:${star5Per}%;"></div></div>
+									<div class="ratePers"><span class="tt">(${star5})</span></div>
+									</li>
+									<li class="item flex vc">
+									<div class="rateScore"><span class="tt">4점</span></div>
+									<div class="rateBar"><div class="barFill" style="width:${star4Per}%;"></div></div>
+									<div class="ratePers"><span class="tt">(${star4})</span></div>
+									</li>
+									<li class="item flex vc">
+									<div class="rateScore"><span class="tt">3점</span></div>
+									<div class="rateBar"><div class="barFill" style="width:${star3Per}%;"></div></div>
+									<div class="ratePers"><span class="tt">(${star3})</span></div>
+									</li>
+									<li class="item flex vc">
+									<div class="rateScore"><span class="tt">2점</span></div>
+									<div class="rateBar"><div class="barFill" style="width:${star2Per}%;"></div></div>
+									<div class="ratePers"><span class="tt">(${star2})</span></div>
+									</li>
+									<li class="item flex vc">
+									<div class="rateScore"><span class="tt">1점</span></div>
+									<div class="rateBar"><div class="barFill" style="width:${star1Per}%;"></div></div>
+									<div class="ratePers"><span class="tt">(${star1})</span></div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- 리뷰 별점 end -->
+						
+						<!-- 리뷰 리스트 -->
+						<div class="review_list_box" id="listView">
+						<%@ include file="/page/board/inc_review_list.jsp" %>
+						</div>
+						<!-- 리뷰 리스트 end -->
 					</div>
 				</div>
 			</div>
@@ -117,6 +202,7 @@ request.setAttribute("dp2", "list");
 <!-- 본문 end -->	 
 <jsp:include page="/layout/script.jsp" />
 <script>    
+// 사진 슬라이드
 var viewPhoto = new Swiper('.shop_view_photo', {
 	loop: true,
 	speed: 400,

@@ -98,7 +98,7 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 
 .page_tit { margin-bottom: 2em;}
 .page_tit.flex { gap: .625em;}
-.page_tit .tt { font-size: 2.75em; font-weight: 700;}
+.page_tit > .tt { font-size: 2.75em; font-weight: 700;}
 
 /* 맛집 */
 .shop_cate_wrap { margin-bottom: 3em; border-bottom: 1px solid #ddd;}
@@ -188,6 +188,43 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 .shop_view_info .info_list > li .in .mti { font-size: 1.25em;}
 .shop_view_info .info_list > li .in .tit .tt { color: #666; font-weight: 700;}
 .shop_view_info .info_list > li .in .txt { flex:1; font-size: .938em; line-height: 1.5;}
+
+/* 리뷰 */
+.review_rating_box{}
+.review_rating_box .rate_overview{ width:12em; text-align:center;}
+.review_rating_box .rate_overview > .wrap_in{ flex:1;}
+.review_rating_box .rate_overview .rateSec{ padding:.25em 0 .5em 0;}
+.review_rating_box .rate_overview .rateNum .tt{ font-size:2em; font-weight: 900;}
+.review_rating_box .rate_overview .rateTxt .tt{ font-size:.875em;}
+
+.review_rating_box .rate_distribution{ flex:1; padding:0 1em 0 3em; border-left:1px solid #e5e7eb;}
+.review_rating_box .rate_distribution > .wrap_list > li{ padding:.5em 0;}
+.review_rating_box .rate_distribution > .wrap_list .item{}
+.review_rating_box .rate_distribution > .wrap_list .item .tt{ font-size:.813em; color:#333;}
+.review_rating_box .rate_distribution > .wrap_list .item .rateScore{ width:4.5em;}
+.review_rating_box .rate_distribution > .wrap_list .item .ratePers { width:4em; padding-left:1em;}
+.review_rating_box .rate_distribution > .wrap_list .item .rateBar{ flex:1; position:relative; height:8px; background:#e5e7eb; border-radius:5em; overflow:hidden;}
+.review_rating_box .rate_distribution > .wrap_list .item .rateBar .barFill{ position:absolute; top:0; left:0; height:100%; background:var(--crStar);}
+
+.rateStar_total{ position:relative; display:inline-block;}
+.rateStar_total > .rateStar_wrap > .star{ width:1.25em; min-width:1.25em; padding:0;}
+.rateStar_total > .rateStar_wrap.starFill{ position:absolute; top:0; left:0; overflow:hidden;}
+
+.rateStar_wrap {}
+.rateStar_wrap > .star{ font-size:1.375em; color:#ccc;}
+.rateStar_wrap > .star.full{ color:var(--crStar);}
+.rateStar_wrap > .star + .tt { padding-left: 1em;}
+
+.review_list_box{ margin-top: 2em;}
+.review_list_box .review_list{}
+.review_list_box .review_list > li{ border:solid #e5e7eb; border-width:1px 0 0 0;}
+.review_list_box .review_list .review_inner{ padding:2em 0; gap:1.5em;}
+.review_list_box .review_list .avatar_wrap { gap: 1em;}
+.review_list_box .review_list .avatar_img { width: 2.5em; border-radius: 50%; overflow: hidden;}
+.review_list_box .review_list .conDate .tt { font-size: .875em; color: #555;}
+.review_list_box .review_list .conTxt .tt { font-size: .938em; line-height: 1.6;}
+.review_list_box .review_list .conPhoto .list { gap: 1em; grid-template-columns: repeat(5, minmax(0, 1fr));}
+.review_list_box .review_list .conPhoto .list > li .in { border-radius: 1.25em;}
 
 
 

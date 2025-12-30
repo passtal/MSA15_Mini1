@@ -3,43 +3,53 @@
 <%@ include file="/layout/jstl.jsp" %>
 <%@ include file="/layout/common.jsp" %>
 <%
-request.setAttribute("dp1", "shop");
-request.setAttribute("dp2", "write");
+request.setAttribute("dp0", "pop");
 %>
-<jsp:include page="/layout/header.jsp" />
-
-<!-- 본문 -->
-<main class="doc">
-    <div class="form-container">
-        <h2>맛집 리뷰 남기기</h2>
-
-        <form action="${pageContext.request.contextPath}/board/write" method="post" class="review-form">
-
-        	<input type="hidden" name="action" value="insert">
-
-            <div class="form-group">
-                <label for="title">리뷰 제목</label>
-                <input type="text" id="title" name="title" required placeholder="리뷰 제목을 입력해주세요.">
-            </div>
-
-            <div class="form-group">
-                <label for="rating">평점 (0.5 ~ 5.0)</label>
-                <input type="number" id="rating" name="rating" min="0.5" max="5.0" step="0.5" value="5.0">
-            </div>
-
-            <div class="form-group">
-                <label for="content">내용</label>
-                <textarea id="content" name="content" rows="10" placeholder="맛, 서비스, 분위기는 어떠셨나요?"></textarea>
-            </div>
-
-            <div class="form-actions">
-                <button type="button" class="btn-cancel" onclick="history.back()">취소</button>
-                <button type="submit" class="btn-submit">리뷰 등록</button>
-            </div>
-
-        </form>
-    </div>
-</main>
-<!-- 본문 end -->	
-<jsp:include page="/layout/script.jsp" />	
-<jsp:include page="/layout/footer.jsp" />
+<jsp:include page="/layout/top.jsp" />
+<!--본문 -->
+<div class="popWrap popForm">
+	<div class="popTit"><span class="tit"><i class="t1">맛집 리뷰 작성</i></span><a href="javascript:parent.layerClose();" class="popClose"><i class="mti material-symbols-outlined">close</i></a></div>
+	<div class="popIn scrollst">
+		<div class="popCon">
+			<form action="${pageContext.request.contextPath}/board/write" method="post" class="review-form">		
+			<div class="member_wrap">	
+				<ul class="form_st">
+					<li>
+						<div class="mem_tit"><span class="tt">닉네임</span></div>
+						<div class="in">
+							<input type="text" class="input_st fit" name="username" id="username" value="${loginUser.username}" disabled="disabled">						
+						</div>
+					</li>
+					<li>
+						<div class="mem_tit"><span class="tt">평점 (1 ~ 5)</span></div>
+						<div class="in">
+							<input type="number" class="input_st fit" id="rating" name="rating" min="1.0" max="5.0" step="1.0" value="5.0">
+						</div>
+					</li>
+					<li>
+						<div class="mem_tit"><span class="tt">리뷰작성</span></div>
+						<div class="in">
+							<textarea id="content" class="input_st fit" name="content" placeholder="맛, 서비스, 분위기는 어떠셨나요?"></textarea>
+						</div>
+					</li>
+					<li>
+						<div class="mem_tit"><span class="tt">사진첨부</span></div>
+						<div class="in flex col">
+							<!-- 사진 최대 5개 까지 -->
+							<c:forEach var="i" begin="1" end="5">
+							<input type="file" class="input_st fit" name="">
+							</c:forEach>
+						</div>
+					</li>
+					<li class="btn_wrap">						
+						<button type="button" class="input_st c1 re" onclick="parent.layerClose();">취소</button>
+			            <button type="submit" class="input_st c1">리뷰 등록</button>
+					</li>
+				</ul>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!--본문 end-->
+<jsp:include page="/layout/bottom.jsp" />

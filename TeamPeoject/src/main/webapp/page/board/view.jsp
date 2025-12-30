@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/layout/jstl.jsp" %>
-<%@ include file="/layout/common.jsp" %>
-<%
-request.setAttribute("dp1", "shop");
-request.setAttribute("dp2", "view");
-%>
-<jsp:include page="/layout/header.jsp" />
 
-<!-- 본문 -->
-<main class="doc">
     <div class="view-container">
 
         <div class="post-header">
@@ -66,7 +57,3 @@ request.setAttribute("dp2", "view");
             </c:if>
         </div>
     </div>
-</main>
-<!-- 본문 end -->	
-<jsp:include page="/layout/script.jsp" />	
-<jsp:include page="/layout/footer.jsp" />
