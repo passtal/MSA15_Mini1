@@ -263,6 +263,7 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 .member_wrap .mem_tit > .tt.s1{ font-size: 1.250em; font-weight: 700;}
 .member_wrap .mem_tit > .tt.s2{ font-size: 2.000em; font-weight: 800;}
 .member_wrap .mem_txt > .tt{ font-size: 1em;}
+.popWrap.popForm .mem_tit { margin-bottom: 6px; }
 
 .member_wrap .btn_wrap{ display: flex; flex-wrap: wrap; gap:.5em; margin-top:2.5em !important;}
 .member_wrap .btn_wrap .input_st { flex:1;}
@@ -284,6 +285,11 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 .form_st > li .agree > li .on .more{ background: var(--siteC); border-color: var(--siteC); color: #fff;}
 .form_st > li .agree > li .on .more:before{ content:"접기"}
 .form_st > li .agree > li .on .agree_box{ display:block}
+.popWrap.popForm .form_st > li { margin-bottom: 12px; }
+
+.form_st > li .profile { gap: 1em 2em; padding: 1.5em 0; border: dashed #bbb; border-width: 1px 0;}
+.form_st > li .profile .img { width: 8em; height: 8em; border: 1px solid #ccc; border-radius:50%; overflow: hidden;}
+
 
 .form_st > li .profile { gap: 1em 2em; padding: 1.5em 0; border: dashed #bbb; border-width: 1px 0;}
 .form_st > li .profile .img { width: 8em; height: 8em; border: 1px solid #ccc; border-radius:50%; overflow: hidden;}

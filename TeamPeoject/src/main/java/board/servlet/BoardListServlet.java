@@ -30,6 +30,6 @@ public class BoardListServlet extends HttpServlet {
         
         request.setAttribute("boardList", boardList);
         
-        request.getRequestDispatcher("/page/board/list.jsp").forward(request, response);
+        request.getRequestDispatcher("/page/shop/shop_list.jsp").forward(request, response);
     }
 }

@@ -12,7 +12,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+import board.DTO.Place;
 import board.DTO.User;
+import board.DTO.User.UserBuilder;
 import board.service.UserService;
 import board.service.UserServiceImpl;
 
@@ -63,6 +65,7 @@ public class SignUpServlet extends HttpServlet {
 		switch (userauth) {
 			case "ROLE_USER":
 			case "ROLE_OWNER":
+				
 				// 프로필 이미지 업로드를 하지 않아도 가입이 가능하도록 설정
 				Part profileImgPart = null;
 				
@@ -112,32 +115,58 @@ public class SignUpServlet extends HttpServlet {
 					
 				}
 				
-				// 회원가입
-				System.out.println("회원가입 요청 처리...");
 				String userId = request.getParameter("user_id");
 				String password = request.getParameter("password");
 				String username = request.getParameter("username");
-				String age = request.getParameter("age");
-				String sex = request.getParameter("sex");
+				String ageParm = request.getParameter("age");
+				String sexParm = request.getParameter("sex");
+
+				
 				User user = User.builder()
 								.id( UUID.randomUUID().toString() )
 								.userId(userId)
 								.password(password)
 								.username(username)
-								.age(Integer.valueOf(age))
-								.sex(sex)
 								.profileImg(profilePath)
 								.build();
-				User saved = userService.signupWithAuth(user, userauth);
-				// 회원가입 성공
-				if( saved != null ) {
-					response.sendRedirect(root + "/");
-					return;
-				} 
-				// 회원가입 실패
-				else {
-					response.sendRedirect(root + "/signup/type?error=true");
-					return;
+				
+				if( ageParm != null && !ageParm.isBlank() ) {
+					user.setAge(Integer.valueOf(ageParm));
+				}
+				
+				
+				if( sexParm != null && !sexParm.isBlank() ) {
+					user.setSex(sexParm);
+				}
+
+				
+				User saved = null;
+
+				if ("ROLE_OWNER".equals(userauth)) {
+				    String placename = request.getParameter("placename");
+				    String phone = request.getParameter("phone");
+				    String address = request.getParameter("address");
+				    int foodNo = Integer.parseInt(request.getParameter("place_food"));
+
+				    Place place = Place.builder()
+				            		   .placename(placename)
+				            		   .phone(phone)
+				            		   .address(address)
+				            		   .thumbnail_img(profilePath)
+				            		   .build();
+
+				    saved = userService.signupOwnerWithAuth(user, place, foodNo);
+
+				} else {
+				    saved = userService.signupWithAuth(user, userauth);
+				}
+
+				if (saved != null) {
+				    response.sendRedirect(root + "/");
+				    return;
+				} else {
+				    response.sendRedirect(root + "/signup?type=" + userauth + "&error=true");
+				    return;
 				}
 				
 			default : response.sendRedirect(root + "/signup/type?error=true");

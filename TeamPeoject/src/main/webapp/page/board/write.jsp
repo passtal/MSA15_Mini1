@@ -12,6 +12,7 @@ request.setAttribute("dp0", "pop");
 	<div class="popIn scrollst">
 		<div class="popCon">
 			<form action="${pageContext.request.contextPath}/board/write" method="post" class="review-form">		
+			<input type="hidden" name="place_no" value="${param.place_no}">
 			<div class="member_wrap">	
 				<ul class="form_st">
 					<li>

@@ -8,24 +8,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table("place")
+@Table("menu")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class Place {
+
+public class Menu {
 
 	@Pk
 	private int no;
-	private int user_no;
-	private String placename;
-	private String address;
-	private String phone;
-	private String thumbnail_img;
+	private int place_no;
+	private String menuname;
 	private String content;
-	private String amenities;
-	private String region;
-	private double lat;
-    private double lng;
+	private int price;
 	
 }

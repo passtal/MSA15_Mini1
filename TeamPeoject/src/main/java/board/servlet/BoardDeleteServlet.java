@@ -22,6 +22,7 @@ public class BoardDeleteServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User loginUser = (User) session.getAttribute("loginUser");
         String noStr = request.getParameter("no");
+        String placeNoStr = request.getParameter("place_no");
 
         if(loginUser == null || noStr == null) {
             response.sendRedirect(request.getContextPath() + "/page/login.jsp");
@@ -29,17 +30,23 @@ public class BoardDeleteServlet extends HttpServlet {
         }
 
         int no = Integer.parseInt(noStr);
-
+        
         BoardDTO board = boardDAO.selectWithUser(no);
+        
         if(board != null && board.getUser_no() == loginUser.getNo()) {
-            
+        	
             try {
 				boardDAO.delete(no);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-            response.sendRedirect(request.getContextPath() + "/board/list");
-            
+            response.setContentType("text/html; charset=UTF-8");
+            response.getWriter().println(
+                "<script>" +
+        		"alert('리뷰가 삭제되었습니다');" +
+                "parent.location.href='" + request.getContextPath() + "/place/view?no=" + placeNoStr + "';" +
+                "</script>"
+            );
         } else {
             response.setContentType("text/html; charset=UTF-8");
             response.getWriter().write("<script>alert('삭제 권한이 없습니다.'); history.back();</script>");

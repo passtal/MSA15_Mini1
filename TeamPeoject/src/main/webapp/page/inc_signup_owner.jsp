@@ -105,13 +105,13 @@
 						<input type="radio" name="place_food" value="1" /><span class="tt">한식</span>
 					</label>
 					<label class="label_st"> 
-						<input type="radio" name="place_food" value="1" /><span class="tt">중식</span>
+						<input type="radio" name="place_food" value="2" /><span class="tt">중식</span>
 					</label> 
 					<label class="label_st"> 
-						<input type="radio" name="place_food" value="1" /><span class="tt">일식</span>
+						<input type="radio" name="place_food" value="3" /><span class="tt">일식</span>
 					</label> 
 					<label class="label_st"> 
-						<input type="radio" name="place_food" value="1" /><span class="tt">양식</span>
+						<input type="radio" name="place_food" value="4" /><span class="tt">양식</span>
 					</label>
 				</div>
 			</li>
