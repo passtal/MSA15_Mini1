@@ -24,7 +24,16 @@ request.setAttribute("dp2", "map");
 					${nav[navKey]}
 				</span>			
 			</div>
-			<div id="map" class="map-container"></div>
+			<div class="shop_map_layout flex wrap">
+				<div class="map_wrap">
+					<div id="map" class="map-container"></div>
+				</div>
+				<c:if test="${role == 'ROLE_OWNER' or role == 'ROLE_ADMIN'}">
+				<div class="">
+				
+				</div>
+				</c:if>
+			</div>			
 		</div>
 	</div>
 
