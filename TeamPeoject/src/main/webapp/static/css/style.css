@@ -291,6 +291,10 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 .form_st > li .profile .img { width: 8em; height: 8em; border: 1px solid #ccc; border-radius:50%; overflow: hidden;}
 
 
+.form_st > li .profile { gap: 1em 2em; padding: 1.5em 0; border: dashed #bbb; border-width: 1px 0;}
+.form_st > li .profile .img { width: 8em; height: 8em; border: 1px solid #ccc; border-radius:50%; overflow: hidden;}
+
+
 .agree_box{ background:#f9f9f9; border:1px solid #ddd; padding:1em 1.5em}
 .agree_box .con{ font-size:.938em; color:#666; line-height:1.625em}
 .agree_box .con.h1{ height:10.8em; overflow-y:auto}
