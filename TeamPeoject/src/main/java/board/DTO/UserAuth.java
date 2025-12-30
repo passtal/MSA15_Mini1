@@ -17,7 +17,6 @@ public class UserAuth {
 
 	@Pk
 	private int no;
-	private String id;
 	private int userNo;
 	private String auth;
 	
