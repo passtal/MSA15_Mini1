@@ -80,7 +80,7 @@
     // ★ 수정됨: loginUser.auth -> role
     var canRegister = "${role == 'ROLE_OWNER'}";
 
-    if (canRegister === "true") {
+    if (canRegister == "true") {
         var clickMarker = new kakao.maps.Marker({ position: map.getCenter() }); 
         clickMarker.setMap(map); 
 
