@@ -1,15 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/layout/jstl.jsp" %>
-<%@ include file="/layout/common.jsp" %>
-<jsp:include page="/layout/header.jsp" />
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>${board.title}</title>
-</head>
-<body>
-    <h2>${board.title}</h2>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+	<h2>${board.title}</h2>
     <p>작성자 : ${board.username} | 평점 : ${board.rating}</p>
     <hr>
     
@@ -54,7 +46,3 @@
     
     <br>
     <a href="${pageContext.request.contextPath}/board/list">목록으로</a>
-</body>
-</html>
-
-<jsp:include page="/layout/footer.jsp" />

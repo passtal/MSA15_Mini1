@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*reset*/
 * {margin: 0; padding: 0; box-sizing: border-box; }
-html{ -moz-text-size-adjust:100%; -webkit-text-size-adjust:100%; text-size-adjust:100%; overflow-x:hidden; overflow-y:scroll;}
+html{ -moz-text-size-adjust:100%; -webkit-text-size-adjust:100%; text-size-adjust:100%;}
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{ margin:0; padding:0;  font-size:inherit; font-weight:inherit; color:inherit;}
 ul,ol,li{ list-style:none;}
 img { border:none; max-width:100%;}
@@ -26,7 +26,7 @@ a:active,
 a:hover{ text-decoration:none;}
 
 body{ font-family:var(--fontBase); font-size:16px; font-weight:400; -webkit-font-smoothing:antialiased;}
-html.hidden{ overflow-y:hidden;}
+html.hidden{ overflow:hidden;}
 
 
 :root {
@@ -53,6 +53,7 @@ html.hidden{ overflow-y:hidden;}
 	--crGray2: #e6ebf1;
 	--crGray3: #f8f8f8;
 	--crRed: #e40f18;
+	--crStar: #ff8800;
 	--crWhitefil: brightness(0) invert(1);
 	--crBlackfil: brightness(0) invert(0);
 	--crfilRE: invert(1);

@@ -1,18 +1,16 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="board.DTO.User" %>
 <%
-
-	String root = request.getContextPath();
+String root = request.getContextPath();
 	pageContext.setAttribute("root", root);
 	
 	String loginId = (String) session.getAttribute("loginId");
 	pageContext.setAttribute("loginId", loginId);
 	
-	User loginUser = (User) session.getAttribute("loginUser");
+	board.DTO.User loginUser = (board.DTO.User) session.getAttribute("loginUser");
 	pageContext.setAttribute("loginUser", loginUser);
 	
 	
@@ -32,8 +30,8 @@
 	nav.put("shop_map", "맛집지도");
 	nav.put("shop_hot", "인기맛집");	
 	
-	nav.put("board", "커뮤니티");
-	nav.put("board_list", "공지사항");
+	nav.put("notice", "커뮤니티");
+	nav.put("notice_list", "공지사항");
 	
 	nav.put("member", "회원서비스");
 	nav.put("member_login", "로그인");
@@ -50,5 +48,4 @@
 
 	request.setAttribute("nav", nav);	
 	request.setAttribute("site", site);
-	
 %>
