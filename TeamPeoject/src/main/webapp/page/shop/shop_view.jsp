@@ -106,8 +106,10 @@ request.setAttribute("dp2", "list");
 					<div class="inner">
 						<div class="page_tit flex vc">
 							<span class="mti material-symbols-outlined">hotel_class</span>
-							<strong class="page_tt s4 fx1">방문자 리뷰</strong>
-							<a href="javascript:layerOpen('${pageContext.request.contextPath}/board/write')" class="btn input_st s2 c1 re mgL"><i class="tt">리뷰 올리기</i></a>
+							<strong class="page_tt s4 fx1">방문자 리뷰</strong>	
+							<c:if test="${not empty loginId}">
+							    <a href="javascript:layerOpen('${pageContext.request.contextPath}/board/write')" class="btn input_st s2 c1 re mgL"><i class="tt">리뷰 올리기</i></a>
+							</c:if>												
 						</div>
 						
 						<!-- 리뷰 별점 임시값으로 구현 -->
