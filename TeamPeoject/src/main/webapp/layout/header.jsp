@@ -17,7 +17,7 @@
 					
 				<c:otherwise>
 					<!-- 로그인 시 -->
-					<li><a href="${ root }/page/user/mypage.jsp" class="in flex ac"><span class="tt">${ nav.mypage }</span></a></li>
+					<li><a href="${ root }/user/mypage" class="in flex ac"><span class="tt">${ nav.mypage }</span></a></li>
 					<li><a href="${ root }/logout" class="in flex ac"><span class="tt">${ nav.member_logout }</span></a></li>					
 				</c:otherwise>
 			</c:choose>					
@@ -34,7 +34,7 @@
 				<form action="">
 					<div class="search flex vc">
 						<input type="text" class="input_st int_txt" placeholder="검색어를 입력해 주세요.">
-						<button type="submit" class="input_st int_btn"><span class="mti material-icons-outlined">search</span></button>
+						<button type="submit" class="input_st int_btn"><span class="mti material-symbols-outlined">search</span></button>
 					</div>
 				</form>
 			</div>
@@ -43,81 +43,36 @@
 					<c:choose>
 						<c:when test="${ empty loginId }">
 							<!-- 비로그인 시 -->							
-							<li><a href="${ root }/login" class="in"><span class="mti material-icons-outlined">person</span></a></li>
+							<li><a href="${ root }/login" class="in"><span class="mti material-symbols-outlined">person</span></a></li>
 						</c:when>
 						<c:otherwise>
 							<!-- 로그인 시 -->
-							<li class="dropdown">								
-								<a href="javascript:void(0);" class="userInfo flex vc">
-									<p class="img"><img src="${ pageContext.request.contextPath }${ loginUser.profileImg }" alt="profileImg"></p>
-									<p class="name"><strong class="tt">${ loginId }</strong></p>
+							<li class="dropdown toggleWrap jsClick">								
+								<a href="javascript:void(0);" class="userInfo" onclick="toggleClass(this)">
+									<p class="img imgfix"><img src="${ pageContext.request.contextPath }${ loginUser.profileImg }" alt="profileImg"></p>									
 								</a>
 								<ul class="list">
-									<li><a href="${ root }/page/user/mypage.jsp" class="in"><span class="tt">${ nav.mypage }</span></a></li>
-									<li><a href="${ root }/page/user/update.jsp" class="in"><span class="tt">${ nav.mypage_modify }</span></a></li>
+									<li class="userWrap">
+										<div class="userInfo flex vc">
+											<p class="img imgfix"><img src="${ pageContext.request.contextPath }${ loginUser.profileImg }" alt="profileImg"></p>
+											<p class="name"><strong class="tt wb2">${loginUser.username}</strong></p>
+										</div>
+										<div class="userId"><span class="tt wb2">${loginId}</span></div>
+									</li>									
+									<li><a href="${ root }/user/mypage" class="in"><span class="tt">${ nav.mypage }</span></a></li>
+									<li><a href="${ root }/user/update" class="in"><span class="tt">${ nav.mypage_modify }</span></a></li>
 									<li><a href="${ root }/logout" class="in"><span class="tt">${ nav.member_logout }</span></a></li>
 								</ul>								
 							</li>
 						</c:otherwise>
 					</c:choose>					
-					<li><a href="" class="in"><span class="mti material-icons-outlined">menu</span></a></li>					
+					<li><a href="javascript:void(0)" class="in"><span class="mti material-symbols-outlined">menu</span></a></li>					
 				</ul>
 			</div>
 		</div>
 	</div>	
 </header>
 
-<nav class="dn">
-	<div class="container">
-	    <a href="${ root }/">Home</a>
-	    <button >
-	    	<span>버튼</span>
-	    </button>
-	    <div>
-			<ul>
-				<li>
-					<a href="${ root }/board/list">맛집소개</a>
-				</li>
-				<li>
-					<a href="${ root }/board/list">리뷰</a>
-				</li>
-				<li>
-					<a href="${ root }/board/list">공지사항</a>
-				</li>
-			</ul>
-			<ul class="navbar-nav d-flex align-items-center px-3">
-	       
-				<c:choose>
-					<c:when test="${ empty loginId }">
-						<!-- 비로그인 시 -->
-						<li>
-							<a href="${ root }/login">로그인</a>
-						</li>
-						<li >
-							<a href="${ root }/signup">회원가입</a>
-					</c:when>
-						
-					<c:otherwise>
-						<!-- 로그인 시 -->
-						<li>
-							<div>
-								<a>
-									<img src="${ pageContext.request.contextPath }${ loginUser.profileImg }" alt="profileImg" width="32" height="32">
-									<strong>${ loginId }</strong>
-								</a>
-								<ul>
-									<li><a href="${ root }/page/user/mypage.jsp">마이 페이지</a></li>
-									<li><a href="${ root }/page/user/update.jsp">회원정보 수정</a></li>
-									<li><a href="${ root }/logout">로그아웃</a></li>
-								</ul>
-							</div>
-						</li>
-					</c:otherwise>
-				</c:choose>
-			</ul>
-		</div>
-	</div>
-</nav>
-
 <!-- 컨텐츠 start -->
-<div id="contents" class="fullMH"></div>
+<div id="contents" class="fullMH">
+
