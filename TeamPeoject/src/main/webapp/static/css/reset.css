@@ -11,8 +11,7 @@ b{ font-weight:800;}
 table{ table-layout:fixed; border-collapse:collapse; border-spacing:0;}
 input, button, textarea, select{ display:inline-block; vertical-align:middle; font-family:inherit; font-size: inherit;}
 input[type=button], input[type=submit], button, input[type=checkbox], input[type=radio]{ cursor:pointer;}
-select{ max-width:100%; background:url(../static/img/arrow_down.svg) right .75em center no-repeat #fff; background-size:.85em auto;}
-select::-ms-expand{ display:none;}
+select{ max-width:100%;}
 *:focus{ outline:none;}
 a, input, button, textarea, select, li{ -webkit-tap-highlight-color:transparent;}
 

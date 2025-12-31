@@ -334,6 +334,58 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 
 .main_banner .banner { border-radius: 1.25em; overflow: hidden;}
 
+/* 게시판 */
+.aTit_wrap{ display:flex; align-items:center}
+.aTit_wrap .aTit{ flex:1 1 0%; min-width:0}
+.board_aTit{ text-overflow:ellipsis; white-space:nowrap; overflow:hidden; font-weight:700; color: #000;}
+.board_aTit:hover,
+.board_aTit:focus{ text-decoration:underline}
+
+.board_table{ width:100%; border-top:1px solid #111; color: #444;}
+.board_table th,
+.board_table td{ height:3.375em; border-bottom:1px solid #ddd; padding:.5em .5em; text-align:center;}
+.board_table th{ height:4.25em; font-weight:700}
+.board_table tbody tr:hover{ background:var(--crGray2)}
+.board_table .rNotice,
+.board_table .rNotice:hover{ background:#f5f5f5}
+
+.board_search{ display:flex; align-items:flex-end; justify-content:space-between; gap:1em; margin-bottom:1.5em}
+.board_search .total{ display:flex; align-items:center; justify-content:space-between}
+.board_search .total .t1{ font-size:.813em; letter-spacing:.063em; text-transform:uppercase;}
+.board_search .total .t2{ font-size:1.125em; font-weight:800; color:var(--crBlack); margin-left:.25em}
+.board_search .search{ display:flex; align-items:center; gap:0 .375em}
+.board_search .search .select{ min-width:7em;}
+.board_search .search .inp{ width:18em;}
+.board_search .search .btn .ico{ font-family:'Material Symbols Outlined'; font-size:1.5em}
+.board_search .search .btn .ico:before{content:"\e8b6"}
+.board_search .search .input_st{ height:3.375em;}
+.board_search .search .input_st:not(.btn){ width:100%}
+
+.boardIco{ font-family:'Material Symbols Outlined'; font-size:1.375em; font-weight: normal; width:1.5em; text-align:center; display:inline-block; color: #555;}
+.boardIco.file:before  { content:"\ea0e";}
+.boardIco.notice { font-size: 1.875em;}
+.boardIco.notice:before{ content:"\e98e";}
+
+.board_pg{ display:flex; align-items:center; justify-content:center; margin-top:4em; padding:0 1px 1px 0}
+.board_pg .mti { font-family:'Material Symbols Outlined';}
+.board_pg button{ min-width:3em; height:3em; border:1px solid #ddd; margin:0 -1px -1px 0; padding:0 .5em; background:#fff; font-size: .875em; color:#666; font-weight: 700; box-sizing:border-box; position:relative;}
+.board_pg button:hover,
+.board_pg button:focus{ z-index:1}
+.board_pg button.on{ background:#333; color:#fff; border-color:transparent; z-index:2; position:relative}
+.board_pg button.btn.first{ border-radius:.5em 0 0 .5em}
+.board_pg button.btn.last{ border-radius:0 .5em .5em 0}
+.board_pg button.btn .ico{ font-size:1.25em; color:#000; font-weight: normal;}
+.board_pg button.btn.first .ico:before{ content:"\eac3"}
+.board_pg button.btn.prev .ico:before { content:"\e314"}
+.board_pg button.btn.next .ico:before { content:"\e315"}
+.board_pg button.btn.last .ico:before { content:"\eac9"}
+
+/**/
+.w_no   { width:8em}
+.w_tit  { width:auto}
+.w_name { width:10em}
+.w_date { width:10em}
+.w_hit  { width:8em}
 
 
 
