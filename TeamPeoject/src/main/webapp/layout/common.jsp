@@ -18,7 +18,7 @@
 	
 	// site 정보
 	Map<String, String> site = new HashMap<>();
-	site.put("name", "사이트네임");
+	site.put("name", "맛조은테이블");
 	site.put("owner", "홍길동");
 	site.put("addr", "서울시 금천구 금천대로 155, 맛집시티 A동 1004호");
 	site.put("bnum", "012-34-45678");
