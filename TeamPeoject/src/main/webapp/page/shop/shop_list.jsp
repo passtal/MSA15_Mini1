@@ -30,10 +30,12 @@ request.setAttribute("dp2", "list");
 			<ul class="shop_list st1 grid">
 				<!-- 리스트 최대 20개 까지 -->
 				<c:forEach var="i" begin="1" end="20">
+				<c:set var="imgIndex" value="${(i - 1) % 10 + 1}" />
+				<fmt:formatNumber value="${imgIndex}" pattern="00" var="num" />
 				<li class="wrap_in">
 					<a href="${ root }/page/shop/shop_view.jsp" class="in">
 						<div class="wrap_img">
-							<div class="img resize imgfix"><img src="https://placehold.co/300x500" class="re"></div>
+							<div class="img resize imgfix"><img src="/static/img/img${num}.jpg" class="re"></div>
 						</div>
 						<div class="wrap_con flex col">
 							<p class="shop_tt t1">식당이름</p>
@@ -56,7 +58,7 @@ request.setAttribute("dp2", "list");
 				<button type="button" class="input_st s1 c4 re max1"><span class="tt">더보기</span></button>
 			</div>
 			
-			<div class="no_con flex ac">등록된 글이 없습니다.</div>
+<!-- 			<div class="no_con flex ac">등록된 글이 없습니다.</div> -->
 		</div>
 	</div>
 </main>

@@ -33,9 +33,10 @@ request.setAttribute("dp2", "list");
 							<div class="shop_view_photo">
 								<div class="slides swiper-wrapper">
 									<c:forEach var="i" begin="1" end="5">
+									<fmt:formatNumber value="${i}" pattern="00" var="num" />
 									<div class="el swiper-slide">
 										<div class="resize">									
-											<div class="img imgfix re"><img src="https://placehold.co/800x800"></div>												
+											<div class="img imgfix re"><img src="/static/img/img${num}.jpg"></div>												
 										</div> 
 									</div>
 									</c:forEach>

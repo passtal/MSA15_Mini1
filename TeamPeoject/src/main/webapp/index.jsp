@@ -12,7 +12,7 @@ request.setAttribute("dp0", "main");
 		<c:set var="cates" value="한식,중식,일식,양식" />
 		<c:set var="titles" value="한국인의 소울푸드,중식 한 접시로 기분전환,오늘은 깔끔하게 일식,특별한 파티엔 이거지" />
 		<c:set var="descs" value="
-		집밥처럼 편안하고, 언제 먹어도 마음까지 든든한 한 끼,
+		집밥처럼 편안하고 언제 먹어도 마음까지 든든한 한 끼,
 		불향 가득한 맛으로 입맛도 기분도 확 살아나는 선택,
 		담백하고 정갈한 맛으로 부담 없이 즐기는 한 끼,
 		분위기까지 채워주는 맛으로 소중한 날을 더 특별하게" />
@@ -53,10 +53,11 @@ request.setAttribute("dp0", "main");
 			<ul class="shop_list st1 grid">
 				<!-- 리스트 최대 10개 까지 -->
 				<c:forEach var="i" begin="1" end="10">
+				<fmt:formatNumber value="${i}" pattern="00" var="num" />
 				<li class="wrap_in">
 					<a href="${ root }/page/shop/shop_view.jsp" class="in">
 						<div class="wrap_img">
-							<div class="img resize imgfix"><img src="https://placehold.co/300x500" class="re"></div>
+							<div class="img resize imgfix"><img src="static/img/img${num}.jpg" class="re"></div>
 						</div>
 						<div class="wrap_con flex col">
 							<p class="shop_tt t1">식당이름</p>
@@ -97,10 +98,11 @@ request.setAttribute("dp0", "main");
 			<ul class="shop_list st2 round grid">
 				<!-- 리스트 최대 6개 까지 -->
 				<c:forEach var="i" begin="1" end="6">
+				<fmt:formatNumber value="${i}" pattern="00" var="num2" />
 				<li class="wrap_in">
 					<a href="${ root }/page/shop/shop_view.jsp" class="in flex wrap vt">
 						<div class="wrap_img">
-							<div class="img resize imgfix"><img src="https://placehold.co/300x500" class="re"></div>
+							<div class="img resize imgfix"><img src="static/img/img${num2}.jpg" class="re"></div>
 						</div>
 						<div class="wrap_con flex col">
 							<p class="shop_tt t1">식당이름</p>
@@ -141,10 +143,11 @@ request.setAttribute("dp0", "main");
 			<ul class="shop_list st3 round grid">
 				<!-- 리스트 최대 5개 까지 -->
 				<c:forEach var="i" begin="1" end="5">
+				<fmt:formatNumber value="${i}" pattern="00" var="num3" />
 				<li class="wrap_in">
 					<a href="${ root }/page/shop/shop_view.jsp" class="in">
 						<div class="wrap_img">
-							<div class="img resize imgfix"><img src="https://placehold.co/300x500" class="re"></div>
+							<div class="img resize imgfix"><img src="static/img/img${num3}.jpg" class="re"></div>
 						</div>
 						<div class="wrap_con flex col">
 							<p class="shop_tt t1">식당이름</p>

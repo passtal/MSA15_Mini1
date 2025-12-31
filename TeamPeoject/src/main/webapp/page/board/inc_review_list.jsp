@@ -35,7 +35,8 @@
 				<ul class="list grid">
 					<!-- 최대 5개 -->
 					<c:forEach var="i" begin="1" end="5">
-					<li><a href="javascript:void(0);" class="in resize imgfix" onclick="layerOpenImg(this)"><img src="https://placehold.co/1000x1200" class="re"></a></li>
+					<fmt:formatNumber value="${i}" pattern="00" var="num" />
+					<li><a href="javascript:void(0);" class="in resize imgfix" onclick="layerOpenImg(this)"><img src="/static/img/img${num}.jpg" class="re"></a></li>
 					</c:forEach>
 				</ul>
 			</div>
