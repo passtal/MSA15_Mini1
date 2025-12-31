@@ -102,7 +102,7 @@
 				<div class="mem_tit"><span class="tt">업종</span><span class="ess"></span></div>
 				<div class="label_wrap">
 					<label class="label_st"> 
-						<input type="radio" name="place_food" value="1" /><span class="tt">한식</span>
+						<input type="radio" name="place_food" value="1" checked /><span class="tt">한식</span>
 					</label>
 					<label class="label_st"> 
 						<input type="radio" name="place_food" value="2" /><span class="tt">중식</span>

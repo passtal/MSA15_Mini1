@@ -7,7 +7,7 @@
 <footer id="footer">
 	<a href="javascript:goTop();" class="goTop flex ac"><span class="mti material-symbols-outlined">keyboard_arrow_up</span></i></a>	
 	<div class="box1 inner flex wrap">
-		<div class="logo"><a href="${ root }/" class="in"><img src="https://placehold.co/160x60" alt="logo"></a></div>
+		<div class="logo"><a href="${ root }/" class="in"><img src="${ root }/static/img/logo.png" style="width: 160px; height: 60px;" alt="logo"></a></div>
 		<div class="info_wrap flex col">
 			<ul class="menu flex wrap">
 				<li><a href="javascript:void(0);" class="tt">${ nav.policy_agree }</a></li>
