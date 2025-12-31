@@ -12,7 +12,7 @@ request.setAttribute("dp0", "main");
 		<c:set var="cates" value="한식,중식,일식,양식" />
 		<c:set var="titles" value="한국인의 소울푸드,중식 한 접시로 기분전환,오늘은 깔끔하게 일식,특별한 파티엔 이거지" />
 		<c:set var="descs" value="
-		집밥처럼 편안하고, 언제 먹어도 마음까지 든든한 한 끼,
+		집밥처럼 편안하고 언제 먹어도 마음까지 든든한 한 끼,
 		불향 가득한 맛으로 입맛도 기분도 확 살아나는 선택,
 		담백하고 정갈한 맛으로 부담 없이 즐기는 한 끼,
 		분위기까지 채워주는 맛으로 소중한 날을 더 특별하게" />
@@ -60,7 +60,13 @@ request.setAttribute("dp0", "main");
 									        <a href="${root}/place/view?no=${place.no}" class="in">
 										          <div class="wrap_img">
 											            <div class="img resize imgfix">
-											             	 <img src="${empty place.thumbnail_img ? 'https://placehold.co/300x500' : place.thumbnail_img}" class="re">
+<%-- 											             	 <img src="${empty place.thumbnail_img ? 'https://placehold.co/300x500' : place.thumbnail_img}" class="re"> --%>
+															<c:if test="${empty place.thumbnail_img}">
+																<img src="'https://placehold.co/300x500' : place.thumbnail_img}" class="re">
+															</c:if>
+															<c:if test="${place.thumbnail_img != null}">
+																<img src="${root}${place.thumbnail_img}" class="re">
+															</c:if>
 											            </div>
 										          </div>
 										          <div class="wrap_con flex col">
@@ -112,10 +118,16 @@ request.setAttribute("dp0", "main");
 							<c:forEach var="place" items="${placeList}" varStatus="st">
 					     		 <c:if test="${st.count <= 6}">
 								      <li class="wrap_in">
-									        <a href="${root}/place/view?no=${place.no}" class="in">
+									        <a href="${root}/place/view?no=${place.no}" class="in flex wrap vt">
 										          <div class="wrap_img">
 											            <div class="img resize imgfix">
-											              <img src="${empty place.thumbnail_img ? 'https://placehold.co/300x500' : place.thumbnail_img}" class="re">
+<%-- 											              <img src="${empty place.thumbnail_img ? 'https://placehold.co/300x500' : place.thumbnail_img}" class="re"> --%>
+											              <c:if test="${empty place.thumbnail_img}">
+																<img src="'https://placehold.co/300x500' : place.thumbnail_img}" class="re">
+															</c:if>
+															<c:if test="${place.thumbnail_img != null}">
+																<img src="${root}${place.thumbnail_img}" class="re">
+															</c:if>
 											            </div>
 										          </div>
 										          <div class="wrap_con flex col">
@@ -147,7 +159,7 @@ request.setAttribute("dp0", "main");
 <section class="main_wrap main_banner">
 	<div class="box1 inner">
 		<div class="banner">
-			<img src="https://placehold.co/1400x160" alt="banner">
+			<img src="${ root }/static/img/banner.png" alt="banner">
 		</div>
 	</div>
 </section>
@@ -169,7 +181,7 @@ request.setAttribute("dp0", "main");
 							      <li class="wrap_in">
 							        <a href="${root}/board/view?no=${b.no}" class="in">
 							          <div class="wrap_img">
-							            <div class="img resize imgfix"><img src="https://placehold.co/300x500" class="re"></div>
+							            <div class="img resize imgfix"><img src="${ root }/static/img/place/p0${1}.jpg" class="re"></div>
 							          </div>
 							          <div class="wrap_con flex col">
 							            <p class="shop_tt t1">${b.title}</p>

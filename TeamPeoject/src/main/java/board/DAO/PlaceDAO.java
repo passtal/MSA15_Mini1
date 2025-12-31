@@ -59,6 +59,36 @@ public class PlaceDAO extends BaseDAOImpl<Place> {
         return list;
     }
     
+    public List<Place> selectListByFood(int foodNo) {
+        String sql = "SELECT * FROM place p "
+        		   + "JOIN place_food pf ON p.no = pf.place_no "
+        		   + "WHERE pf.food_no = ? "
+        		   + "ORDER BY p.no DESC ";
+        List<Place> list = new ArrayList<>();
+        try {
+            psmt = con.prepareStatement(sql);
+            psmt.setInt(1, foodNo);
+            rs = psmt.executeQuery();
+            while(rs.next()) {
+                Place p = new Place();
+                p.setNo(rs.getInt("no"));
+                p.setPlacename(rs.getString("placename"));
+                p.setAddress(rs.getString("address"));
+                p.setPhone(rs.getString("phone"));
+                p.setContent(rs.getString("content"));
+                p.setRegion(rs.getString("region"));
+                p.setThumbnail_img(rs.getString("thumbnail_img"));
+                p.setAmenities(rs.getString("amenities"));
+                p.setLat(rs.getDouble("lat"));
+                p.setLng(rs.getDouble("lng"));
+                list.add(p);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
     // ROLE ADMIN 용으로 만들어둔 delete (가게삭제) 기능 (권한 부여 후 정상 작동되나 확인 필요...)
     public int delete(int no) {
         String sql = "DELETE FROM place WHERE no = ?";
@@ -73,4 +103,6 @@ public class PlaceDAO extends BaseDAOImpl<Place> {
         }
         return result;
     }
+    
+
 }

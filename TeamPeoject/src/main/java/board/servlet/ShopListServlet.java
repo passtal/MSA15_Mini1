@@ -18,14 +18,22 @@ public class ShopListServlet extends HttpServlet {
 	private PlaceDAO placeDAO = new PlaceDAO();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	String cate = request.getParameter("cate");
 
-        List<Place> placeList = placeDAO.selectList();
-        request.setAttribute("placeList", placeList);
+    	List<Place> placeList;
 
-        request.getRequestDispatcher("/page/shop/shop_list.jsp")
-               .forward(request, response);
+    	if (cate == null || cate.equals("all") || cate.isBlank()) {
+    	    placeList = placeDAO.selectList();
+    	} else {
+    	    int foodNo = Integer.parseInt(cate);
+    	    placeList = placeDAO.selectListByFood(foodNo);
+    	}
+
+    	request.setAttribute("placeList", placeList);
+    	request.getRequestDispatcher("/page/shop/shop_list.jsp")
+    							.forward(request, response);
+
     }
 }
 

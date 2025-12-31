@@ -15,7 +15,7 @@
 									<p class="resize imgfix">
 										<c:choose>
 											<c:when test="${not empty board.profile_img}">
-												<img src="${board.profile_img}" class="re">
+												<img src="${root}/${board.profile_img}" class="re">
 											</c:when>
 											<c:otherwise>
 												<img src="${root}/static/img/default-profile.png" class="re">
@@ -55,7 +55,7 @@
 							<ul class="list grid">
 								<!-- 최대 5개 -->
 								<c:forEach var="i" begin="1" end="5">
-								<li><a href="javascript:void(0);" class="in resize imgfix" onclick="layerOpenImg(this)"><img src="https://placehold.co/1000x1200" class="re"></a></li>
+								<li><a href="javascript:void(0);" class="in resize imgfix" onclick="layerOpenImg(this)"><img src="${ root }/static/img/place/p0${i}.jpg" class="re"></a></li>
 								</c:forEach>
 							</ul>
 						</div>
