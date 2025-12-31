@@ -6,16 +6,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import board.DAO.BoardDAO;
+import board.DAO.FoodCategoryDAO;
 import board.DAO.MenuDAO;
 import board.DAO.PlaceDAO;
+import board.DAO.PlaceFoodDAO;
 import board.DTO.BoardDTO;
+import board.DTO.FoodCategory;
 import board.DTO.Menu;
 import board.DTO.Place;
+import board.DTO.PlaceFood;
 
 @WebServlet("/place/view")
 public class PlaceViewServlet extends HttpServlet {
@@ -23,6 +28,8 @@ public class PlaceViewServlet extends HttpServlet {
 	private PlaceDAO placeDAO = new PlaceDAO();
 	private MenuDAO menuDAO = new MenuDAO();
 	private BoardDAO boardDAO = new BoardDAO();
+	private PlaceFoodDAO placeFoodDAO = new PlaceFoodDAO();
+	private FoodCategoryDAO foodCategoryDAO = new FoodCategoryDAO();
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,6 +51,24 @@ public class PlaceViewServlet extends HttpServlet {
 			}
 			
 			int placeNo = place.getNo();
+			
+			Map<String, Object> placeFoodMap = new LinkedHashMap<>();
+			placeFoodMap.put("place_no", placeNo);
+			List<PlaceFood> placeFoodList = placeFoodDAO.listBy(placeFoodMap);
+
+			List<String> foodName = new ArrayList<>();
+
+			for (PlaceFood pf : placeFoodList) {
+			    Map<String, Object> foodCategoryMap = new LinkedHashMap<>();
+			    foodCategoryMap.put("no", pf.getFood_no()); // 핵심: no
+
+			    List<FoodCategory> fcList = foodCategoryDAO.listBy(foodCategoryMap);
+			    if (!fcList.isEmpty()) {
+			    	foodName.add(fcList.get(0).getFoodname());
+			    }
+			}
+			
+			request.setAttribute("foodName", foodName);
 	
 			Map<String, Object> placeMap = new LinkedHashMap<>();
 			placeMap.put("place_no", placeNo);

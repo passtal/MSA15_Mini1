@@ -15,7 +15,8 @@ request.setAttribute("dp2", "map");
 				<span class="tt">					
 					<c:set var="navKey" value="${dp1}_${dp2}" />
 					${nav[navKey]}
-				</span>			
+				</span>
+				<div class="t1 ps1">지도로 한눈에 맛집의 위치를 확인하세요!!</div>			
 			</div>
 			<!-- 카카오 api 제공 기본 css 스타일 코드 -->
 			<div class="shop_map_layout flex wrap">
@@ -86,6 +87,55 @@ request.setAttribute("dp2", "map");
 				</c:if>
 			</div>			
 		</div>
+	</div>
+	<div class="shop_list_wrap">
+		<div class="box1">		
+			<div class="page_tit">
+				<div class="page_tt s6"><strong>추천맛집</strong></div>
+			</div>
+			<ul class="shop_list st1 grid">
+				<!-- 리스트 최대 10개 까지 -->
+				<c:choose>
+					  <c:when test="${not empty placeList}">
+						    <c:forEach var="place" items="${placeList}" varStatus="st">
+							      <c:if test="${st.count <= 10}">
+								      <li class="wrap_in">
+									        <a href="${root}/place/view?no=${place.no}" class="in">
+										          <div class="wrap_img">
+											            <div class="img resize imgfix">
+	<%-- 											             	 <img src="${empty place.thumbnail_img ? 'https://placehold.co/300x500' : place.thumbnail_img}" class="re"> --%>
+															<c:if test="${empty place.thumbnail_img}">
+																<img src="'https://placehold.co/300x500' : place.thumbnail_img}" class="re">
+															</c:if>
+															<c:if test="${place.thumbnail_img != null}">
+																<img src="${root}${place.thumbnail_img}" class="re">
+															</c:if>
+											            </div>
+										          </div>
+										          <div class="wrap_con flex col">
+											          <p class="shop_tt t1">${place.placename}</p>
+											          <p class="shop_tt t2 rowCut r1">${place.content}</p>
+										              <div class="info_wrap flex space vc">
+											              <div class="star flex vc">
+												                <span class="mti mtifill material-symbols-outlined">star</span>
+												                <span class="tt">-</span>
+											              </div>
+											              <div class="cate">
+											                	<p class="shop_tt t3">${place.region}</p>
+											              </div>
+										              </div>
+										          </div>
+									        </a>
+								      </li>
+							      </c:if>
+						    </c:forEach>
+					  </c:when>
+					  <c:otherwise>
+					    	<div class="no_con flex ac">등록된 맛집이 없습니다.</div>
+					  </c:otherwise>
+				</c:choose>
+			</ul>
+		</div>			
 	</div>
 </main>
 

@@ -42,7 +42,15 @@ request.setAttribute("dp2", "list");
 									<c:forEach var="i" begin="1" end="5">
 									<div class="el swiper-slide">
 										<div class="resize">									
-											<div class="img imgfix re"><img src="https://placehold.co/800x800"></div>												
+											<div class="img imgfix re">
+<!-- 												<img src="https://placehold.co/800x800"> -->
+												<c:if test="${empty place.thumbnail_img}">
+													<img src="'https://placehold.co/300x500' : place.thumbnail_img}" class="re">
+												</c:if>
+												<c:if test="${place.thumbnail_img != null}">
+													<img src="${root}${place.thumbnail_img}" class="re">
+												</c:if>
+											</div>												
 										</div> 
 									</div>
 									</c:forEach>
@@ -57,9 +65,17 @@ request.setAttribute("dp2", "list");
 						<!-- 가게정보 -->
 						<div class="shop_view_info flex col">
 							<div class="info_tit flex col">
-								<div class="cate"><span class="tt">한식 • ${place.region}</span></div>
+								<div class="cate">
+									<span class="tt">
+										<c:forEach var="name" items="${foodName}">
+										    ${name} 
+										</c:forEach>
+										• ${place.region}
+<%-- 										${foodName} • ${place.region} --%>
+									</span>
+								</div>
 								<div class="tit"><span class="tt">${place.placename}</span></div>
-								<div class="txt"><span class="tt wb">해당 식당에 대한 간략한 설명이 들어갑니다.</span></div>								
+								<div class="txt"><span class="tt wb">${ place.content }</span></div>								
 								<div class="view_rating flex vc">
 									<span class="mti mtifill material-symbols-outlined">star</span>
 									
@@ -133,8 +149,25 @@ request.setAttribute("dp2", "list");
 								<div class="review_rating_box flex wrap">
 									<div class="rate_overview flex vc">
 										<div class="wrap_in">
-											<div class="rateNum"><strong class="tt">0.0</strong></div>
-											<div class="rateTxt"><span class="tt">0개 리뷰</span></div>
+											<div class="rateNum"><strong class="tt"><fmt:formatNumber value="${reviewAvgRaw}" maxFractionDigits="1" /></strong></div>
+											<div class="rateSec">
+												<div class="rateStar_total">
+													<div class="rateStar_wrap starBase flex di vc">
+														<span class="mti mtifill material-symbols-outlined star">star</span>
+														<span class="mti mtifill material-symbols-outlined star">star</span>
+														<span class="mti mtifill material-symbols-outlined star">star</span>
+														<span class="mti mtifill material-symbols-outlined star">star</span>
+														<span class="mti mtifill material-symbols-outlined star">star</span>
+													</div>
+													<div class="rateStar_wrap starFill flex di vc" style="width:calc(${reviewAvgPer}% - .125em);">
+														<span class="mti mtifill material-symbols-outlined star full">star</span>
+														<span class="mti mtifill material-symbols-outlined star full">star</span>
+														<span class="mti mtifill material-symbols-outlined star full">star</span>
+														<span class="mti mtifill material-symbols-outlined star full">star</span>
+														<span class="mti mtifill material-symbols-outlined star full">star</span>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="rate_distribution">
@@ -157,6 +190,24 @@ request.setAttribute("dp2", "list");
 									<div class="rate_overview flex vc">
 										<div class="wrap_in">
 											<div class="rateNum"><strong class="tt"><fmt:formatNumber value="${reviewAvg}" maxFractionDigits="1"/></strong></div>
+											<div class="rateSec">
+												<div class="rateStar_total">
+													<div class="rateStar_wrap starBase flex di vc">
+														<span class="mti mtifill material-symbols-outlined star">star</span>
+														<span class="mti mtifill material-symbols-outlined star">star</span>
+														<span class="mti mtifill material-symbols-outlined star">star</span>
+														<span class="mti mtifill material-symbols-outlined star">star</span>
+														<span class="mti mtifill material-symbols-outlined star">star</span>
+													</div>
+													<div class="rateStar_wrap starFill flex di vc" style="width:calc(${reviewAvgPer}% - .125em);">
+														<span class="mti mtifill material-symbols-outlined star full">star</span>
+														<span class="mti mtifill material-symbols-outlined star full">star</span>
+														<span class="mti mtifill material-symbols-outlined star full">star</span>
+														<span class="mti mtifill material-symbols-outlined star full">star</span>
+														<span class="mti mtifill material-symbols-outlined star full">star</span>
+													</div>
+												</div>
+											</div>
 											<div class="rateTxt"><span class="tt">${reviewTotal}개의 리뷰</span></div>
 										</div>
 									</div>

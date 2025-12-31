@@ -15,7 +15,8 @@ request.setAttribute("dp2", "list");
 			<span class="tt">
 				<c:set var="navKey" value="${dp1}_${dp2}" />
 				${nav[navKey]}
-			</span>			
+			</span>	
+			<div class="t1 ps1">대한민국 모든 맛집이 한 곳에!!</div>			
 		</div>
 		<div class="shop_cate_wrap">
 			<ul class="category flex">
@@ -37,7 +38,13 @@ request.setAttribute("dp2", "list");
 									        <a href="${root}/place/view?no=${place.no}" class="in">
 										          <div class="wrap_img">
 											            <div class="img resize imgfix">
-											             	 <img src="${empty place.thumbnail_img ? 'https://placehold.co/300x500' : place.thumbnail_img}" class="re">
+<%-- 											             	 <img src="${empty place.thumbnail_img ? 'https://placehold.co/300x500' : place.thumbnail_img}" class="re"> --%>
+															<c:if test="${empty place.thumbnail_img}">
+																<img src="'https://placehold.co/300x500' : place.thumbnail_img}" class="re">
+															</c:if>
+															<c:if test="${place.thumbnail_img != null}">
+																<img src="${root}${place.thumbnail_img}" class="re">
+															</c:if>
 											            </div>
 										          </div>
 										          <div class="wrap_con flex col">
@@ -46,7 +53,7 @@ request.setAttribute("dp2", "list");
 										              <div class="info_wrap flex space vc">
 											              <div class="star flex vc">
 												                <span class="mti mtifill material-symbols-outlined">star</span>
-												                <span class="tt">-</span>
+												                <span class="tt"></span>
 											              </div>
 											              <div class="cate">
 											                	<p class="shop_tt t3">${place.region}</p>
