@@ -22,7 +22,7 @@ html:not(.main) #header { border-bottom: 1px solid #f1f1f1;}
 
 #header .gnb_wrap { background: #fff;}
 #header .gnb_wrap .inner { gap: 0 3em; height: 5.625em;}
-#header .gnb_wrap .logo .in{ display: block;}
+#header .gnb_wrap .logo .in{ display: block; width: 12em;}
 #header .nav_wrap { flex:1;}
 #header .nav_wrap .gnb > li.m_mypage,
 #header .nav_wrap .gnb > li .dp1{ display: none;}
@@ -72,7 +72,7 @@ background: #fff; border: 1px solid #ddd; border-radius: .75em; box-shadow: 0 3p
 /* footer */
 #footer { padding: 4.5em 0; background: var(--siteBg1); color: #fff;}
 #footer .inner { gap: 1em 4em;}
-#footer .logo .in { display: block;}
+#footer .logo .in { display: block; width: 14em;}
 #footer .info_wrap { flex:1; gap: 2.5em 0;}
 #footer .info_wrap .menu {}
 #footer .info_wrap .menu > li { position: relative; padding-right: 1.5em; margin-right: 1.5em;}

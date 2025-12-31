@@ -26,7 +26,7 @@
 	</div>
 	<div class="gnb_wrap">
 		<div class="box1 inner flex wrap vc">			
-			<h1 class="logo"><a href="${ root }/" class="in"><img src="https://placehold.co/140x50" alt="logo"></a></h1>
+			<h1 class="logo"><a href="${ root }/" class="in"><img src="${ root }/static/img/logo.png" alt="logo"></a></h1>
 			<nav class="nav_wrap">
 				<%@ include file="/layout/gnb.jsp" %> 
 			</nav>

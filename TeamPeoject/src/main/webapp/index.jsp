@@ -125,7 +125,7 @@ request.setAttribute("dp0", "main");
 <section class="main_wrap main_banner">
 	<div class="box1 inner">
 		<div class="banner">
-			<img src="https://placehold.co/1400x160" alt="banner">
+			<img src="${ root }/static/img/banner.png" alt="banner">
 		</div>
 	</div>
 </section>
