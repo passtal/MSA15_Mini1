@@ -2,6 +2,7 @@ package board.service;
 
 import java.util.List;
 
+import board.DTO.Place;
 import board.DTO.User;
 
 public interface UserService {
@@ -19,6 +20,8 @@ public interface UserService {
 	
 	// 권한 부여
 	public User signupWithAuth(User user, String role);
+	
+	public User signupOwnerWithAuth(User user, Place place, int foodNo);
 	
 	// 유저 넘버로 회원 조회
 	public User selectByNo(int userNo);

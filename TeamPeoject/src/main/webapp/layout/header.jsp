@@ -66,7 +66,7 @@
 							</li>
 						</c:otherwise>
 					</c:choose>					
-					<li><a href="javascript:void(0)" class="in" onclick="toggleClass(this,'html','allGnbOn')"><span class="mti material-symbols-outlined">menu</span></a></li>					
+					<li><a href="javascript:void(0)" class="in" onclick="toggleClass(this,'html','allGnbOn')"><span class="mti material-symbols-outlined">menu</span></a></li>	
 				</ul>
 			</div>
 		</div>

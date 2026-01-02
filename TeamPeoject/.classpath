@@ -13,7 +13,7 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/MSA15_Mini1/TeamPeoject/src/main/webapp/WEB-INF/lib/mysql-connector-j-9.5.0.jar">
+	<classpathentry kind="lib" path="C:/JSJ_15/Programing/TeamProject/MSA15_Mini1/TeamPeoject/src/main/webapp/WEB-INF/lib/mysql-connector-j-9.5.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

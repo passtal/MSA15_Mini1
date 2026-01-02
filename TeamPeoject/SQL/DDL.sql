@@ -1,6 +1,6 @@
 -- DB 생성
-CREATE DATABASE IF NOT EXISTS ALOHA;
-USE ALOHA;
+CREATE DATABASE IF NOT EXISTS JSJ;
+USE JSJ;
 
 
 SET FOREIGN_KEY_CHECKS = 0;
@@ -76,9 +76,9 @@ CREATE TABLE `place` (
     `placename` VARCHAR(100) NOT NULL,
     `address` VARCHAR(100) NOT NULL,
     `phone` VARCHAR(100) NOT NULL,
-    `thumbnail_img` VARCHAR(300) NOT NULL,
-    `content` VARCHAR(4000) NOT NULL,
-    `amenities` VARCHAR(100) NOT NULL,
+    `thumbnail_img` VARCHAR(300) NULL,
+    `content` VARCHAR(4000) NULL,
+    `amenities` VARCHAR(100) NULL,
     `region` VARCHAR(50) NOT NULL,
     `lat` DOUBLE DEFAULT 0.0 COMMENT '위도 (Lat)',
     `lng` DOUBLE DEFAULT 0.0 COMMENT '경도 (Lng)',
@@ -94,7 +94,7 @@ CREATE TABLE `board` (
     `group_no` INT DEFAULT 1 COMMENT 'FK',
     `place_no` INT DEFAULT NULL COMMENT 'FK',
     `rating` DOUBLE DEFAULT 0.0 COMMENT '평점',
-    `title` VARCHAR(200) NOT NULL COMMENT '제목',
+    `title` VARCHAR(200) NULL COMMENT '제목',
     `content` TEXT COMMENT '내용',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -140,6 +140,7 @@ CREATE TABLE `menu` (
     `no` INT NOT NULL AUTO_INCREMENT COMMENT 'PK',
     `place_no` INT NOT NULL,
     `menuname` VARCHAR(100) NOT NULL,
+    `content` VARCHAR(500) NULL,
     `price` INT NOT NULL,
     PRIMARY KEY (`no`)
 );

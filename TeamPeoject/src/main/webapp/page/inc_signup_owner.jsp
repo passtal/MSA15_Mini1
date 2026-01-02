@@ -83,35 +83,35 @@
 			<li>
 				<div class="mem_tit"><span class="tt">회사명</span><span class="ess"></span></div>
 				<div class="in">
-					<input type="text" class="input_st fit" name="" id="" required>
+					<input type="text" class="input_st fit" name="placename" id="placename" required>
 				</div>
 			</li>
 			<li>
 				<div class="mem_tit"><span class="tt">전화번호</span><span class="ess"></span></div>
 				<div class="in">
-					<input type="text" class="input_st fit" name="" id="" required>
+					<input type="text" class="input_st fit" name="phone" id="phone" required>
 				</div>
 			</li>
 			<li>
 				<div class="mem_tit"><span class="tt">주소</span><span class="ess"></span></div>
 				<div class="in">
-					<input type="text" class="input_st fit" name="" id="" required>
+					<input type="text" class="input_st fit" name="address" id="address" required>
 				</div>
 			</li>
 			<li>
 				<div class="mem_tit"><span class="tt">업종</span><span class="ess"></span></div>
 				<div class="label_wrap">
 					<label class="label_st"> 
-						<input type="radio" name="" value="" /><span class="tt">한식</span>
+						<input type="radio" name="place_food" value="1" /><span class="tt">한식</span>
 					</label>
 					<label class="label_st"> 
-						<input type="radio" name="" value="" /><span class="tt">중식</span>
+						<input type="radio" name="place_food" value="2" /><span class="tt">중식</span>
 					</label> 
 					<label class="label_st"> 
-						<input type="radio" name="" value="" /><span class="tt">일식</span>
+						<input type="radio" name="place_food" value="3" /><span class="tt">일식</span>
 					</label> 
 					<label class="label_st"> 
-						<input type="radio" name="" value="" /><span class="tt">양식</span>
+						<input type="radio" name="place_food" value="4" /><span class="tt">양식</span>
 					</label>
 				</div>
 			</li>
