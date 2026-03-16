@@ -12,7 +12,7 @@
 
 
 > ⬆️ 이미지를 클릭하면 시연 영상으로 이동합니다.
-[![시연 영상](./TeamPeoject/src/main/webapp/static/img/Readme/thumbnail.PNG)](https://www.youtube.com/watch?v=nMrofiLCaBsc)
+[![시연 영상](./TeamPeoject/src/main/webapp/static/img/ReadMe/thumbnail.PNG)](https://www.youtube.com/watch?v=nMrofiLCaBsc)
 
 <br>
 
@@ -198,7 +198,7 @@ TeamPeoject/
 <details>
   <summary>ERD 펼치기</summary>
 
-  ![ERD](./TeamPeoject/src/main/webapp/static/img/ReadMe/erd.PNG)
+  ![ERD](./TeamPeoject/src/main/webapp/static/img/ReadMe/erd.png)
 </details>
 
 ### 5-4. 활용 장비 및 프로그램
@@ -408,7 +408,7 @@ public class BoardWriteServlet extends HttpServlet {
   <summary>로그인 / 회원가입 펼치기</summary>
 
   <img width="720" src="./TeamPeoject/src/main/webapp/static/img/figma/login.PNG">
-  <img width="720" src="./TeamPeoject/src/main/webapp/static/img/figma/login1.PNG">
+  <img width="720" src="./TeamPeoject/src/main/webapp/static/img/figma/login3.PNG">
   <img width="720" src="./TeamPeoject/src/main/webapp/static/img/figma/login2.PNG">
 </details>
 
